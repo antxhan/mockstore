@@ -158,7 +158,6 @@ input[type="checkbox"] {
 
 .wrapper {
   width: min(100%, 1200px);
-  background-color: blue;
 }
 
 .skeleton {
