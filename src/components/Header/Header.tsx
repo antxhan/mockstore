@@ -7,7 +7,7 @@ import HeaderAction from "./components/HeaderAction";
 import Categories from "./components/Categories";
 import UserAvatar from "./components/UserAvatar";
 import styles from "./styles.module.css";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 export default function Header() {
   const [userIsOpen, setUserIsOpen] = useState(false);
@@ -20,7 +20,10 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <Logo />
-        <SearchBar />
+
+        <Suspense fallback={<div>Loading search parameters...</div>}>
+          <SearchBar />
+        </Suspense>
         <NavButton onClick={handleNavButtonClick} />
         <nav className={styles.headerActions} aria-hidden={navIsOpen}>
           <HeaderAction path="/cart" icon="icons/cart.svg" title="Cart" />
