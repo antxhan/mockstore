@@ -1,15 +1,10 @@
 import Image from "next/image";
 import UserMenu from "./UserMenu";
 import styles from "../styles.module.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export default function UserAvatar({
-  userIsOpen,
-  setUserIsOpen,
-}: {
-  userIsOpen: boolean;
-  setUserIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+export default function UserAvatar() {
+  const [userIsOpen, setUserIsOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null!);
   const userButtonRef = useRef<HTMLButtonElement | null>(null);
   const handleClick = () => {

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "../components/Header/Header";
 
 export const metadata: Metadata = {
   title: "Mockstore",
@@ -14,11 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Header />
-        {children}
-        <footer>footer</footer>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
