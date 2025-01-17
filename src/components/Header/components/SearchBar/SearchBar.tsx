@@ -11,7 +11,7 @@ export default function SearchBar() {
         type="text"
         placeholder="Search"
         name="q"
-        defaultValue={searchParams.get("q") || ""}
+        defaultValue={searchParams?.get("q") || ""}
       />
     </form>
   );
