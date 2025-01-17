@@ -2,41 +2,15 @@
   position: relative;
 }
 
-.searchBar {
-  justify-self: center;
-  display: flex;
-  position: relative;
-  width: min(100%, 20rem);
-  img {
-    position: absolute;
-    width: 1.5rem;
-    height: 1.5rem;
-    top: 50%;
-    left: 0.75rem;
-    transform: translateY(-50%);
-    opacity: 0.5;
-  }
-  input {
-    width: 100%;
-    border: none;
-    border-radius: 0.5rem;
-    padding-inline-start: 2.75rem;
-    padding-inline-end: 1.25rem;
-    padding-block: 0.75rem;
-    font-size: var(--fs-normal);
-    background-color: var(--clr-neutral-200);
-    outline-color: var(--clr-primary);
-  }
-}
-
 .logo {
   font-size: var(--fs-large);
   font-weight: bold;
   text-wrap: nowrap;
   width: max-content;
-  &:hover {
-    color: inherit;
-  }
+}
+
+.logo:hover {
+  color: inherit;
 }
 
 .wrapper {
@@ -57,24 +31,29 @@
   align-items: center;
   justify-content: end;
   gap: 2rem;
-  img {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-  & > a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    & img {
-      margin-block-end: 0.25rem;
-    }
-    &:last-of-type {
-      display: none;
-    }
-  }
-  & > a > div {
-    position: relative;
-  }
+}
+
+.headerActions img {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.headerActions > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerActions > a img {
+  margin-block-end: 0.25rem;
+}
+
+.headerActions > a:last-of-type {
+  display: none;
+}
+
+.headerActions > a > div {
+  position: relative;
 }
 
 .headerActionsCount {
@@ -91,9 +70,10 @@
   font-weight: bold;
   width: 1.4rem;
   height: 1.4rem;
-  &[data-visible="false"] {
-    display: none;
-  }
+}
+
+.headerActionsCount[data-visible="false"] {
+  display: none;
 }
 
 .headerActionsLabel {
@@ -103,27 +83,27 @@
 
 .headerAvatar {
   position: relative;
-  button {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    margin-left: 1rem;
-    border: none;
-    & img {
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-    }
-  }
-  & > span {
-    display: none;
-  }
+}
+
+.headerAvatar > span {
+  display: none;
+}
+
+.headerAvatar button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+  border: none;
+}
+
+.headerAvatar button img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
 
 .headerAvatarMenu {
-  &[aria-hidden="true"] {
-    display: none;
-  }
   display: block;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
   position: absolute;
@@ -135,26 +115,34 @@
   right: 0rem;
   overflow: visible;
   z-index: 2;
-  &::backdrop {
-    background-color: transparent;
-  }
-  ul {
-    border-radius: 0 0 1rem 1rem;
-    padding-inline: 1rem;
-    list-style: none;
-    background-color: var(--clr-neutral-000);
-    border: 1px solid var(--clr-neutral-200);
-    border-top: none;
-    display: flex;
-    flex-direction: column;
-    li {
-      padding-block: 0.75rem;
-      border-bottom: 1px solid var(--clr-neutral-300);
-    }
-    li:last-child {
-      border-bottom: none;
-    }
-  }
+}
+
+.headerAvatarMenu[aria-hidden="true"] {
+  display: none;
+}
+
+.headerAvatarMenu::backdrop {
+  background-color: transparent;
+}
+
+.headerAvatarMenu ul {
+  border-radius: 0 0 1rem 1rem;
+  padding-inline: 1rem;
+  list-style: none;
+  background-color: var(--clr-neutral-000);
+  border: 1px solid var(--clr-neutral-200);
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerAvatarMenu ul li {
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--clr-neutral-300);
+}
+
+.headerAvatarMenu ul li:last-child {
+  border-bottom: none;
 }
 
 .triangle {
@@ -175,11 +163,12 @@
   background-color: var(--clr-neutral-200);
   text-wrap: nowrap;
   align-items: center;
-  button {
-    margin-left: auto;
-    width: 1.5rem;
-    height: 1.5rem;
-  }
+}
+
+.headerAvatarMenuTopRow button {
+  margin-left: auto;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .headerCategories {
@@ -187,10 +176,11 @@
   grid-column: span 3;
   gap: 2.5rem;
   list-style: none;
-  a {
-    font-size: var(--fs-normal);
-    font-weight: bold;
-  }
+}
+
+.headerCategories a {
+  font-size: var(--fs-normal);
+  font-weight: bold;
 }
 
 @media (max-width: 700px) {
@@ -199,10 +189,8 @@
     padding-block: 1rem;
     gap: 1rem;
   }
-  .logo {
-    & span {
-      display: none;
-    }
+  .logo span {
+    display: none;
   }
   .searchBar {
     width: 100%;
@@ -218,10 +206,10 @@
     background-color: transparent;
     right: 1rem;
     z-index: 11;
-    &[aria-hidden="true"] {
-      position: fixed;
-      transform: rotate(180deg);
-    }
+  }
+  .headerMenuButton[aria-hidden="true"] {
+    position: fixed;
+    transform: rotate(180deg);
   }
   .headerActions {
     transition: transform 0.2s ease-in-out;
@@ -241,51 +229,51 @@
     top: 0;
     right: 0;
     transform: translateX(100%);
-    &[aria-hidden="true"] {
-      transform: translateX(0%);
-    }
-    & a {
-      flex-direction: row;
-      gap: 0.5rem;
-    }
+  }
+  .headerActions[aria-hidden="true"] {
+    transform: translateX(0%);
+  }
+  .headerActions a {
+    flex-direction: row;
+    gap: 0.5rem;
   }
   .headerAvatar {
     display: grid;
     grid-template-columns: 1.75rem 1fr;
     align-items: center;
     gap: 0.5rem;
-    button {
-      pointer-events: none;
-      width: 1.75rem;
-      height: 1.75rem;
-      margin-left: 0rem;
-    }
-    & > span {
-      display: block;
-    }
+  }
+  .headerAvatar button {
+    pointer-events: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-left: 0rem;
+  }
+  .headerAvatar > span {
+    display: block;
   }
   .headerActionsLabel {
     display: flex;
   }
   .headerAvatarMenu {
-    &[aria-hidden="true"] {
-      display: block;
-    }
     box-shadow: none;
     background-color: transparent;
     position: initial;
     font-size: var(--fs-small);
     display: block;
-    ul {
-      background-color: transparent;
-      border: none;
-      list-style: initial;
-      padding-left: 2.2rem;
-      li {
-        border: none;
-        padding-block: 0.5rem;
-      }
-    }
+  }
+  .headerAvatarMenu[aria-hidden="true"] {
+    display: block;
+  }
+  .headerAvatarMenu ul {
+    background-color: transparent;
+    border: none;
+    list-style: initial;
+    padding-left: 2.2rem;
+  }
+  .headerAvatarMenu ul li {
+    border: none;
+    padding-block: 0.5rem;
   }
   .triangle {
     display: none;

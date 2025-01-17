@@ -9,7 +9,7 @@ export default function UserMenu({
 }: {
   isHidden: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
-  ref?: React.RefObject<HTMLDivElement> | null;
+  ref: React.RefObject<HTMLDivElement> | null;
 }) {
   const options = [
     {

@@ -10,7 +10,7 @@ export default function UserAvatar({
   userIsOpen: boolean;
   setUserIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  const userMenuRef = useRef<HTMLDivElement | null>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null!);
   const userButtonRef = useRef<HTMLButtonElement | null>(null);
   const handleClick = () => {
     setUserIsOpen(!userIsOpen);
@@ -31,7 +31,7 @@ export default function UserAvatar({
     return () => {
       document.body.removeEventListener("click", handleClickOutside);
     };
-  }, [userIsOpen]);
+  }, [userIsOpen, setUserIsOpen]);
 
   return (
     <div className={styles.headerAvatar}>

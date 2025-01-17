@@ -1,7 +1,7 @@
 "use client";
 
 import Logo from "./components/Logo";
-import SearchBar from "./components/SearchBar";
+import SearchBar from "./components/SearchBar/SearchBar";
 import NavButton from "./components/NavButton";
 import HeaderAction from "./components/HeaderAction";
 import Categories from "./components/Categories";
