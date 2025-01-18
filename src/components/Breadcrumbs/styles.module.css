@@ -1,0 +1,31 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-small);
+  font-weight: bold;
+  padding-block: 1.5rem;
+  color: var(--clr-neutral-500);
+}
+
+.breadcrumbs .skeleton {
+  width: 10rem;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: inherit;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 20ch;
+  white-space: nowrap;
+}
+
+.breadcrumbs a:hover {
+  color: var(--clr-neutral-900);
+}
+
+.breadcrumbs svg {
+  width: 1rem;
+  height: 1rem;
+}

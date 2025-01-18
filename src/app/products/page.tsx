@@ -4,13 +4,11 @@ import { api } from "@/utils/api";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import PriceFilter from "./components/PriceFilter/PriceFilter";
+import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 
 export default async function Products() {
   const products = await api.products();
-  return (
-    <Layout>
-      <header className={styles.productsHeader}>
-        {/* {Breadcrumbs([
+  const breadcrumbs = [
     {
       path: "/",
       title: "Home",
@@ -19,7 +17,11 @@ export default async function Products() {
       path: "/products",
       title: "Products",
     },
-  ])} */}
+  ];
+  return (
+    <Layout>
+      <header className={styles.productsHeader}>
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
       </header>
       <main className={styles.products}>
         <aside>
