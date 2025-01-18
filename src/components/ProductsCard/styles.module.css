@@ -1,0 +1,68 @@
+.products__card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+}
+.products__card h3.skeleton {
+  height: var(--fs-small);
+}
+
+.products__card h3.skeleton:hover {
+  color: inherit;
+}
+
+.products__card h3.skeleton:last-of-type {
+  width: clamp(3rem, 50%, 10rem);
+}
+
+.product__cardImage {
+  border: 1px solid var(--clr-neutral-300);
+  border-radius: 0.5rem;
+}
+
+.product__cardImage.skeleton {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  padding: 1rem;
+}
+
+.product__cardImage img {
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 1rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.product__cardImage img:hover {
+  transform: scale(1.025);
+}
+
+.product__cardInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product__cardInfo span.skeleton {
+  width: 4rem;
+  height: 1rem;
+}
+
+.product__cardInfo button {
+  background: transparent;
+  border: none;
+}
+
+.product__cardInfo button:hover {
+  /* background-image: url("../../assets/icons/unlike.svg"); */
+}
+
+.product__cardInfo button.skeleton {
+  width: 1.5rem;
+  height: 1.5rem;
+}

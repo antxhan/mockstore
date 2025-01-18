@@ -1,0 +1,90 @@
+.priceFilter main {
+  margin-block-end: 0.5rem;
+}
+
+.priceFilter[aria-expanded="true"] main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sliderRange input[type="range"] {
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  border-radius: 100vw;
+  background-color: transparent;
+}
+
+.sliderRange input[type="range"]:last-of-type::-webkit-slider-thumb {
+  box-shadow: calc(1000px + var(--slider-container-height) / 2) 0 0 1000px
+    var(--clr-neutral-200);
+}
+
+.sliderRange input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.sliderRange input[type="range"]::-webkit-slider-thumb {
+  height: var(--slider-container-height);
+  width: var(--slider-container-height);
+  border-radius: 50%;
+  pointer-events: auto;
+  cursor: pointer;
+  border: 4px solid var(--clr-primary);
+  background-color: var(--clr-neutral-000);
+  box-shadow: calc(-1000px - var(--slider-container-height) / 2) 0 0 1000px
+    var(--clr-neutral-200);
+}
+
+.sliderRange input[type="range"]::-moz-range-thumb {
+  height: var(--slider-container-height);
+  width: var(--slider-container-height);
+  border-radius: 50%;
+  pointer-events: auto;
+  cursor: pointer;
+  border: 4px solid var(--clr-primary);
+  background-color: var(--clr-neutral-000);
+}
+
+.sliderRange input[type="range"]::-ms-thumb {
+  height: var(--slider-container-height);
+  width: var(--slider-container-height);
+  border-radius: 50%;
+  pointer-events: auto;
+  cursor: pointer;
+  border: 4px solid var(--clr-primary);
+  background-color: var(--clr-neutral-000);
+}
+
+.sliderRange {
+  --slider-container-height: 1.5rem;
+  position: relative;
+  height: var(--slider-container-height);
+  background: linear-gradient(
+    to right,
+    var(--clr-neutral-000) 0%,
+    var(--clr-neutral-000) 9px,
+    var(--clr-primary) 10px,
+    var(--clr-primary) calc(100% - 10px),
+    var(--clr-neutral-000) calc(100% - 9px),
+    var(--clr-neutral-000) 100%
+  );
+}
+
+.sliderNumInputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sliderNumInputs input {
+  border-radius: 0.5rem;
+  border: 1px solid var(--clr-neutral-300);
+  padding: 0.5rem;
+}
