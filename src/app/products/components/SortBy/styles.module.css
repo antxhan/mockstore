@@ -1,0 +1,38 @@
+.sort {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.sort > div {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  z-index: -1;
+  left: 0.75rem;
+}
+
+.sort svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-right: 0.5rem;
+  color: var(--clr-neutral-500);
+}
+
+.sort span {
+  color: var(--clr-neutral-500);
+  text-wrap: nowrap;
+}
+
+.sort select {
+  appearance: none;
+  background: transparent;
+  height: 100%;
+  max-width: 20ch;
+  padding-left: 6.25rem;
+  padding-right: 1rem;
+  border: 1px solid var(--clr-neutral-300);
+  border-radius: 0.5rem;
+  font-size: var(--fs-normal);
+}
