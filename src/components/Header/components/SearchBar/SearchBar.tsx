@@ -8,7 +8,13 @@ export default function SearchBar() {
   const searchParams = useSearchParams();
   return (
     <form className={styles.searchBar} action="/products">
-      <Image src="icons/search.svg" alt="Search icon" width={24} height={24} />
+      <Image
+        src="icons/search.svg"
+        alt="Search icon"
+        width={24}
+        height={24}
+        draggable={false}
+      />
       <input
         type="text"
         placeholder="Search"

@@ -4,9 +4,20 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
 
-export default function ProductsCard({ product }: { product: Product }) {
+export default function ProductsCard({
+  product,
+  view,
+}: {
+  product: Product;
+  view: string;
+}) {
   return (
-    <Link href={`/product?id=${product.id}`} className={styles.products__card}>
+    <Link
+      href={`/product?id=${product.id}`}
+      className={
+        view === "grid" ? styles.products__card : styles.products__listItem
+      }
+    >
       <div className={styles.product__cardImage}>
         <Image
           src={product.image}
@@ -15,17 +26,20 @@ export default function ProductsCard({ product }: { product: Product }) {
           height={240}
         />
       </div>
-      <h3>{product.title}</h3>
       <div className={styles.product__cardInfo}>
+        <h3>{product.title}</h3>
+        {/* <div> */}
         <span>${formatNumberWithSpaces(product.price)}</span>
-        {/* <button className="product__card--like-button">
+        <button className={styles.product__cardLikeButton}>
           <Image
-            src="${
-          isLiked(product.id.toString()) ? heartFilledIcon : heartOutlineIcon
-        }"
+            // isLiked(product.id)
+            src={false ? "/icons/unlike.svg" : "/icons/like.svg"}
             alt="Like"
+            width={24}
+            height={24}
           />
-        </button> */}
+        </button>
+        {/* </div> */}
       </div>
     </Link>
   );
