@@ -184,10 +184,17 @@
 }
 
 @media (max-width: 700px) {
+  .header {
+    position: fixed;
+    background-color: var(--clr-neutral-000);
+    z-index: 10;
+    border: 1px solid var(--clr-neutral-300);
+  }
   .wrapper {
     grid-template-columns: max-content 1fr 2rem;
     padding-block: 1rem;
     gap: 1rem;
+    border: none;
   }
   .logo span {
     display: none;
