@@ -179,6 +179,9 @@ input[type="checkbox"] {
       }
     }
   }
+  body > main {
+    padding-block-start: 4.75rem;
+  }
 }
 
 /* ANIMATIONS ----------------------------------------------------------- */
