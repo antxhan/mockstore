@@ -48,14 +48,14 @@ export default function Footer() {
       <div className="wrapper">
         <div className="logo">MS</div>
         <LinkList title="Categories" items={categories} />
-        <LinkList title="Credits" items={credits} />
+        <LinkList title="Credits" items={credits} openInNewTab={true} />
         <div>
           <h2>Contacts</h2>
           <address>
             <Link href="tel:+00 000 000 0000">+00 000 000 0000</Link>
             <ul>
               <li>
-                <Link href="https://www.facebook.com/">
+                <Link href="https://www.facebook.com/" target="_blank">
                   <Image
                     src="icons/brand-facebook.svg"
                     alt="Facebook"
@@ -65,7 +65,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://www.instagram.com/">
+                <Link href="https://www.instagram.com/" target="_blank">
                   <Image
                     src="icons/brand-instagram.svg"
                     alt="Instagram"
@@ -75,7 +75,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://x.com/">
+                <Link href="https://x.com/" target="_blank">
                   <Image
                     src="icons/brand-x.svg"
                     alt="X"
@@ -85,7 +85,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://youtube.com/">
+                <Link href="https://youtube.com/" target="_blank">
                   <Image
                     src="icons/brand-youtube.svg"
                     alt="YouTube"
