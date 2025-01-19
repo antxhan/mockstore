@@ -1,0 +1,30 @@
+.productsMain {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.productsMainHeader {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.productsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.divider {
+  border-color: var(--clr-neutral-300);
+  border-style: solid;
+  border-width: 1px 0 0;
+}

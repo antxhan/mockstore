@@ -2,20 +2,19 @@
 
 import { useState } from "react";
 import ViewToggle from "../ViewToggle";
-import styles from "../../styles.module.css";
+import styles from "./styles.module.css";
 import ProductsCard from "@/components/ProductsCard/ProductsCard";
 import { Product } from "@/lib/types";
+import SortBy from "../SortBy";
 
 export default function MainSection({ products }: { products: Product[] }) {
   const [view, setView] = useState("grid");
   return (
     <section className={styles.productsMain}>
-      <section className={styles.productsMainHeader}>
+      <div className={styles.productsMainHeader}>
         <ViewToggle view={view} setView={setView} />
-        <select>
-          <option>Sort by: Popular</option>
-        </select>
-      </section>
+        <SortBy />
+      </div>
       <hr className={styles.divider} />
       <div
         className={view === "grid" ? styles.productsGrid : styles.productsList}
