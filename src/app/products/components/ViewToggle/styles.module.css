@@ -1,0 +1,28 @@
+.viewToggle {
+  background-color: var(--clr-neutral-200);
+  display: flex;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+.viewToggle button {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewToggle button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.active {
+  background-color: var(--clr-neutral-000);
+}
+
+.active svg {
+  color: var(--clr-primary);
+}

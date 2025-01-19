@@ -1,10 +1,10 @@
 import Layout from "@/components/Layout";
-import ProductsCard from "@/components/ProductsCard/ProductsCard";
 import { api } from "@/utils/api";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import PriceFilter from "./components/PriceFilter/PriceFilter";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import MainSection from "./components/MainSection";
 
 export default async function Products() {
   const products = await api.products();
@@ -22,15 +22,15 @@ export default async function Products() {
     <Layout>
       <header className={styles.productsHeader}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <h2>
+          {products.length === 1
+            ? `${products.length} result`
+            : `${products.length} results`}
+        </h2>
       </header>
       <main className={styles.products}>
         <aside>
           <div>
-            <h2>
-              {products.length === 1
-                ? `${products.length} result`
-                : `${products.length} results`}
-            </h2>
             <div className={styles.productsFilters}>
               <div className={styles.productsFiltersHeader}>
                 <h3>Filter</h3>
@@ -46,21 +46,7 @@ export default async function Products() {
             </div>
           </div>
         </aside>
-        <section>
-          <section className={styles.productsMainHeader}>
-            <select>
-              <option>Sort by: Popular</option>
-            </select>
-          </section>
-          <hr />
-          <section>
-            <div className={styles.productsGrid}>
-              {products.map((product) => (
-                <ProductsCard product={product} key={product.id} />
-              ))}
-            </div>
-          </section>
-        </section>
+        <MainSection products={products} />
       </main>
     </Layout>
   );
