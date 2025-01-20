@@ -125,7 +125,7 @@ export default function PriceFilter() {
   };
 
   return (
-    <FilterWrapper title="Price" indicator={null}>
+    <FilterWrapper title="Price" indicator={`$${urlMin} - $${urlMax}`}>
       <div className={styles.sliderRange}>
         <input
           ref={minSliderRef}
