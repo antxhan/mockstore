@@ -6,6 +6,7 @@ import PriceFilter from "./components/PriceFilter/PriceFilter";
 import CategoriesFilter from "./components/CategoriesFilter";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import MainSection from "./components/MainSection";
+import { Suspense } from "react";
 
 export default async function Products() {
   const products = await api.products();
@@ -42,8 +43,12 @@ export default async function Products() {
                   Reset
                 </Link>
               </div>
-              <PriceFilter />
-              <CategoriesFilter />
+              <Suspense fallback={<div>Loading price filter...</div>}>
+                <PriceFilter />
+              </Suspense>
+              <Suspense fallback={<div>Loading categories filter...</div>}>
+                <CategoriesFilter />
+              </Suspense>
             </div>
           </div>
         </aside>
