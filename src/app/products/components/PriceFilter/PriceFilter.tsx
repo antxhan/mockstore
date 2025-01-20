@@ -8,168 +8,113 @@ export default function PriceFilter() {
   const minPrice = 0;
   const maxPrice = 1000;
   const margin = 100;
-  const router = useRouter();
+
   const searchParams = useSearchParams();
-  let priceRange = searchParams.get("price");
-  if (priceRange) {
-    const urlMin = priceRange.split("-")[0];
-    if (+urlMin.trim() < minPrice) {
-      priceRange = `${minPrice}-${priceRange.split("-")[1]}`;
-    }
-    const urlMax = priceRange.split("-")[1];
-    if (+urlMax.trim() > maxPrice) {
-      priceRange = `${priceRange.split("-")[0]}-${maxPrice}`;
-    }
-  }
-  // console.log(priceRange);
-  // router.replace(`?price=${priceRange}`);
-  const [minValue, setMinValue] = useState<number | string>(
-    priceRange ? +priceRange.split("-")[0] : minPrice
-  );
-  const [maxValue, setMaxValue] = useState<number | string>(
-    priceRange ? +priceRange.split("-")[1] : maxPrice
-  );
+  const router = useRouter();
 
-  const formatIndicator = (rangeStart: string, rangeEnd: string) => {
-    return `$${rangeStart} - $${rangeEnd}`;
+  const getUrlRange = (searchParams: URLSearchParams) => {
+    // url stuff
+    let [urlMin, urlMax] = searchParams.get("price")?.split(",") || [
+      minPrice.toString(),
+      maxPrice.toString(),
+    ];
+
+    // parse and validate urlMin and urlMax
+    const parsedMin = Math.max(minPrice, parseInt(urlMin) || minPrice);
+    const parsedMax = Math.min(maxPrice, parseInt(urlMax) || maxPrice);
+
+    // ensure min does not exceed max and vice versa
+    urlMin = parsedMin > parsedMax ? minPrice.toString() : parsedMin.toString();
+    urlMax = parsedMax < parsedMin ? maxPrice.toString() : parsedMax.toString();
+
+    // ensure min and max have margin between them
+    if (
+      parseInt(urlMin) + margin > parseInt(urlMax) &&
+      parseInt(urlMax) - margin > minPrice
+    ) {
+      urlMin = (parseInt(urlMax) - margin).toString();
+    } else if (
+      parseInt(urlMax) - margin < parseInt(urlMin) &&
+      parseInt(urlMin) + margin < maxPrice
+    ) {
+      urlMax = (parseInt(urlMin) + margin).toString();
+    }
+
+    return [urlMin, urlMax];
   };
+  const [urlMin, urlMax] = getUrlRange(searchParams);
 
-  const [range, setRange] = useState<string | null>(
-    priceRange
-      ? formatIndicator(priceRange.split("-")[0], priceRange.split("-")[1])
-      : null
-  );
+  // REFS ------------------------------------------------------------
+
   const minSliderRef = useRef<HTMLInputElement | null>(null);
   const maxSliderRef = useRef<HTMLInputElement | null>(null);
   const minInputRef = useRef<HTMLInputElement | null>(null);
   const maxInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleValues = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    isMin: boolean
-  ) => {
-    const refs = isMin
-      ? {
-          slider: minSliderRef,
-          input: minInputRef,
-          oppositeValue: maxValue,
-          boundary: minPrice,
-        }
-      : {
-          slider: maxSliderRef,
-          input: maxInputRef,
-          oppositeValue: minValue,
-          boundary: maxPrice,
-        };
+  // FUNCTIONS -------------------------------------------------------
 
-    if (e.target.value === "") {
-      if (isMin) setMinValue("");
-      else setMaxValue("");
-      return;
-    }
-
-    const marginAdjustedValue = isMin
-      ? Math.min(+e.target.value, +refs.oppositeValue - margin)
-      : Math.max(+e.target.value, +refs.oppositeValue + margin);
-
-    refs.slider.current!.value = marginAdjustedValue.toString();
-    refs.input.current!.value = marginAdjustedValue.toString();
-
-    if (isMin) {
-      setMinValue(marginAdjustedValue);
-    } else {
-      setMaxValue(marginAdjustedValue);
-    }
-
-    const rangeStart = isMin ? marginAdjustedValue : minValue;
-    const rangeEnd = isMin ? maxValue : marginAdjustedValue;
-
-    if (rangeStart === minPrice && rangeEnd === maxPrice) {
-      setRange(null);
-    } else {
-      setRange(`$${rangeStart} - $${rangeEnd}`);
-    }
-  };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target === minSliderRef.current || e.target === minInputRef.current) {
-      if (+e.target.value < minPrice) {
-        setMinValue(minPrice);
-        return;
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target === minSliderRef.current) {
+      if (+e.target.value >= +urlMax - margin) {
+        e.target.value = (+urlMax - margin).toString();
       }
-      handleValues(e, true);
-    } else if (
-      e.target === maxSliderRef.current ||
-      e.target === maxInputRef.current
-    ) {
-      if (+e.target.value > maxPrice) {
-        setMaxValue(maxPrice);
-        return;
+      minInputRef.current!.value = e.target.value;
+    } else if (e.target === maxSliderRef.current) {
+      if (+e.target.value <= +urlMin + margin) {
+        e.target.value = (+urlMin + margin).toString();
       }
-      handleValues(e, false);
-    }
-  };
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (e.target === minInputRef.current) {
-      if (e.target.value === "") {
-        setMinValue(minPrice);
-        router.replace(`?price=${minPrice}-${maxValue}`);
-      } else {
-        handleValues(e, true);
-        router.replace(`?price=${minInputRef.current.value}-${maxValue}`);
-      }
-    } else if (e.target === maxInputRef.current) {
-      if (e.target.value === "") {
-        setMaxValue(maxPrice);
-        router.replace(`?price=${minValue}-${maxPrice}`);
-      } else {
-        handleValues(e, false);
-        router.replace(`?price=${minValue}-${maxInputRef.current.value}`);
-      }
+      maxInputRef.current!.value = e.target.value;
     }
   };
   const handleMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
     if (e.target === minSliderRef.current) {
-      router.replace(`?price=${minSliderRef.current.value}-${maxValue}`);
+      router.replace(`?price=${minSliderRef.current.value},${urlMax}`);
     } else if (e.target === maxSliderRef.current) {
-      router.replace(`?price=${minValue}-${maxSliderRef.current.value}`);
+      router.replace(`?price=${urlMin},${maxSliderRef.current.value}`);
     }
   };
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && e.currentTarget.value !== "") {
-      router.replace(`?price=${minValue}-${maxValue}`);
+      // router.replace(`?price=${urlMin},${urlMax}`);
       e.currentTarget.blur();
     }
   };
-  const handleNumChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target === minInputRef.current) {
-      if (e.target.value === "") {
-        setMinValue(minPrice);
-        // router.replace(`?price=${minPrice}-${maxValue}`);
-      } else {
-        // handleValues(e, true);
-        // router.replace(`?price=${minInputRef.current.value}-${maxValue}`);
-      }
-    } else if (e.target === maxInputRef.current) {
-      if (e.target.value === "") {
-        setMaxValue(maxPrice);
-        // router.replace(`?price=${minValue}-${maxPrice}`);
-      } else {
-        // handleValues(e, false);
-        // router.replace(`?price=${minValue}-${maxInputRef.current.value}`);
-      }
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isNaN(minPrice) && +e.target.value < minPrice) {
+      e.target.value = minPrice.toString();
+    }
+    if (!isNaN(maxPrice) && +e.target.value > maxPrice) {
+      e.target.value = maxPrice.toString();
+    }
+    if (!isNaN(+e.target.value)) {
+      e.target.value = parseInt(e.target.value).toString();
     }
   };
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    if (e.target === minInputRef.current) {
+      if (+e.target.value > parseInt(urlMax) - margin) {
+        e.target.value = (parseInt(urlMax) - margin).toString();
+      }
+      router.replace(`?price=${e.target.value},${urlMax}`);
+    } else if (e.target === maxInputRef.current) {
+      if (+e.target.value < parseInt(urlMin) + margin) {
+        e.target.value = (parseInt(urlMin) + margin).toString();
+      }
+      router.replace(`?price=${urlMin},${e.target.value}`);
+    }
+  };
+
   return (
-    <FilterWrapper title="Price" indicator={range}>
+    <FilterWrapper title="Price" indicator={null}>
       <div className={styles.sliderRange}>
         <input
           ref={minSliderRef}
           type="range"
           min={minPrice}
           max={maxPrice}
-          value={minValue}
           id="slider-min"
-          onChange={handleChange}
+          defaultValue={urlMin}
+          onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
         />
         <input
@@ -177,9 +122,9 @@ export default function PriceFilter() {
           type="range"
           min={minPrice}
           max={maxPrice}
-          value={maxValue}
           id="slider-max"
-          onChange={handleChange}
+          defaultValue={urlMax}
+          onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
         />
       </div>
@@ -191,11 +136,11 @@ export default function PriceFilter() {
             type="number"
             min={minPrice}
             max={maxPrice}
-            value={minValue}
-            onChange={handleNumChange}
             id="num-min"
+            defaultValue={urlMin}
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
+            onInput={handleInput}
           />
         </div>
         <div>
@@ -205,11 +150,11 @@ export default function PriceFilter() {
             type="number"
             min={minPrice}
             max={maxPrice}
-            value={maxValue}
-            onChange={handleNumChange}
             id="num-max"
+            defaultValue={urlMax}
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
+            onInput={handleInput}
           />
         </div>
       </div>
