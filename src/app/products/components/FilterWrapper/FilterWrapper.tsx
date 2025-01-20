@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import styles from "./styles.module.css";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 export default function FilterWrapper({
   title,
@@ -34,7 +34,9 @@ export default function FilterWrapper({
           height={24}
         />
       </header>
-      <main>{children}</main>
+      <Suspense fallback="Loading filter...">
+        <main>{children}</main>
+      </Suspense>
     </div>
   );
 }
