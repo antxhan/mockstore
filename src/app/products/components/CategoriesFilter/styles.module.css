@@ -1,0 +1,13 @@
+.categoryFilterLiTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.categoryFilterLiCheckbox {
+}
+
+.category-filter__li-amount {
+  font-size: var(--fs-xsmall);
+  color: var(--clr-neutral-500);
+}

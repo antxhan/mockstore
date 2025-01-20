@@ -88,3 +88,9 @@
   border: 1px solid var(--clr-neutral-300);
   padding: 0.5rem;
 }
+
+.sliderNumInputs > div {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
