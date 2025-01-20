@@ -26,68 +26,6 @@
   gap: 1rem;
 }
 
-.productsFilters {
-  background-color: var(--clr-neutral-200);
-  border-radius: 1rem;
-  padding: 0.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.productsFilters h3 {
-  padding-block: 1rem;
-}
-
-.productsFiltersHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-inline: 0.5rem;
-}
-
-.productsFiltersHeader a {
-  color: var(--clr-neutral-500);
-  font-size: var(--fs-small);
-}
-
-.productsFiltersHeader a:hover {
-  color: var(--clr-neutral-900);
-  text-decoration: underline 3px var(--clr-primary);
-}
-
-.productsFilters ul li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-block: 0.5rem;
-}
-
-.productsFilters ul li svg {
-  min-width: 1.5rem;
-}
-
-.productsFilters ul li input {
-  margin-left: auto;
-}
-
-.productsFilters header {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.productsFilters header > div {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.productsFilters header img {
-  transition: all 0.2s ease-in-out;
-}
-
 @media (max-width: 700px) {
   .products {
     grid-template-columns: 1fr;
