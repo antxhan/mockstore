@@ -1,0 +1,14 @@
+.categoryCard {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid var(--clr-neutral-300);
+  border-radius: 0.5rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.categoryCard:hover {
+  color: inherit;
+  border-color: var(--clr-primary);
+}
