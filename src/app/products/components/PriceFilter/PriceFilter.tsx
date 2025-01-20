@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import FilterWrapper from "../FilterWrapper/FilterWrapper";
 import styles from "./styles.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -89,17 +89,24 @@ export default function PriceFilter() {
     if (!isNaN(+e.target.value)) {
       e.target.value = parseInt(e.target.value).toString();
     }
+    if (e.target === minInputRef.current) {
+      minSliderRef.current!.value = e.target.value;
+    } else if (e.target === maxInputRef.current) {
+      maxSliderRef.current!.value = e.target.value;
+    }
   };
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (e.target === minInputRef.current) {
       if (+e.target.value > parseInt(urlMax) - margin) {
         e.target.value = (parseInt(urlMax) - margin).toString();
       }
+      minSliderRef.current!.value = e.target.value;
       router.replace(`?price=${e.target.value},${urlMax}`);
     } else if (e.target === maxInputRef.current) {
       if (+e.target.value < parseInt(urlMin) + margin) {
         e.target.value = (parseInt(urlMin) + margin).toString();
       }
+      maxSliderRef.current!.value = e.target.value;
       router.replace(`?price=${urlMin},${e.target.value}`);
     }
   };
