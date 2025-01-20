@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useCallback, useRef } from "react";
 import FilterWrapper from "../FilterWrapper/FilterWrapper";
 import styles from "./styles.module.css";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -44,6 +44,20 @@ export default function PriceFilter() {
   };
   const [urlMin, urlMax] = getUrlRange(searchParams);
 
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const handleUrl = (name: string, value: string) => {
+    router.push(`?${createQueryString(name, value)}`);
+  };
+
   // REFS ------------------------------------------------------------
 
   const minSliderRef = useRef<HTMLInputElement | null>(null);
@@ -68,14 +82,13 @@ export default function PriceFilter() {
   };
   const handleMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
     if (e.target === minSliderRef.current) {
-      router.replace(`?price=${minSliderRef.current.value},${urlMax}`);
+      handleUrl("price", `${minSliderRef.current.value},${urlMax}`);
     } else if (e.target === maxSliderRef.current) {
-      router.replace(`?price=${urlMin},${maxSliderRef.current.value}`);
+      handleUrl("price", `${urlMin},${maxSliderRef.current.value}`);
     }
   };
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && e.currentTarget.value !== "") {
-      // router.replace(`?price=${urlMin},${urlMax}`);
       e.currentTarget.blur();
     }
   };
@@ -101,13 +114,13 @@ export default function PriceFilter() {
         e.target.value = (parseInt(urlMax) - margin).toString();
       }
       minSliderRef.current!.value = e.target.value;
-      router.replace(`?price=${e.target.value},${urlMax}`);
+      handleUrl("price", `${e.target.value},${urlMax}`);
     } else if (e.target === maxInputRef.current) {
       if (+e.target.value < parseInt(urlMin) + margin) {
         e.target.value = (parseInt(urlMin) + margin).toString();
       }
       maxSliderRef.current!.value = e.target.value;
-      router.replace(`?price=${urlMin},${e.target.value}`);
+      handleUrl("price", `${urlMin},${e.target.value}`);
     }
   };
 
