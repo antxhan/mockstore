@@ -3,6 +3,7 @@ import { api } from "@/utils/api";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import PriceFilter from "./components/PriceFilter/PriceFilter";
+import CategoriesFilter from "./components/CategoriesFilter";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import MainSection from "./components/MainSection";
 
@@ -42,7 +43,7 @@ export default async function Products() {
                 </Link>
               </div>
               <PriceFilter />
-              {/* {CategoriesFilter()} */}
+              <CategoriesFilter />
             </div>
           </div>
         </aside>

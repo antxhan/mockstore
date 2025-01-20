@@ -1,7 +1,8 @@
 .productFilter {
   background-color: var(--clr-neutral-000);
   border-radius: 0.75rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
+
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -11,4 +12,28 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.filterCount {
+  background-color: var(--clr-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.25rem;
+  border-radius: 0.5rem;
+  padding-inline: 0.5rem;
+  font-weight: bold;
+  font-size: var(--fs-xsmall);
+}
+
+.filterCount[data-visible="false"] {
+  display: none;
+}
+
+.productFilter[aria-expanded="false"] header img {
+  transform: rotate(180deg);
+}
+
+.productFilter[aria-expanded="false"] main {
+  display: none;
 }
