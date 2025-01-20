@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import MainSection from "./components/MainSection";
 import FiltersSection from "./components/FiltersSection/FiltersSection";
+import { Suspense } from "react";
 
 export default async function Products() {
   const products = await api.products();
@@ -28,7 +29,9 @@ export default async function Products() {
         </h2>
       </header>
       <main className={styles.products}>
-        <FiltersSection />
+        <Suspense fallback={<div>Loading products...</div>}>
+          <FiltersSection />
+        </Suspense>
         <MainSection products={products} />
       </main>
     </Layout>
