@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./styles.module.css";
+import useFilter from "../../hooks/useFilter";
 
-export default function index() {
+export default function SortBy() {
+  const { searchParams, applyFilter } = useFilter();
+  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    applyFilter("sort", e.target.value);
+  };
   return (
     <div className={styles.sort}>
       <div>
@@ -21,8 +26,11 @@ export default function index() {
         </svg>
         <span>Sort by:</span>
       </div>
-      <select>
-        <option value="popular">Popular</option>
+      <select
+        onChange={onChange}
+        defaultValue={searchParams.get("sort") || "relevance"}
+      >
+        <option value="relevance">Relevance</option>
         <option value="price-lowest">Price: Lowest</option>
         <option value="price-highest">Price: Highest</option>
       </select>

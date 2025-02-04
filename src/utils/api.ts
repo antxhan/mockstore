@@ -20,19 +20,35 @@ export const api = {
       price?: string;
       category?: string;
       q?: string;
+      sort?: string;
     } | null;
     limit?: number;
   }): Promise<Product[]> {
     const endpoint = "products";
     const params = { limit };
-    const products = await this.request(endpoint, params);
+    let products = await this.request(endpoint, params);
+
     if (filters) {
-      return filterProducts(products, filters);
-    } else {
-      return products;
+      products = filterProducts(products, filters);
     }
+    if (filters?.sort) {
+      products = sortProducts(products, filters.sort);
+    }
+    return products;
   },
 };
+
+function sortProducts(products: Product[], sort: string) {
+  if (sort === "relevance") {
+    // return products.sort((a, b) => b.rating - a.rating);
+    return products;
+  } else if (sort === "price-lowest") {
+    return products.sort((a, b) => a.price - b.price);
+  } else if (sort === "price-highest") {
+    return products.sort((a, b) => b.price - a.price);
+  }
+  return products;
+}
 
 function filterProducts(
   products: Product[],
@@ -40,6 +56,7 @@ function filterProducts(
     price?: string;
     category?: string;
     q?: string;
+    sort?: string;
   }
 ) {
   const filteredProducts = [];
