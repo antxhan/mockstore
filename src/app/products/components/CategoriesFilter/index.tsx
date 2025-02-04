@@ -2,8 +2,8 @@
 import { toCamelCase } from "@/utils/utils";
 import FilterWrapper from "../FilterWrapper/FilterWrapper";
 import { categoryIcon } from "@/icons/categoryIcons/categoryIcon";
-import { useSearchParams } from "next/navigation";
 import styles from "./styles.module.css";
+import useFilter from "../../hooks/useFilter";
 
 export default function CategoriesFilter() {
   const categoryOptions = [
@@ -25,16 +25,19 @@ export default function CategoriesFilter() {
     },
   ];
 
-  const searchParams = useSearchParams();
-  // const router = useRouter();
+  const { searchParams, applyFilter } = useFilter();
 
-  let categories = searchParams.get("category")?.split(",");
-  if (!categories) {
-    categories = [];
-  }
+  const categories = searchParams.get("category")?.split(",") || [];
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    // append to categories in url
+    const toggledCategory = e.target;
+    if (categories.includes(toggledCategory.value)) {
+      const index = categories.indexOf(toggledCategory.value);
+      categories.splice(index, 1);
+    } else {
+      categories.push(toggledCategory.value);
+    }
+    applyFilter("category", categories.join(","));
   };
 
   return (
@@ -58,7 +61,7 @@ export default function CategoriesFilter() {
                 id={`filter-category-checkbox__${toCamelCase(category.title)}`}
                 type="checkbox"
                 checked={categories.includes(category.title.toLowerCase())}
-                value={category.title}
+                value={category.title.toLowerCase()}
                 onChange={handleChange}
               />
             </li>
