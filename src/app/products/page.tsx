@@ -6,8 +6,13 @@ import MainSection from "./components/MainSection";
 import FiltersSection from "./components/FiltersSection/FiltersSection";
 import { Suspense } from "react";
 
-export default async function Products() {
-  const products = await api.products();
+export default async function Products({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const filters = await searchParams;
+  const products = await api.products({ filters });
   const breadcrumbs = [
     {
       path: "/",
