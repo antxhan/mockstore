@@ -13,7 +13,6 @@ export default function FilterWrapper({
   indicator?: string | null;
   children: React.ReactNode;
 }) {
-  // const [count, setCount] = useState(0);
   const [isOpen, setIsOpen] = useState(true);
   return (
     <div className={styles.productFilter} aria-expanded={isOpen}>

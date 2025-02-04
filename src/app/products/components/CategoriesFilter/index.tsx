@@ -24,15 +24,17 @@ export default function CategoriesFilter() {
       icon: categoryIcon("electronics"),
     },
   ];
+
   const searchParams = useSearchParams();
+  // const router = useRouter();
+
   let categories = searchParams.get("category")?.split(",");
   if (!categories) {
     categories = [];
   }
-  console.log(categories);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
+    // append to categories in url
   };
 
   return (

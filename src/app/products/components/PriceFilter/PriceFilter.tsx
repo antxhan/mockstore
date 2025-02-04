@@ -1,16 +1,15 @@
 "use client";
-import { useCallback, useRef } from "react";
+import { useRef } from "react";
 import FilterWrapper from "../FilterWrapper/FilterWrapper";
 import styles from "./styles.module.css";
-import { useRouter, useSearchParams } from "next/navigation";
+import useFilter from "../../hooks/useFilter";
 
 export default function PriceFilter() {
   const minPrice = 0;
   const maxPrice = 1000;
   const margin = 100;
 
-  const searchParams = useSearchParams();
-  const router = useRouter();
+  const { searchParams, applyFilter } = useFilter();
 
   const getUrlRange = (searchParams: URLSearchParams) => {
     // url stuff
@@ -44,20 +43,6 @@ export default function PriceFilter() {
   };
   const [urlMin, urlMax] = getUrlRange(searchParams);
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
-
-      return params.toString();
-    },
-    [searchParams]
-  );
-
-  const handleUrl = (name: string, value: string) => {
-    router.push(`?${createQueryString(name, value)}`);
-  };
-
   // REFS ------------------------------------------------------------
 
   const minSliderRef = useRef<HTMLInputElement | null>(null);
@@ -82,9 +67,9 @@ export default function PriceFilter() {
   };
   const handleMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
     if (e.target === minSliderRef.current) {
-      handleUrl("price", `${minSliderRef.current.value},${urlMax}`);
+      applyFilter("price", `${minSliderRef.current.value},${urlMax}`);
     } else if (e.target === maxSliderRef.current) {
-      handleUrl("price", `${urlMin},${maxSliderRef.current.value}`);
+      applyFilter("price", `${urlMin},${maxSliderRef.current.value}`);
     }
   };
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -114,13 +99,13 @@ export default function PriceFilter() {
         e.target.value = (parseInt(urlMax) - margin).toString();
       }
       minSliderRef.current!.value = e.target.value;
-      handleUrl("price", `${e.target.value},${urlMax}`);
+      applyFilter("price", `${e.target.value},${urlMax}`);
     } else if (e.target === maxInputRef.current) {
       if (+e.target.value < parseInt(urlMin) + margin) {
         e.target.value = (parseInt(urlMin) + margin).toString();
       }
       maxSliderRef.current!.value = e.target.value;
-      handleUrl("price", `${urlMin},${e.target.value}`);
+      applyFilter("price", `${urlMin},${e.target.value}`);
     }
   };
 
