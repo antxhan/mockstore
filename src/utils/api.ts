@@ -2,7 +2,6 @@ import { Product } from "@/lib/types";
 
 export const api = {
   async request(endpoint: string, params = {}) {
-    console.log("Fetching from Fake Store API");
     const baseUrl = "https://fakestoreapi.com/";
     const url = new URL(`${baseUrl}${endpoint}`);
     if (params) url.search = new URLSearchParams(params).toString();
@@ -24,7 +23,6 @@ export const api = {
     } | null;
     limit?: number;
   }): Promise<Product[]> {
-    console.log(filters);
     const endpoint = "products";
     const params = { limit };
     const products = await this.request(endpoint, params);
