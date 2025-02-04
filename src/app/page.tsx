@@ -8,7 +8,7 @@ import { api } from "@/utils/api";
 import { Suspense } from "react";
 
 export default async function Home() {
-  const products = await api.products(4);
+  const products = await api.products({ limit: 4 });
   return (
     <Layout>
       <section className={styles.home__hero}>
