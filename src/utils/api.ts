@@ -20,6 +20,7 @@ export const api = {
     filters?: {
       price?: string;
       category?: string;
+      q?: string;
     } | null;
     limit?: number;
   }): Promise<Product[]> {
@@ -40,10 +41,21 @@ function filterProducts(
   filters: {
     price?: string;
     category?: string;
+    q?: string;
   }
 ) {
   const filteredProducts = [];
   for (const product of products) {
+    if (filters.q) {
+      const searchTerm = filters.q.toLowerCase();
+      const searchRegex = new RegExp(`\\b${searchTerm}\\b`, "i");
+      if (
+        !searchRegex.test(product.title.toLowerCase()) &&
+        !searchRegex.test(product.description.toLowerCase())
+      ) {
+        continue;
+      }
+    }
     if (filters.price) {
       const priceRange = filters.price.split(",");
       const minPrice = parseInt(priceRange[0]);
