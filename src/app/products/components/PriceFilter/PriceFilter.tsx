@@ -115,12 +115,26 @@ export default function PriceFilter() {
         e.target.value = (parseInt(urlMax) - margin).toString();
       }
       minSliderRef.current!.value = e.target.value;
+      if (
+        e.target.value === minPrice.toString() &&
+        urlMax === maxPrice.toString()
+      ) {
+        deleteFilter("price");
+        return;
+      }
       applyFilter("price", `${e.target.value},${urlMax}`);
     } else if (e.target === maxInputRef.current) {
       if (+e.target.value < parseInt(urlMin) + margin) {
         e.target.value = (parseInt(urlMin) + margin).toString();
       }
       maxSliderRef.current!.value = e.target.value;
+      if (
+        e.target.value === maxPrice.toString() &&
+        urlMin === minPrice.toString()
+      ) {
+        deleteFilter("price");
+        return;
+      }
       applyFilter("price", `${urlMin},${e.target.value}`);
     }
   };
