@@ -113,19 +113,32 @@ export default function PriceFilter() {
     }
   };
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isNaN(minPrice) && +e.target.value < minPrice) {
-      e.target.value = minPrice.toString();
-    }
-    if (!isNaN(maxPrice) && +e.target.value > maxPrice) {
-      e.target.value = maxPrice.toString();
-    }
-    if (!isNaN(+e.target.value)) {
-      e.target.value = parseInt(e.target.value).toString();
-    }
     if (e.target === minInputRef.current) {
-      minSliderRef.current!.value = e.target.value;
+      setSelectedPriceRange((prevPriceRange) => {
+        if (!isNaN(minPrice) && +e.target.value < minPrice) {
+          return [minPrice.toString(), prevPriceRange[1]];
+        }
+        if (!isNaN(maxPrice) && +e.target.value > maxPrice) {
+          return [prevPriceRange[0], maxPrice.toString()];
+        }
+        if (!isNaN(+e.target.value)) {
+          return [e.target.value, prevPriceRange[1]];
+        }
+        return prevPriceRange;
+      });
     } else if (e.target === maxInputRef.current) {
-      maxSliderRef.current!.value = e.target.value;
+      setSelectedPriceRange((prevPriceRange) => {
+        if (!isNaN(minPrice) && +e.target.value < minPrice) {
+          return [minPrice.toString(), prevPriceRange[1]];
+        }
+        if (!isNaN(maxPrice) && +e.target.value > maxPrice) {
+          return [prevPriceRange[0], maxPrice.toString()];
+        }
+        if (!isNaN(+e.target.value)) {
+          return [prevPriceRange[0], e.target.value];
+        }
+        return prevPriceRange;
+      });
     }
   };
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
