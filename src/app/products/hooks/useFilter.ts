@@ -9,7 +9,7 @@ export default function useFilter() {
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
+      const params = new URLSearchParams(searchParams);
       params.set(name, value);
       return params.toString();
     },
@@ -17,13 +17,13 @@ export default function useFilter() {
   );
 
   const applyFilter = (name: string, value: string) => {
-    router.push(`?${createQueryString(name, value)}`);
+    router.replace(`?${createQueryString(name, value)}`);
   };
 
   const deleteFilter = (name: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.delete(name);
-    router.push(`?${params.toString()}`);
+    router.replace(`?${params.toString()}`);
   };
 
   return {

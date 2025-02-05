@@ -67,7 +67,9 @@ export default function CategoriesFilter() {
                 name="category"
                 id={`filter-category-checkbox__${toCamelCase(category.title)}`}
                 type="checkbox"
-                checked={categories.includes(category.title.toLowerCase())}
+                defaultChecked={categories.includes(
+                  category.title.toLowerCase()
+                )}
                 value={category.title.toLowerCase()}
                 onChange={handleChange}
               />
