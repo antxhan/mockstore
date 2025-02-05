@@ -21,6 +21,9 @@ export default function SortBy() {
       <select
         onChange={onChange}
         defaultValue={searchParams.get("sort") || "relevance"}
+        style={{
+          width: `calc(${searchParams.get("sort")?.length || 10}ch + 6.5rem)`,
+        }}
       >
         <option value="relevance">Relevance</option>
         <option value="price-lowest">Price: Lowest</option>
