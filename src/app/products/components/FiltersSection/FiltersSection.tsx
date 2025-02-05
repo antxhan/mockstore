@@ -13,7 +13,7 @@ export default function FiltersSection() {
   return (
     <aside>
       <div>
-        <div className={styles.productsFilters}>
+        <div className={styles.productsFilters + " noselect"}>
           <div className={styles.productsFiltersHeader}>
             <div>
               <h3>Filter</h3>
