@@ -22,7 +22,9 @@ export default function SortBy() {
         onChange={onChange}
         defaultValue={searchParams.get("sort") || "relevance"}
         style={{
-          width: `calc(${searchParams.get("sort")?.length || 10}ch + 6.5rem)`,
+          width: `calc(${
+            searchParams.get("sort")?.length || 10
+          }ch + 6.5rem + 1ch)`,
         }}
       >
         <option value="relevance">Relevance</option>
