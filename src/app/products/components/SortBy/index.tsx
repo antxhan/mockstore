@@ -4,9 +4,13 @@ import useFilter from "../../hooks/useFilter";
 import FilterIcon from "@/icons/FilterIcon";
 
 export default function SortBy() {
-  const { searchParams, applyFilter } = useFilter();
+  const { searchParams, applyFilter, deleteFilter } = useFilter();
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    applyFilter("sort", e.target.value);
+    if (e.target.value === "relevance") {
+      deleteFilter("sort");
+    } else {
+      applyFilter("sort", e.target.value);
+    }
   };
   return (
     <div className={styles.sort}>
