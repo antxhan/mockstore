@@ -85,3 +85,11 @@
 .productsFilters header img {
   transition: all 0.2s ease-in-out;
 }
+
+.productsFiltersClearAll {
+  border: none;
+}
+
+.productsFiltersClearAll:hover {
+  text-decoration: underline;
+}
