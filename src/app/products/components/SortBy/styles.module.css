@@ -29,10 +29,11 @@
   appearance: none;
   background: transparent;
   height: 100%;
-  max-width: 20ch;
+  max-width: 25ch;
   padding-left: 6.25rem;
   padding-right: 1rem;
   border: 1px solid var(--clr-neutral-300);
   border-radius: 0.5rem;
   font-size: var(--fs-normal);
+  transition: all 0.2s ease-in-out;
 }
