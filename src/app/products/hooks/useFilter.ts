@@ -19,8 +19,16 @@ export default function useFilter() {
   const applyFilter = (name: string, value: string) => {
     router.push(`?${createQueryString(name, value)}`);
   };
+
+  const deleteFilter = (name: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete(name);
+    router.push(`?${params.toString()}`);
+  };
+
   return {
     searchParams,
     applyFilter,
+    deleteFilter,
   };
 }

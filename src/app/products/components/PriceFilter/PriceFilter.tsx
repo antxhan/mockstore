@@ -9,7 +9,7 @@ export default function PriceFilter() {
   const maxPrice = 1000;
   const margin = 100;
 
-  const { searchParams, applyFilter } = useFilter();
+  const { searchParams, applyFilter, deleteFilter } = useFilter();
 
   const getUrlRange = (searchParams: URLSearchParams) => {
     // url stuff
@@ -52,6 +52,8 @@ export default function PriceFilter() {
 
   // FUNCTIONS -------------------------------------------------------
 
+  // const handleFilter = () => {};
+
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target === minSliderRef.current) {
       if (+e.target.value >= +urlMax - margin) {
@@ -67,8 +69,22 @@ export default function PriceFilter() {
   };
   const handleMouseUp = (e: React.MouseEvent<HTMLInputElement>) => {
     if (e.target === minSliderRef.current) {
+      if (
+        minSliderRef.current.value === minPrice.toString() &&
+        urlMax === maxPrice.toString()
+      ) {
+        deleteFilter("price");
+        return;
+      }
       applyFilter("price", `${minSliderRef.current.value},${urlMax}`);
     } else if (e.target === maxSliderRef.current) {
+      if (
+        maxSliderRef.current.value === maxPrice.toString() &&
+        urlMin === minPrice.toString()
+      ) {
+        deleteFilter("price");
+        return;
+      }
       applyFilter("price", `${urlMin},${maxSliderRef.current.value}`);
     }
   };
@@ -99,12 +115,26 @@ export default function PriceFilter() {
         e.target.value = (parseInt(urlMax) - margin).toString();
       }
       minSliderRef.current!.value = e.target.value;
+      if (
+        e.target.value === minPrice.toString() &&
+        urlMax === maxPrice.toString()
+      ) {
+        deleteFilter("price");
+        return;
+      }
       applyFilter("price", `${e.target.value},${urlMax}`);
     } else if (e.target === maxInputRef.current) {
       if (+e.target.value < parseInt(urlMin) + margin) {
         e.target.value = (parseInt(urlMin) + margin).toString();
       }
       maxSliderRef.current!.value = e.target.value;
+      if (
+        e.target.value === maxPrice.toString() &&
+        urlMin === minPrice.toString()
+      ) {
+        deleteFilter("price");
+        return;
+      }
       applyFilter("price", `${urlMin},${e.target.value}`);
     }
   };
