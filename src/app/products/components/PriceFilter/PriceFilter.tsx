@@ -140,7 +140,14 @@ export default function PriceFilter() {
   };
 
   return (
-    <FilterWrapper title="Price" indicator={`$${urlMin} - $${urlMax}`}>
+    <FilterWrapper
+      title="Price"
+      indicator={
+        +urlMin === minPrice && +urlMax === maxPrice
+          ? null
+          : `$${urlMin} - $${urlMax}`
+      }
+    >
       <div className={styles.sliderRange}>
         <input
           ref={minSliderRef}
