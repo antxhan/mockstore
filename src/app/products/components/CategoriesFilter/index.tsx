@@ -45,7 +45,10 @@ export default function CategoriesFilter() {
   };
 
   return (
-    <FilterWrapper title="Categories">
+    <FilterWrapper
+      title="Categories"
+      indicator={categories.length > 0 ? categories.length.toString() : null}
+    >
       <ul className={styles.categoryFilter}>
         {categoryOptions.map((category) => {
           return (
