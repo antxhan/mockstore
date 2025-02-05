@@ -25,7 +25,7 @@ export default function CategoriesFilter() {
     },
   ];
 
-  const { searchParams, applyFilter } = useFilter();
+  const { searchParams, applyFilter, deleteFilter } = useFilter();
 
   const categories = searchParams.get("category")?.split(",") || [];
 
@@ -34,6 +34,10 @@ export default function CategoriesFilter() {
     if (categories.includes(toggledCategory.value)) {
       const index = categories.indexOf(toggledCategory.value);
       categories.splice(index, 1);
+      if (categories.length === 0) {
+        deleteFilter("category");
+        return;
+      }
     } else {
       categories.push(toggledCategory.value);
     }
