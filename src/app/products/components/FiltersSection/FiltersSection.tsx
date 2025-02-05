@@ -1,15 +1,14 @@
 "use client";
 
-import Link from "next/link";
+// import Link from "next/link";
 import styles from "./styles.module.css";
 import CategoriesFilter from "../CategoriesFilter";
 import PriceFilter from "../PriceFilter/PriceFilter";
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import useFilter from "../../hooks/useFilter";
 
 export default function FiltersSection() {
-  const searchParams = useSearchParams();
-  const searchParamsLength = Array.from(searchParams.entries()).length;
+  const { resetFilter, countFilters } = useFilter();
+  const filtersLength = countFilters();
   return (
     <aside>
       <div>
@@ -19,21 +18,20 @@ export default function FiltersSection() {
               <h3>Filter</h3>
               <span
                 className={styles.filterCount}
-                data-visible={searchParamsLength > 0 ? true : false}
+                data-visible={filtersLength > 0 ? true : false}
               >
-                {searchParamsLength}
+                {filtersLength}
               </span>
             </div>
-            <Link href="/products" className={styles.productsFiltersClearAll}>
+            <button
+              className={styles.productsFiltersClearAll}
+              onClick={resetFilter}
+            >
               Reset
-            </Link>
+            </button>
           </div>
-          <Suspense fallback={<div>Loading price filter...</div>}>
-            <PriceFilter />
-          </Suspense>
-          <Suspense fallback={<div>Loading categories filter...</div>}>
-            <CategoriesFilter />
-          </Suspense>
+          <PriceFilter />
+          <CategoriesFilter />
         </div>
       </div>
     </aside>

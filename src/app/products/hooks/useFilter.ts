@@ -9,7 +9,7 @@ export default function useFilter() {
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
+      const params = new URLSearchParams(searchParams);
       params.set(name, value);
       return params.toString();
     },
@@ -17,13 +17,26 @@ export default function useFilter() {
   );
 
   const applyFilter = (name: string, value: string) => {
-    router.push(`?${createQueryString(name, value)}`);
+    router.replace(`?${createQueryString(name, value)}`);
   };
 
   const deleteFilter = (name: string) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams);
     params.delete(name);
-    router.push(`?${params.toString()}`);
+    router.replace(`?${params.toString()}`);
+  };
+
+  const resetFilter = () => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("price");
+    params.delete("category");
+    router.replace(`?${params.toString()}`);
+  };
+
+  const countFilters = () => {
+    return Array.from(searchParams.keys()).filter((param) => {
+      return param === "category" || param === "price";
+    }).length;
   };
 
   return {
@@ -31,5 +44,7 @@ export default function useFilter() {
     searchParams,
     applyFilter,
     deleteFilter,
+    resetFilter,
+    countFilters,
   };
 }

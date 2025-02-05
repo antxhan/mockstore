@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import FilterWrapper from "../FilterWrapper/FilterWrapper";
 import styles from "./styles.module.css";
 import useFilter from "../../hooks/useFilter";
@@ -10,6 +10,19 @@ export default function PriceFilter() {
   const margin = 100;
 
   const { searchParams, applyFilter, deleteFilter } = useFilter();
+
+  const [selectedPriceRange, setSelectedPriceRange] = useState<string[]>([
+    minPrice.toString(),
+    maxPrice.toString(),
+  ]);
+
+  useEffect(() => {
+    const priceRange = searchParams.get("price")?.split(",") || [
+      minPrice.toString(),
+      maxPrice.toString(),
+    ];
+    setSelectedPriceRange(priceRange);
+  }, [searchParams]);
 
   const getUrlRange = (searchParams: URLSearchParams) => {
     // url stuff
@@ -56,14 +69,20 @@ export default function PriceFilter() {
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target === minSliderRef.current) {
-      if (+e.target.value >= +urlMax - margin) {
-        e.target.value = (+urlMax - margin).toString();
-      }
+      setSelectedPriceRange((prevPriceRange) => {
+        if (+e.target.value >= +prevPriceRange[1] - margin) {
+          return [(+prevPriceRange[1] - margin).toString(), prevPriceRange[1]];
+        }
+        return [e.target.value, prevPriceRange[1]];
+      });
       minInputRef.current!.value = e.target.value;
     } else if (e.target === maxSliderRef.current) {
-      if (+e.target.value <= +urlMin + margin) {
-        e.target.value = (+urlMin + margin).toString();
-      }
+      setSelectedPriceRange((prevPriceRange) => {
+        if (+e.target.value <= +prevPriceRange[0] + margin) {
+          return [prevPriceRange[0], (+prevPriceRange[0] + margin).toString()];
+        }
+        return [prevPriceRange[0], e.target.value];
+      });
       maxInputRef.current!.value = e.target.value;
     }
   };
@@ -94,19 +113,32 @@ export default function PriceFilter() {
     }
   };
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isNaN(minPrice) && +e.target.value < minPrice) {
-      e.target.value = minPrice.toString();
-    }
-    if (!isNaN(maxPrice) && +e.target.value > maxPrice) {
-      e.target.value = maxPrice.toString();
-    }
-    if (!isNaN(+e.target.value)) {
-      e.target.value = parseInt(e.target.value).toString();
-    }
     if (e.target === minInputRef.current) {
-      minSliderRef.current!.value = e.target.value;
+      setSelectedPriceRange((prevPriceRange) => {
+        if (!isNaN(minPrice) && +e.target.value < minPrice) {
+          return [minPrice.toString(), prevPriceRange[1]];
+        }
+        if (!isNaN(maxPrice) && +e.target.value > maxPrice) {
+          return [prevPriceRange[0], maxPrice.toString()];
+        }
+        if (!isNaN(+e.target.value)) {
+          return [e.target.value, prevPriceRange[1]];
+        }
+        return prevPriceRange;
+      });
     } else if (e.target === maxInputRef.current) {
-      maxSliderRef.current!.value = e.target.value;
+      setSelectedPriceRange((prevPriceRange) => {
+        if (!isNaN(minPrice) && +e.target.value < minPrice) {
+          return [minPrice.toString(), prevPriceRange[1]];
+        }
+        if (!isNaN(maxPrice) && +e.target.value > maxPrice) {
+          return [prevPriceRange[0], maxPrice.toString()];
+        }
+        if (!isNaN(+e.target.value)) {
+          return [prevPriceRange[0], e.target.value];
+        }
+        return prevPriceRange;
+      });
     }
   };
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -140,7 +172,14 @@ export default function PriceFilter() {
   };
 
   return (
-    <FilterWrapper title="Price" indicator={`$${urlMin} - $${urlMax}`}>
+    <FilterWrapper
+      title="Price"
+      indicator={
+        +urlMin === minPrice && +urlMax === maxPrice
+          ? null
+          : `$${urlMin} - $${urlMax}`
+      }
+    >
       <div className={styles.sliderRange}>
         <input
           ref={minSliderRef}
@@ -148,7 +187,7 @@ export default function PriceFilter() {
           min={minPrice}
           max={maxPrice}
           id="slider-min"
-          defaultValue={urlMin}
+          value={selectedPriceRange[0]}
           onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
         />
@@ -158,7 +197,7 @@ export default function PriceFilter() {
           min={minPrice}
           max={maxPrice}
           id="slider-max"
-          defaultValue={urlMax}
+          value={selectedPriceRange[1]}
           onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
         />
@@ -172,7 +211,7 @@ export default function PriceFilter() {
             min={minPrice}
             max={maxPrice}
             id="num-min"
-            defaultValue={urlMin}
+            value={selectedPriceRange[0]}
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
             onInput={handleInput}
@@ -186,7 +225,7 @@ export default function PriceFilter() {
             min={minPrice}
             max={maxPrice}
             id="num-max"
-            defaultValue={urlMax}
+            value={selectedPriceRange[1]}
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
             onInput={handleInput}

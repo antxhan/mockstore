@@ -4,6 +4,7 @@ import FilterWrapper from "../FilterWrapper/FilterWrapper";
 import { categoryIcon } from "@/icons/categoryIcons/categoryIcon";
 import styles from "./styles.module.css";
 import useFilter from "../../hooks/useFilter";
+import { useEffect, useState } from "react";
 
 export default function CategoriesFilter() {
   const categoryOptions = [
@@ -27,6 +28,13 @@ export default function CategoriesFilter() {
 
   const { searchParams, applyFilter, deleteFilter } = useFilter();
 
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    const categories = searchParams.get("category")?.split(",") || [];
+    setSelectedCategories(categories);
+  }, [searchParams]);
+
   const categories = searchParams.get("category")?.split(",") || [];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,18 +42,28 @@ export default function CategoriesFilter() {
     if (categories.includes(toggledCategory.value)) {
       const index = categories.indexOf(toggledCategory.value);
       categories.splice(index, 1);
+      setSelectedCategories((prevCategories) =>
+        prevCategories.filter((c) => c !== toggledCategory.value)
+      );
       if (categories.length === 0) {
         deleteFilter("category");
         return;
       }
     } else {
       categories.push(toggledCategory.value);
+      setSelectedCategories((prevCategories) => [
+        ...prevCategories,
+        toggledCategory.value,
+      ]);
     }
     applyFilter("category", categories.join(","));
   };
 
   return (
-    <FilterWrapper title="Categories">
+    <FilterWrapper
+      title="Categories"
+      indicator={categories.length > 0 ? categories.length.toString() : null}
+    >
       <ul className={styles.categoryFilter}>
         {categoryOptions.map((category) => {
           return (
@@ -64,7 +82,9 @@ export default function CategoriesFilter() {
                 name="category"
                 id={`filter-category-checkbox__${toCamelCase(category.title)}`}
                 type="checkbox"
-                checked={categories.includes(category.title.toLowerCase())}
+                checked={selectedCategories.includes(
+                  category.title.toLowerCase()
+                )}
                 value={category.title.toLowerCase()}
                 onChange={handleChange}
               />

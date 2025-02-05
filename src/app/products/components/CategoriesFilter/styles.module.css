@@ -2,9 +2,11 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
 }
 
 .categoryFilterLiCheckbox {
+  cursor: pointer;
 }
 
 .category-filter__li-amount {
