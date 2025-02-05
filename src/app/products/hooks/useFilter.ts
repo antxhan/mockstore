@@ -21,9 +21,22 @@ export default function useFilter() {
   };
 
   const deleteFilter = (name: string) => {
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(searchParams);
     params.delete(name);
     router.replace(`?${params.toString()}`);
+  };
+
+  const resetFilter = () => {
+    const params = new URLSearchParams(searchParams);
+    params.delete("price");
+    params.delete("category");
+    router.replace(`?${params.toString()}`);
+  };
+
+  const countFilters = () => {
+    return Array.from(searchParams.keys()).filter((param) => {
+      return param === "category" || param === "price";
+    }).length;
   };
 
   return {
@@ -31,5 +44,7 @@ export default function useFilter() {
     searchParams,
     applyFilter,
     deleteFilter,
+    resetFilter,
+    countFilters,
   };
 }
