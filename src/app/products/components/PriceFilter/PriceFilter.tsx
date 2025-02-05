@@ -187,7 +187,6 @@ export default function PriceFilter() {
           min={minPrice}
           max={maxPrice}
           id="slider-min"
-          // defaultValue={urlMin}
           value={selectedPriceRange[0]}
           onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
@@ -198,7 +197,6 @@ export default function PriceFilter() {
           min={minPrice}
           max={maxPrice}
           id="slider-max"
-          // defaultValue={urlMax}
           value={selectedPriceRange[1]}
           onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
@@ -213,7 +211,6 @@ export default function PriceFilter() {
             min={minPrice}
             max={maxPrice}
             id="num-min"
-            // defaultValue={urlMin}
             value={selectedPriceRange[0]}
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
@@ -228,7 +225,6 @@ export default function PriceFilter() {
             min={minPrice}
             max={maxPrice}
             id="num-max"
-            // defaultValue={urlMax}
             value={selectedPriceRange[1]}
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
