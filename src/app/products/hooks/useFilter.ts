@@ -27,6 +27,7 @@ export default function useFilter() {
   };
 
   return {
+    router,
     searchParams,
     applyFilter,
     deleteFilter,
