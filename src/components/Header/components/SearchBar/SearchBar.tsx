@@ -3,9 +3,18 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import useFilter from "@/app/products/hooks/useFilter";
+import { useEffect, useState } from "react";
 
 export default function SearchBar() {
   const { searchParams, router } = useFilter();
+
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    console.log("running");
+    const q = searchParams.get("q") || "";
+    setSearch(q);
+  }, [searchParams]);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,7 +39,9 @@ export default function SearchBar() {
         type="text"
         placeholder="Search"
         name="q"
-        defaultValue={searchParams?.get("q") || ""}
+        // defaultValue={searchParams?.get("q") || ""}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
       />
     </form>
   );
