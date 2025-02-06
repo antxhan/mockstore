@@ -1,3 +1,4 @@
+import Button from "@/components/Button/Button";
 import styles from "./styles.module.css";
 import GridIcon from "@/icons/GridIcon";
 import ListIcon from "@/icons/ListIcon";
@@ -15,20 +16,20 @@ export default function ViewToggle({
   };
   return (
     <div className={styles.viewToggle}>
-      <button
-        onClick={handleChange}
+      <Button
+        ariaLabel="Grid"
+        icon={<GridIcon />}
         value="grid"
         className={view === "grid" ? styles.active : ""}
-      >
-        <GridIcon />
-      </button>
-      <button
         onClick={handleChange}
+      />
+      <Button
+        ariaLabel="List"
+        icon={<ListIcon />}
         value="list"
         className={view === "list" ? styles.active : ""}
-      >
-        <ListIcon />
-      </button>
+        onClick={handleChange}
+      />
     </div>
   );
 }

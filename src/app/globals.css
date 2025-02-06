@@ -154,6 +154,29 @@ input[type="checkbox"] {
   }
 }
 
+.button {
+  position: relative;
+}
+
+.button:hover .toolTip {
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+.toolTip {
+  background-color: var(--clr-neutral-700);
+  position: absolute;
+  top: -0.5rem;
+  color: var(--clr-neutral-000);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: var(--fs-xsmall);
+  left: 50%;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+}
+
 /* UTILITIES ----------------------------------------------------------- */
 
 .wrapper {
