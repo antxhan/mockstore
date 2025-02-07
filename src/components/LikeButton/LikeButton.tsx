@@ -7,21 +7,22 @@ import { useState } from "react";
 
 export default function LikeButton({
   isLiked,
-  onClick,
+  productId,
 }: {
   isLiked: boolean;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  productId: number;
 }) {
   const [liked, setLiked] = useState(isLiked);
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setLiked(!liked);
+    console.log(productId);
+  };
   return (
     <Button
       icon={liked ? <HeartFilledIcon /> : <HeartOutlineIcon />}
       ariaLabel={liked ? "Unlike" : "Like"}
-      onClick={(e) => {
-        e.preventDefault();
-        setLiked(!liked);
-        onClick(e);
-      }}
+      onClick={handleClick}
     />
   );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import ToolTip from "../ToolTip/ToolTip";
 import styles from "./Button.module.css";
 

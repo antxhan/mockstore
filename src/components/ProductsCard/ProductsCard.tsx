@@ -30,8 +30,7 @@ export default function ProductsCard({
       <div className={styles.product__cardInfo}>
         <h3>{product.title}</h3>
         <span>${formatNumberWithSpaces(product.price)}</span>
-        {/* <LikeButton isLiked={product.isLiked} onClick={() => {}} /> */}
-        <LikeButton isLiked={false} onClick={() => {}} />
+        <LikeButton isLiked={false} productId={product.id} />
       </div>
     </Link>
   );
