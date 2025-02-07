@@ -20,12 +20,13 @@
   color: var(--clr-neutral-500);
 }
 
-.sort span {
+.sort label {
   color: var(--clr-neutral-500);
   text-wrap: nowrap;
 }
 
 .sort select {
+  cursor: pointer;
   appearance: none;
   background: transparent;
   height: 100%;

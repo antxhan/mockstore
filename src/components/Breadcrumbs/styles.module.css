@@ -4,7 +4,7 @@
   gap: 0.5rem;
   font-size: var(--fs-small);
   font-weight: bold;
-  color: var(--clr-neutral-500);
+  color: var(--clr-neutral-700);
 }
 
 .breadcrumbs .skeleton {

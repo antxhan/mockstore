@@ -19,7 +19,10 @@ export default function Button({
   return (
     <button
       className={`${className} ${styles.button}`}
-      onClick={onClick}
+      onClick={(e) => {
+        if (onClick) onClick(e);
+        e.currentTarget.blur();
+      }}
       {...(value && { value: value })}
       {...(ariaLabel && !text && { "aria-label": ariaLabel })}
     >

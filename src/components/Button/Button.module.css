@@ -1,9 +1,13 @@
 .button {
   position: relative;
+  background: none;
+  border: none;
 }
 
-.button:hover .toolTip {
+.button:hover .toolTip,
+.button:focus .toolTip {
   opacity: 1;
+  visibility: visible;
   transition: all 0.2s ease-in-out;
   transition-delay: 0.4s;
 }
@@ -19,4 +23,6 @@
   left: 50%;
   transform: translate(-50%, -100%);
   opacity: 0;
+  visibility: hidden;
+  text-align: center;
 }
