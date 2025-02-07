@@ -1,3 +1,5 @@
+"use client";
+
 import ToolTip from "../ToolTip/ToolTip";
 import styles from "./Button.module.css";
 
@@ -20,8 +22,8 @@ export default function Button({
     <button
       className={`${className} ${styles.button}`}
       onClick={(e) => {
-        if (onClick) onClick(e);
         e.currentTarget.blur();
+        if (onClick) onClick(e);
       }}
       {...(value && { value: value })}
       {...(ariaLabel && !text && { "aria-label": ariaLabel })}
