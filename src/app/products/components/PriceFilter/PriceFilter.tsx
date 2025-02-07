@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import FilterWrapper from "../FilterWrapper/FilterWrapper";
 import styles from "./styles.module.css";
 import useFilter from "../../hooks/useFilter";
+import ToolTip from "@/components/ToolTip/ToolTip";
 
 export default function PriceFilter() {
   const minPrice = 0;
@@ -190,7 +191,9 @@ export default function PriceFilter() {
           value={selectedPriceRange[0]}
           onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
+          aria-label="Min price"
         />
+        <ToolTip text="Min price" />
         <input
           ref={maxSliderRef}
           type="range"
@@ -200,7 +203,9 @@ export default function PriceFilter() {
           value={selectedPriceRange[1]}
           onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
+          aria-label="Max price"
         />
+        <ToolTip text="Max price" />
       </div>
       <div className={styles.sliderNumInputs}>
         <div>
@@ -215,7 +220,9 @@ export default function PriceFilter() {
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
             onInput={handleInput}
+            aria-label="Min price"
           />
+          <ToolTip text="Min price" />
         </div>
         <div>
           <span>$</span>
@@ -229,7 +236,9 @@ export default function PriceFilter() {
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
             onInput={handleInput}
+            aria-label="Max price"
           />
+          <ToolTip text="Max price" />
         </div>
       </div>
     </FilterWrapper>
