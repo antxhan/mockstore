@@ -4,6 +4,7 @@ import HeartFilledIcon from "@/icons/HeartFilledIcon";
 import HeartOutlineIcon from "@/icons/HeartOutlineIcon";
 import Button from "../Button/Button";
 import { useState } from "react";
+import styles from "./styles.module.css";
 
 export default function LikeButton({
   isLiked,
@@ -18,11 +19,13 @@ export default function LikeButton({
     setLiked(!liked);
     console.log(productId);
   };
+
   return (
     <Button
       icon={liked ? <HeartFilledIcon /> : <HeartOutlineIcon />}
       ariaLabel={liked ? "Unlike" : "Like"}
       onClick={handleClick}
+      className={styles.likeButton}
     />
   );
 }
