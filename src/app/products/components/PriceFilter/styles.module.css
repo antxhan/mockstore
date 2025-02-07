@@ -103,7 +103,15 @@
   transition-delay: 0.4s;
 }
 
-.sliderRange input[type="range"]:hover + span {
+.sliderNumInputs input:focus + span {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+.sliderRange input[type="range"]:hover + span,
+.sliderRange input[type="range"]:focus + span {
   opacity: 1;
   visibility: visible;
   transition: all 0.2s ease-in-out;

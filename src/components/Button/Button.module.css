@@ -1,8 +1,11 @@
 .button {
   position: relative;
+  background: none;
+  border: none;
 }
 
-.button:hover .toolTip {
+.button:hover .toolTip,
+.button:focus .toolTip {
   opacity: 1;
   visibility: visible;
   transition: all 0.2s ease-in-out;

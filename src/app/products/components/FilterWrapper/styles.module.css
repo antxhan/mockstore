@@ -11,13 +11,15 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  /* opacity: 1; */
-  /* transition: all 0.2s 0.2s ease-in-out; */
 }
 
-.productFilter[aria-expanded="true"] header .filterCount {
-  opacity: 0;
+.productFilter main[aria-hidden="true"] {
+  display: none;
 }
+
+/* .productFilter[aria-hidden="true"] header .filterCount {
+  opacity: 0;
+} */
 
 .filterCount {
   background-color: var(--clr-primary);
@@ -37,11 +39,6 @@
   display: none;
 }
 
-.productFilter[aria-expanded="false"] header img {
+.productFilter header button.rotate img {
   transform: rotate(180deg);
-}
-
-.productFilter[aria-expanded="false"] main {
-  display: none;
-  /* opacity: 0; */
 }
