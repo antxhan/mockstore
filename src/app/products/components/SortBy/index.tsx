@@ -16,9 +16,10 @@ export default function SortBy() {
     <div className={styles.sort}>
       <div>
         <FilterIcon />
-        <span>Sort by:</span>
+        <label htmlFor="sort">Sort by:</label>
       </div>
       <select
+        id="sort"
         onChange={onChange}
         defaultValue={searchParams.get("sort") || "relevance"}
         style={{
