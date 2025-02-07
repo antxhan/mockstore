@@ -97,6 +97,7 @@ export default function PriceFilter() {
         return;
       }
       applyFilter("price", `${minSliderRef.current.value},${urlMax}`);
+      e.currentTarget.blur();
     } else if (e.target === maxSliderRef.current) {
       if (
         maxSliderRef.current.value === maxPrice.toString() &&
@@ -106,6 +107,7 @@ export default function PriceFilter() {
         return;
       }
       applyFilter("price", `${urlMin},${maxSliderRef.current.value}`);
+      e.currentTarget.blur();
     }
   };
   const handleKeydown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -140,6 +142,22 @@ export default function PriceFilter() {
         }
         return prevPriceRange;
       });
+    }
+  };
+  const handleSliderBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    // if current target is same as current tagrgets url min or max the don't do anything
+    if (e.target === minSliderRef.current) {
+      if (e.target.value === urlMin) {
+        return;
+      } else {
+        applyFilter("price", `${minSliderRef.current.value},${urlMax}`);
+      }
+    } else if (e.target === maxSliderRef.current) {
+      if (e.target.value === urlMax) {
+        return;
+      } else {
+        applyFilter("price", `${urlMin},${maxSliderRef.current.value}`);
+      }
     }
   };
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -191,6 +209,8 @@ export default function PriceFilter() {
           value={selectedPriceRange[0]}
           onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
+          onKeyDown={handleKeydown}
+          onBlur={handleSliderBlur}
           aria-label="Min price"
         />
         <ToolTip text="Min price" />
@@ -203,6 +223,8 @@ export default function PriceFilter() {
           value={selectedPriceRange[1]}
           onChange={handleSliderChange}
           onMouseUp={handleMouseUp}
+          onBlur={handleSliderBlur}
+          onKeyDown={handleKeydown}
           aria-label="Max price"
         />
         <ToolTip text="Max price" />
