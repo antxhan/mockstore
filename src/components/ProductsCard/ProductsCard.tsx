@@ -3,6 +3,7 @@ import { formatNumberWithSpaces } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
+import LikeButton from "../LikeButton/LikeButton";
 
 export default function ProductsCard({
   product,
@@ -28,18 +29,9 @@ export default function ProductsCard({
       </div>
       <div className={styles.product__cardInfo}>
         <h3>{product.title}</h3>
-        {/* <div> */}
         <span>${formatNumberWithSpaces(product.price)}</span>
-        <button className={styles.product__cardLikeButton}>
-          <Image
-            // isLiked(product.id)
-            src={false ? "/icons/unlike.svg" : "/icons/like.svg"}
-            alt="Like"
-            width={24}
-            height={24}
-          />
-        </button>
-        {/* </div> */}
+        {/* <LikeButton isLiked={product.isLiked} onClick={() => {}} /> */}
+        <LikeButton isLiked={false} onClick={() => {}} />
       </div>
     </Link>
   );
