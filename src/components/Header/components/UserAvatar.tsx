@@ -29,16 +29,16 @@ export default function UserAvatar() {
   }, [userIsOpen, setUserIsOpen]);
 
   return (
-    <div className={styles.headerAvatar}>
+    <div className={`${styles.headerAction} ${styles.headerAvatar}`}>
       <button onClick={handleClick} ref={userButtonRef}>
         <Image
-          src="/images/placeholder.png"
-          alt="User avatar"
+          src="/icons/user.svg"
+          alt="Account Icon"
           width={24}
           height={24}
         />
+        <span className={styles.headerActionsLabel}>Account</span>
       </button>
-      <span className={styles.headerActionsLabel}>User</span>
       <UserMenu
         isHidden={!userIsOpen}
         onClick={handleClick}

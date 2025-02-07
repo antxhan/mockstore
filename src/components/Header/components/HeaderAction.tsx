@@ -14,7 +14,7 @@ export default function HeaderAction({
   title: string;
 }) {
   return (
-    <Link href={path}>
+    <Link href={path} className={styles.headerAction}>
       <div>
         <span className={styles.headerActionsCount} data-visible="false">
           {count}

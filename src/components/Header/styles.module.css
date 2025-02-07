@@ -27,10 +27,12 @@
 }
 
 .headerActions {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  justify-content: end;
-  gap: 2rem;
+  gap: 1.5rem;
+  width: max-content;
+  place-self: end;
 }
 
 .headerActions img {
@@ -38,14 +40,20 @@
   height: 1.75rem;
 }
 
-.headerActions > a {
+.headerActions > .headerAction {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.headerActions > a img {
+.headerActions > .headerAction img {
   margin-block-end: 0.25rem;
+}
+
+.headerAction > button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .headerActions > a:last-of-type {
@@ -85,24 +93,6 @@
   position: relative;
 }
 
-.headerAvatar > span {
-  display: none;
-}
-
-.headerAvatar button {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  margin-left: 1rem;
-  border: none;
-}
-
-.headerAvatar button img {
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-}
-
 .headerAvatarMenu {
   display: block;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
@@ -112,7 +102,7 @@
   min-width: 200px;
   border: none;
   top: 4rem;
-  right: 0rem;
+  right: 0.25rem;
   overflow: visible;
   z-index: 2;
 }

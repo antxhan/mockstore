@@ -17,12 +17,12 @@ export default function Nav() {
       <nav className={styles.headerActions} aria-hidden={navIsOpen}>
         <HeaderAction path="/cart" icon="icons/cart.svg" title="Cart" />
         <HeaderAction path="/likes" icon="icons/like.svg" title="Likes" />
+        <UserAvatar />
         <HeaderAction
           path="/products"
           icon="icons/mensClothing.svg"
           title="Products"
         />
-        <UserAvatar />
       </nav>
     </>
   );
