@@ -103,9 +103,6 @@
   transition-delay: 0.4s;
 }
 
-.sliderRange input[type="range"] {
-  /* position: relative; */
-}
 .sliderRange input[type="range"]:hover + span {
   opacity: 1;
   visibility: visible;
