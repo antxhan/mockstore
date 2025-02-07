@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../styles.module.css";
+import styles from "./Categories.module.css";
 
 export default function Categories() {
   const categories = [

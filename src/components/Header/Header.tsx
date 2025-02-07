@@ -1,6 +1,6 @@
-import Logo from "./components/Logo";
+import Logo from "./components/Logo/Logo";
 import SearchBar from "./components/SearchBar/SearchBar";
-import Categories from "./components/Categories";
+import Categories from "./components/Categories/Categories";
 import styles from "./styles.module.css";
 import { Suspense } from "react";
 import Nav from "./components/Nav/Nav";

@@ -1,6 +1,8 @@
 import Image from "next/image";
-import UserMenu from "./UserMenu";
-import styles from "../styles.module.css";
+// import UserMenu from "./UserMenu";
+import AccountMenu from "../AccountMenu/UserMenu";
+import styles from "./HeaderAvatar.module.css";
+import headerActionStyles from "../HeaderAction/HeaderAction.module.css";
 import { useEffect, useRef, useState } from "react";
 
 export default function UserAvatar() {
@@ -29,7 +31,9 @@ export default function UserAvatar() {
   }, [userIsOpen, setUserIsOpen]);
 
   return (
-    <div className={`${styles.headerAction} ${styles.headerAvatar}`}>
+    <div
+      className={`${headerActionStyles.headerAction} ${styles.headerAvatar}`}
+    >
       <button onClick={handleClick} ref={userButtonRef}>
         <Image
           src="/icons/user.svg"
@@ -37,9 +41,9 @@ export default function UserAvatar() {
           width={24}
           height={24}
         />
-        <span className={styles.headerActionsLabel}>Account</span>
+        <span className={headerActionStyles.headerActionsLabel}>Account</span>
       </button>
-      <UserMenu
+      <AccountMenu
         isHidden={!userIsOpen}
         onClick={handleClick}
         ref={userMenuRef}

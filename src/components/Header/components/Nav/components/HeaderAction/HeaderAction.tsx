@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles.module.css";
+import styles from "./HeaderAction.module.css";
 
 export default function HeaderAction({
   path,

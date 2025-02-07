@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import HeaderAction from "../HeaderAction";
-import NavButton from "../NavButton";
-import UserAvatar from "../UserAvatar";
-import styles from "../../styles.module.css";
+import HeaderAction from "./components/HeaderAction/HeaderAction";
+import NavButton from "./components/MenuButton/NavButton";
+import UserAvatar from "./components/HeaderAvatar/UserAvatar";
+import styles from "./Nav.module.css";
 
 export default function Nav() {
   const [navIsOpen, setNavIsOpen] = useState(false);

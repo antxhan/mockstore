@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../styles.module.css";
+import styles from "./AccountMenu.module.css";
 import Button from "@/components/Button/Button";
 import XIcon from "@/icons/XIcon";
 
@@ -37,9 +37,6 @@ export default function UserMenu({
         <Link href="/sign-in">Sign In</Link>
         {"|"}
         <Link href="/register">Join</Link>
-        {/* <button onClick={onClick}>
-          <Image src="icons/x.svg" alt="Close icon" width={24} height={24} />
-        </button> */}
         <Button onClick={onClick} icon={<XIcon />} ariaLabel="Close menu" />
       </div>
       <ul>

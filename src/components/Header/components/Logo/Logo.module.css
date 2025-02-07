@@ -1,0 +1,16 @@
+.logo {
+  font-size: var(--fs-large);
+  font-weight: bold;
+  text-wrap: nowrap;
+  width: max-content;
+}
+
+.logo:hover {
+  color: inherit;
+}
+
+@media (max-width: 700px) {
+  .logo span {
+    display: none;
+  }
+}
