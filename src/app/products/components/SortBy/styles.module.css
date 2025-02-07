@@ -26,6 +26,7 @@
 }
 
 .sort select {
+  cursor: pointer;
   appearance: none;
   background: transparent;
   height: 100%;
