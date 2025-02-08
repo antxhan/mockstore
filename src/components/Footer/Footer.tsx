@@ -57,7 +57,7 @@ export default function Footer() {
               <li>
                 <Link href="https://www.facebook.com/" target="_blank">
                   <Image
-                    src="icons/brand-facebook.svg"
+                    src="../icons/brand-facebook.svg"
                     alt="Facebook"
                     width={24}
                     height={24}
@@ -67,7 +67,7 @@ export default function Footer() {
               <li>
                 <Link href="https://www.instagram.com/" target="_blank">
                   <Image
-                    src="icons/brand-instagram.svg"
+                    src="../icons/brand-instagram.svg"
                     alt="Instagram"
                     width={24}
                     height={24}
@@ -77,7 +77,7 @@ export default function Footer() {
               <li>
                 <Link href="https://x.com/" target="_blank">
                   <Image
-                    src="icons/brand-x.svg"
+                    src="../icons/brand-x.svg"
                     alt="X"
                     width={24}
                     height={24}
@@ -87,7 +87,7 @@ export default function Footer() {
               <li>
                 <Link href="https://youtube.com/" target="_blank">
                   <Image
-                    src="icons/brand-youtube.svg"
+                    src="../icons/brand-youtube.svg"
                     alt="YouTube"
                     width={24}
                     height={24}

@@ -16,7 +16,7 @@ export default function ProductsCard({
 }) {
   return (
     <Link
-      href={`/product?id=${product.id}`}
+      href={`/products/${product.id}`}
       className={
         view === "grid" ? styles.products__card : styles.products__listItem
       }

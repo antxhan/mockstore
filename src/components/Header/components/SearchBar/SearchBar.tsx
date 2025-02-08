@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import useFilter from "@/app/products/hooks/useFilter";
 import { useEffect, useState } from "react";
+// import searchIcon from "../../../../icons/search.svg";
 
 export default function SearchBar() {
   const { searchParams, router } = useFilter();
@@ -29,7 +30,7 @@ export default function SearchBar() {
   return (
     <form className={styles.searchBar} onSubmit={handleSearch}>
       <Image
-        src="icons/search.svg"
+        src={"../icons/search.svg"}
         alt="Search icon"
         width={24}
         height={24}
