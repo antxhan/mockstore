@@ -18,6 +18,7 @@ export default async function Home() {
             alt="Mock Store"
             width={1200}
             height={700}
+            priority={true}
           />
         </div>
         <h1 className={styles.home__heroText}>

@@ -23,6 +23,10 @@
   gap: 1rem;
 }
 
+.productsList .product__cardInfo {
+  grid-template-rows: 1fr auto;
+}
+
 .divider {
   border-color: var(--clr-neutral-300);
   border-style: solid;

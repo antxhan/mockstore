@@ -3,7 +3,11 @@
   height: 100%;
 }
 
-.headerAvatar > button {
+.buttonWrapper {
+  height: 100%;
+}
+
+.headerAvatar > .buttonWrapper > button {
   justify-content: space-between;
   height: 100%;
 }
@@ -22,5 +26,8 @@
   }
   .headerAvatar > span {
     display: block;
+  }
+  .buttonWrapper {
+    align-items: flex-start;
   }
 }

@@ -27,7 +27,7 @@ export default function Footer() {
       title: "Made by Anton Hansson",
     },
     {
-      path: "https://github.com/antxhan/mockstore",
+      path: "https://github.com/antxhan/mockstore_next",
       title: "GitHub Repo",
     },
     {

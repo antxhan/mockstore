@@ -42,7 +42,7 @@
     right: 0;
     transform: translateX(100%);
   }
-  .headerActions[aria-hidden="true"] {
+  .headerActions[data-expanded="true"] {
     transform: translateX(0%);
   }
   .headerActions a {
