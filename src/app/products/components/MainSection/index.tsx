@@ -21,8 +21,13 @@ export default function MainSection({ products }: { products: Product[] }) {
         className={view === "grid" ? styles.productsGrid : styles.productsList}
       >
         {products.length > 0 ? (
-          products.map((product) => (
-            <ProductsCard product={product} key={product.id} view={view} />
+          products.map((product, index) => (
+            <ProductsCard
+              product={product}
+              key={product.id}
+              view={view}
+              index={index}
+            />
           ))
         ) : (
           <NoProductsFound />

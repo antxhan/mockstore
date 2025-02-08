@@ -20,7 +20,7 @@
 }
 
 .active {
-  background-color: var(--clr-neutral-000);
+  background-color: var(--clr-neutral-000) !important;
 }
 
 .active svg {

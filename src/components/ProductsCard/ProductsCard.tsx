@@ -8,9 +8,11 @@ import LikeButton from "../LikeButton/LikeButton";
 export default function ProductsCard({
   product,
   view,
+  index,
 }: {
   product: Product;
   view: string;
+  index: number;
 }) {
   return (
     <Link
@@ -25,6 +27,7 @@ export default function ProductsCard({
           alt={product.title}
           width={240}
           height={240}
+          priority={index <= 6}
         />
       </div>
       <div className={styles.product__cardInfo}>

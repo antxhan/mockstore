@@ -5,8 +5,13 @@ import styles from "./styles.module.css";
 export default function ProductsGrid({ products }: { products: Product[] }) {
   return (
     <div className={styles.productsGrid}>
-      {products.map((product) => (
-        <ProductsCard key={product.id} product={product} view="grid" />
+      {products.map((product, index) => (
+        <ProductsCard
+          key={product.id}
+          product={product}
+          index={index}
+          view="grid"
+        />
       ))}
     </div>
   );
