@@ -32,18 +32,19 @@ export default function UserAvatar() {
   }, [userIsOpen, setUserIsOpen]);
 
   return (
-    <div
-      className={`${headerActionStyles.headerAction} ${styles.headerAvatar}`}
-    >
-      <button
-        onClick={handleClick}
-        ref={userButtonRef}
-        {...(isHidden && isMobile && { tabIndex: -1 })}
+    <div className={styles.headerAvatar}>
+      <div
+        className={`${headerActionStyles.headerAction} ${styles.buttonWrapper}`}
       >
-        <UserIcon />
-        <span className={headerActionStyles.headerActionsLabel}>Account</span>
-      </button>
-
+        <button
+          onClick={handleClick}
+          ref={userButtonRef}
+          {...(isHidden && isMobile && { tabIndex: -1 })}
+        >
+          <UserIcon />
+          <span className={headerActionStyles.headerActionsLabel}>Account</span>
+        </button>
+      </div>
       <AccountMenu
         userIsOpen={!userIsOpen}
         onClick={handleClick}

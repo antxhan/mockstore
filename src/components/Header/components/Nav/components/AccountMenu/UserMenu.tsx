@@ -46,7 +46,7 @@ export default function UserMenu({
         <Button
           onClick={onClick}
           icon={<XIcon />}
-          ariaLabel="Close menu"
+          ariaLabel="Close"
           disabled={isHidden && isMobile}
         />
       </div>
