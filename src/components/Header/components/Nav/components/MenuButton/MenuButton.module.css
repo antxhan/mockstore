@@ -1,0 +1,22 @@
+.headerMenuButton {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .headerMenuButton {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    top: 1.35rem;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    right: 1rem;
+    z-index: 11;
+  }
+  .headerMenuButton[aria-hidden="true"] {
+    position: fixed;
+    transform: rotate(180deg);
+  }
+}

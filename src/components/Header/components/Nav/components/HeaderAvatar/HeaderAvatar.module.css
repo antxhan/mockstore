@@ -1,0 +1,26 @@
+.headerAvatar {
+  position: relative;
+  height: 100%;
+}
+
+.headerAvatar > button {
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media (max-width: 700px) {
+  .headerAvatar {
+    display: grid;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .headerAvatar button {
+    justify-content: initial;
+    flex-direction: row;
+    gap: 0.5rem;
+    pointer-events: none;
+  }
+  .headerAvatar > span {
+    display: block;
+  }
+}

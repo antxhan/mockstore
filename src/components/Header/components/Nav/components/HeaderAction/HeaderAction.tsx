@@ -1,6 +1,6 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
-import styles from "../styles.module.css";
+import styles from "./HeaderAction.module.css";
 
 export default function HeaderAction({
   path,
@@ -10,16 +10,17 @@ export default function HeaderAction({
 }: {
   path: string;
   count?: string;
-  icon: string;
+  icon: React.ReactNode;
   title: string;
 }) {
   return (
-    <Link href={path}>
+    <Link href={path} className={styles.headerAction}>
       <div>
         <span className={styles.headerActionsCount} data-visible="false">
           {count}
         </span>
-        <Image src={icon} alt={title + " icon"} width={24} height={24} />
+        {/* <Image src={icon} alt={title + " icon"} width={24} height={24} /> */}
+        {icon}
       </div>
       <span className={styles.headerActionsLabel}>{title}</span>
     </Link>
