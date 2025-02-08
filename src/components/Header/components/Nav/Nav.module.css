@@ -7,7 +7,8 @@
   place-self: end;
 }
 
-.headerActions img {
+.headerActions img,
+.headerActions svg {
   width: 1.75rem;
   height: 1.75rem;
 }
@@ -22,20 +23,21 @@
 
 @media (max-width: 700px) {
   .headerActions {
+    display: flex;
     transition: transform 0.2s ease-in-out;
     justify-content: start;
     z-index: 10;
     flex-direction: column;
     flex-grow: 1;
-    width: min(50vw, 10rem);
+    width: min(50vw, 14rem);
     background-color: var(--clr-neutral-100);
     position: fixed;
     min-height: 100svh;
     box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.2);
     align-items: start;
     gap: 1rem;
-    padding: 1rem;
-    padding-top: 3rem;
+    padding-inline: 2rem;
+    padding-top: 6rem;
     top: 0;
     right: 0;
     transform: translateX(100%);

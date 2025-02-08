@@ -4,8 +4,10 @@
   align-items: center;
 }
 
-.headerAction img {
-  margin-block-end: 0.25rem;
+.headerAction:hover,
+.headerAction:hover svg,
+.headerAction:hover span:not(.headerActionsCount) {
+  color: var(--clr-neutral-500);
 }
 
 .headerAction > button {
@@ -42,5 +44,10 @@
 @media (max-width: 700px) {
   .headerActionsLabel {
     display: flex;
+  }
+  .headerAction:hover,
+  .headerAction:hover svg,
+  .headerAction:hover span:not(.headerActionsCount) {
+    color: inherit;
   }
 }
