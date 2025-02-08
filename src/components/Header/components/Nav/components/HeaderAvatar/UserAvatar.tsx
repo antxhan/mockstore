@@ -1,12 +1,12 @@
-// import Image from "next/image";
-// import UserMenu from "./UserMenu";
 import AccountMenu from "../AccountMenu/UserMenu";
 import styles from "./HeaderAvatar.module.css";
 import headerActionStyles from "../HeaderAction/HeaderAction.module.css";
 import { useEffect, useRef, useState } from "react";
 import UserIcon from "@/icons/UserIcon";
+import { useNavContext } from "../../context";
 
 export default function UserAvatar() {
+  const { isHidden, isMobile } = useNavContext();
   const [userIsOpen, setUserIsOpen] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null!);
   const userButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -35,18 +35,17 @@ export default function UserAvatar() {
     <div
       className={`${headerActionStyles.headerAction} ${styles.headerAvatar}`}
     >
-      <button onClick={handleClick} ref={userButtonRef}>
-        {/* <Image
-          src="/icons/user.svg"
-          alt="Account Icon"
-          width={24}
-          height={24}
-        /> */}
+      <button
+        onClick={handleClick}
+        ref={userButtonRef}
+        {...(isHidden && isMobile && { tabIndex: -1 })}
+      >
         <UserIcon />
         <span className={headerActionStyles.headerActionsLabel}>Account</span>
       </button>
+
       <AccountMenu
-        isHidden={!userIsOpen}
+        userIsOpen={!userIsOpen}
         onClick={handleClick}
         ref={userMenuRef}
       />

@@ -10,6 +10,7 @@ export default function Button({
   className,
   value,
   onClick,
+  disabled,
 }: {
   icon?: React.ReactNode;
   text?: string;
@@ -17,6 +18,7 @@ export default function Button({
   className?: string;
   value?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
 }) {
   return (
     <button
@@ -27,6 +29,7 @@ export default function Button({
       }}
       {...(value && { value: value })}
       {...(ariaLabel && !text && { "aria-label": ariaLabel })}
+      {...(disabled && { disabled: disabled })}
     >
       {icon && icon}
       {text && <span>{text}</span>}

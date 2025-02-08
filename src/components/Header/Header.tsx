@@ -4,6 +4,7 @@ import Categories from "./components/Categories/Categories";
 import styles from "./styles.module.css";
 import { Suspense } from "react";
 import Nav from "./components/Nav/Nav";
+import NavContextProvider from "./components/Nav/context";
 
 export default function Header() {
   return (
@@ -13,7 +14,9 @@ export default function Header() {
         <Suspense fallback={<div>Loading search parameters...</div>}>
           <SearchBar />
         </Suspense>
-        <Nav />
+        <NavContextProvider>
+          <Nav />
+        </NavContextProvider>
         <Categories />
       </div>
     </header>

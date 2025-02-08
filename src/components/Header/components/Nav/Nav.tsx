@@ -1,30 +1,33 @@
 "use client";
 
-import { useState } from "react";
+// import { useEffect, useState } from "react";
 import HeaderAction from "./components/HeaderAction/HeaderAction";
 import NavButton from "./components/MenuButton/NavButton";
 import UserAvatar from "./components/HeaderAvatar/UserAvatar";
 import styles from "./Nav.module.css";
 import CartIcon from "@/icons/CartIcon";
 import HeartOutlineIcon from "@/icons/HeartOutlineIcon";
+import { useNavContext } from "./context";
 
 export default function Nav() {
-  const [navIsOpen, setNavIsOpen] = useState(false);
+  const { isHidden, setIsHidden } = useNavContext();
+
   const handleNavButtonClick = () => {
-    setNavIsOpen(!navIsOpen);
+    setIsHidden(!isHidden);
   };
+
   return (
     <>
       <NavButton onClick={handleNavButtonClick} />
-      <nav className={styles.headerActions} aria-hidden={navIsOpen}>
+      <nav className={styles.headerActions} aria-hidden={isHidden}>
         <HeaderAction path="/cart" icon={<CartIcon />} title="Cart" />
         <HeaderAction path="/likes" icon={<HeartOutlineIcon />} title="Likes" />
-        <UserAvatar />
         <HeaderAction
           path="/products"
           icon="icons/mensClothing.svg"
           title="Products"
         />
+        <UserAvatar />
       </nav>
     </>
   );

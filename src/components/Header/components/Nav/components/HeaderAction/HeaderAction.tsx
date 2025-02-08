@@ -1,6 +1,7 @@
 // import Image from "next/image";
 import Link from "next/link";
 import styles from "./HeaderAction.module.css";
+import { useNavContext } from "../../context";
 
 export default function HeaderAction({
   path,
@@ -13,13 +14,17 @@ export default function HeaderAction({
   icon: React.ReactNode;
   title: string;
 }) {
+  const { isHidden, isMobile } = useNavContext();
   return (
-    <Link href={path} className={styles.headerAction}>
+    <Link
+      href={path}
+      className={styles.headerAction}
+      {...(isHidden && isMobile && { tabIndex: -1 })}
+    >
       <div>
         <span className={styles.headerActionsCount} data-visible="false">
           {count}
         </span>
-        {/* <Image src={icon} alt={title + " icon"} width={24} height={24} /> */}
         {icon}
       </div>
       <span className={styles.headerActionsLabel}>{title}</span>
