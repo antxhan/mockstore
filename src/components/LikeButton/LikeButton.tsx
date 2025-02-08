@@ -25,7 +25,7 @@ export default function LikeButton({
       icon={liked ? <HeartFilledIcon /> : <HeartOutlineIcon />}
       ariaLabel={liked ? "Unlike" : "Like"}
       onClick={handleClick}
-      className={styles.likeButton}
+      className={`${styles.likeButton} ${liked ? styles.liked : ""}`}
     />
   );
 }
