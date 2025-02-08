@@ -19,7 +19,7 @@ export default function Nav() {
   return (
     <>
       <NavButton onClick={handleNavButtonClick} />
-      <nav className={styles.headerActions} aria-hidden={isHidden}>
+      <nav className={styles.headerActions} data-expanded={!isHidden}>
         <HeaderAction path="/cart" icon={<CartIcon />} title="Cart" />
         <HeaderAction path="/likes" icon={<HeartOutlineIcon />} title="Likes" />
         <HeaderAction

@@ -9,7 +9,7 @@ export default function NavButton({
   return (
     <button
       className={styles.headerMenuButton}
-      aria-hidden="true"
+      // aria-hidden="true"
       onClick={onClick}
     >
       <Image src="icons/menu-2.svg" alt="Menu icon" width={24} height={24} />
