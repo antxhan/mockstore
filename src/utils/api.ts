@@ -36,6 +36,11 @@ export const api = {
     }
     return products;
   },
+  async product(id: Product["id"]): Promise<Product> {
+    const endpoint = `products/${id}`;
+    const product = await this.request(endpoint);
+    return product;
+  },
 };
 
 function sortProducts(products: Product[], sort: string) {

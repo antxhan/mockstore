@@ -8,7 +8,7 @@ export default function NavButton({
 }) {
   return (
     <button className={styles.headerMenuButton} onClick={onClick}>
-      <Image src="icons/menu-2.svg" alt="Menu icon" width={24} height={24} />
+      <Image src="../icons/menu-2.svg" alt="Menu icon" width={24} height={24} />
     </button>
   );
 }

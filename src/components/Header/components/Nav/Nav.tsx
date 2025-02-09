@@ -24,7 +24,7 @@ export default function Nav() {
         <HeaderAction path="/likes" icon={<HeartOutlineIcon />} title="Likes" />
         <HeaderAction
           path="/products"
-          icon="icons/mensClothing.svg"
+          icon="/icons/mensClothing.svg"
           title="Products"
         />
         <UserAvatar />

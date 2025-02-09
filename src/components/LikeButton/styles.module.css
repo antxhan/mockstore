@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.likeButton::before {
+/* .likeButton::before {
   content: url("/icons/unlike.svg");
   position: absolute;
   top: 0;
@@ -10,14 +10,19 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-}
+} */
 
-.likeButton:not(.liked):hover svg {
+/* .likeButton:not(.liked):hover svg {
   opacity: 0.05;
   transition: opacity 0.2s ease-in-out;
-}
+} */
 
-.likeButton:hover::before {
+/* .likeButton:hover::before {
   opacity: 0.5;
   transition: opacity 0.2s ease-in-out;
-}
+} */
+
+/* .likeButton:hover .hoverIcon {
+  opacity: 0.5;
+  transition: opacity 0.2s ease-in-out;
+} */

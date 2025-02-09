@@ -9,9 +9,11 @@ import styles from "./styles.module.css";
 export default function LikeButton({
   isLiked,
   productId,
+  className,
 }: {
   isLiked: boolean;
   productId: number;
+  className?: string;
 }) {
   const [liked, setLiked] = useState(isLiked);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -23,9 +25,12 @@ export default function LikeButton({
   return (
     <Button
       icon={liked ? <HeartFilledIcon /> : <HeartOutlineIcon />}
+      hoverIcon={<HeartFilledIcon />}
       ariaLabel={liked ? "Unlike" : "Like"}
       onClick={handleClick}
-      className={`${styles.likeButton} ${liked ? styles.liked : ""}`}
+      className={`${styles.likeButton} ${
+        liked ? styles.liked : ""
+      } ${className}`}
     />
   );
 }
