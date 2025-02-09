@@ -15,6 +15,7 @@ import PlusIcon from "@/icons/PlusIcon";
 import MainButton from "@/components/MainButton/MainButton";
 import CartIcon from "@/icons/CartIcon";
 import LikeButton from "@/components/LikeButton/LikeButton";
+import ProductsGrid from "@/components/ProductsGrid/ProductsGrid";
 
 export default async function Page({
   params,
@@ -23,6 +24,10 @@ export default async function Page({
 }) {
   const id = (await params).id;
   const product = await api.product(parseInt(id));
+  const relatedProducts = (
+    await api.category({ category: product.category, limit: 4 })
+  ).filter((item) => item.id !== product.id);
+  // .slice(0, 4);
   const breadcrumbs = [
     {
       path: "/",
@@ -105,9 +110,7 @@ export default async function Page({
       </div>
       <div className={styles.relatedProducts}>
         <h2>Related Products</h2>
-        <div className={styles.relatedProductsGrid}>
-          {/* ${relatedProducts.map((product) => ProductsCard(product)).join("")} */}
-        </div>
+        <ProductsGrid products={relatedProducts} />
       </div>
     </Layout>
   );

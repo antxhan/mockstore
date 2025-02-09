@@ -41,6 +41,17 @@ export const api = {
     const product = await this.request(endpoint);
     return product;
   },
+  async category({
+    category,
+    limit = 20,
+  }: {
+    category: string;
+    limit?: number;
+  }): Promise<Product[]> {
+    const endpoint = `products/category/${category}`;
+    const products = await this.request(endpoint);
+    return products.slice(0, limit);
+  },
 };
 
 function sortProducts(products: Product[], sort: string) {
