@@ -11,7 +11,7 @@ export default function Cart() {
   ];
   return (
     <Layout>
-      <header>
+      <header className={styles.header}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </header>
       <main className={styles.cart}>
