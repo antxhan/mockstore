@@ -1,15 +1,38 @@
 "use client";
 
-import { Product } from "@/lib/types";
+import { Cart, Product } from "@/lib/types";
 
 export const db = {
   cart: {
     get() {
-      if (typeof window !== "undefined") {
-        return JSON.parse(localStorage.getItem("cart") || "{}");
+      return JSON.parse(localStorage.getItem("cart") || "{}");
+    },
+    set(cart: Cart) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    },
+    add(id: Product["id"], quantity: number) {
+      const cart = this.get();
+      if (cart[id]) {
+        cart[id] += quantity;
       } else {
-        return [];
+        cart[id] = quantity;
       }
+      this.set(cart);
+    },
+    decrement(id: Product["id"]) {
+      const cart = this.get();
+      if (cart[id]) {
+        cart[id]--;
+        if (cart[id] === 0) {
+          delete cart[id];
+        }
+        this.set(cart);
+      }
+    },
+    delete(id: Product["id"]) {
+      const cart = this.get();
+      delete cart[id];
+      this.set(cart);
     },
   },
   likes: {

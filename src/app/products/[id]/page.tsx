@@ -10,12 +10,8 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import { categoryIcon } from "@/icons/categoryIcons/categoryIcon";
-import MinusIcon from "@/icons/MinusIcon";
-import PlusIcon from "@/icons/PlusIcon";
-import MainButton from "@/components/MainButton/MainButton";
-import CartIcon from "@/icons/CartIcon";
-import LikeButton from "@/components/LikeButton/LikeButton";
-import ProductsGrid from "@/components/ProductsGrid/ProductsGrid";
+import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
+import ProductActions from "./components/ProductActions/ProductActions";
 
 export default async function Page({
   params,
@@ -41,6 +37,7 @@ export default async function Page({
       title: product.title,
     },
   ];
+
   return (
     <Layout>
       <header className={styles.header}>
@@ -80,36 +77,10 @@ export default async function Page({
             ${formatNumberWithSpaces(product.price)}
           </span>
           <p className={styles.product__description}>{product.description}</p>
-          <div className={styles.product__quantity}>
-            <h3>Quantity</h3>
-            <div className={styles.product__quantityButtons}>
-              <button value="-" disabled>
-                <MinusIcon />
-              </button>
-              <span>1</span>
-              <button value="+">
-                <PlusIcon />
-              </button>
-            </div>
-          </div>
-          <div className={styles.product__actions}>
-            <MainButton
-              icon={<CartIcon />}
-              title="Add to Cart"
-              className={styles.product__addToCartButton}
-            />
-
-            <LikeButton
-              productId={product.id}
-              className={styles.product__likeButton}
-            />
-          </div>
+          <ProductActions product={product} />
         </div>
       </div>
-      <div className={styles.relatedProducts}>
-        <h2>Related Products</h2>
-        <ProductsGrid products={relatedProducts} />
-      </div>
+      <RelatedProducts relatedProducts={relatedProducts} />
     </Layout>
   );
 }

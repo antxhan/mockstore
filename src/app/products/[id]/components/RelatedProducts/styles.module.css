@@ -1,0 +1,19 @@
+.relatedProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-block-start: 2rem;
+  grid-column: span 2;
+}
+
+.relatedProductsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 700px) {
+  .relatedProductsGrid {
+    gap: 1rem;
+  }
+}

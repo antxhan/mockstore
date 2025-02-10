@@ -2,7 +2,6 @@ import Layout from "@/components/Layout";
 import LikedProducts from "./components/LikedProducts";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import styles from "./styles.module.css";
-// import RelatedProducts from "./components/RelatedProducts";
 
 export default function page() {
   const breadcrumbs = [

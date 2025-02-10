@@ -30,9 +30,9 @@ export default function LikedProducts() {
     if (products.length > 0) {
       const likedCategories = products.map((product) => product.category);
       const randomCategory = shuffleCategories(likedCategories)[0];
-      api.category({ category: randomCategory, limit: 4 }).then((products) => {
+      api.category({ category: randomCategory }).then((products) => {
         setRelatedProducts(
-          products.filter((product) => !likes.includes(product.id))
+          products.filter((product) => !likes.includes(product.id)).slice(0, 4)
         );
       });
     } else {
@@ -47,12 +47,18 @@ export default function LikedProducts() {
       ) : (
         <div>No products liked yet</div>
       )}
-      <Divider />
-      <h2 className={styles.relatedProducts__title}>You may also like...</h2>
-      {relatedProducts.length > 0 ? (
-        <ProductsGrid products={relatedProducts} />
-      ) : (
-        <div>No related products</div>
+      {products.length > 0 && (
+        <>
+          <Divider />
+          <h2 className={styles.relatedProducts__title}>
+            You may also like...
+          </h2>
+          {relatedProducts.length > 0 ? (
+            <ProductsGrid products={relatedProducts} />
+          ) : (
+            <div>No related products</div>
+          )}
+        </>
       )}
     </div>
   );

@@ -5,12 +5,12 @@ import { useNavContext } from "../../context";
 
 export default function HeaderAction({
   path,
-  count = "",
+  count = 0,
   icon,
   title,
 }: {
   path: string;
-  count?: string;
+  count?: number;
   icon: React.ReactNode;
   title: string;
 }) {
@@ -22,7 +22,7 @@ export default function HeaderAction({
       {...(isHidden && isMobile && { tabIndex: -1 })}
     >
       <div>
-        <span className={styles.headerActionsCount} data-visible="false">
+        <span className={styles.headerActionsCount} data-visible={count > 0}>
           {count}
         </span>
         {icon}
