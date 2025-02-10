@@ -100,7 +100,6 @@ export default async function Page({
             />
 
             <LikeButton
-              isLiked={false}
               productId={product.id}
               className={styles.product__likeButton}
             />

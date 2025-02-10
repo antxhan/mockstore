@@ -3,23 +3,27 @@
 import HeartFilledIcon from "@/icons/HeartFilledIcon";
 import HeartOutlineIcon from "@/icons/HeartOutlineIcon";
 import Button from "../Button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
+import { db } from "@/utils/db";
 
 export default function LikeButton({
-  isLiked,
   productId,
   className,
 }: {
-  isLiked: boolean;
   productId: number;
   className?: string;
 }) {
-  const [liked, setLiked] = useState(isLiked);
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    setLiked(db.likes.get().includes(productId));
+  }, [setLiked, productId]);
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLiked(!liked);
-    console.log(productId);
+    db.likes.toggle(productId);
   };
 
   return (

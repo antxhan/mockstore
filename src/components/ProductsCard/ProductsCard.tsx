@@ -1,3 +1,5 @@
+"use client";
+
 import { Product } from "@/lib/types";
 import { formatNumberWithSpaces } from "@/utils/utils";
 import Image from "next/image";
@@ -33,7 +35,7 @@ export default function ProductsCard({
       <div className={styles.product__cardInfo}>
         <h3>{product.title}</h3>
         <span>${formatNumberWithSpaces(product.price)}</span>
-        <LikeButton isLiked={false} productId={product.id} />
+        <LikeButton productId={product.id} />
       </div>
     </Link>
   );
