@@ -1,7 +1,7 @@
 "use client";
 
-import styles from "../styles.module.css";
-import CartItem from "./CartItem/CartItem";
+import styles from "./CartItems.module.css";
+import CartItem from "../CartItem/CartItem";
 import Link from "next/link";
 import { CartItem as CartItemType } from "@/lib/types";
 

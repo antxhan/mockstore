@@ -3,6 +3,7 @@
 import MinusIcon from "@/icons/MinusIcon";
 import PlusIcon from "@/icons/PlusIcon";
 import styles from "./styles.module.css";
+import Button from "../Button/Button";
 
 export default function Quantity({
   quantity,
@@ -18,27 +19,27 @@ export default function Quantity({
   disabled?: boolean;
 }) {
   return (
-    <div className={styles.quantityButtons}>
-      <button
+    <div className={styles.quantity}>
+      <Button
+        icon={<MinusIcon />}
+        ariaLabel="Decrement"
         disabled={disabled}
         onClick={(e) => {
           e.preventDefault();
           if (minusOnClick) minusOnClick(e);
           setQuantity(quantity - 1);
         }}
-      >
-        <MinusIcon />
-      </button>
+      />
       <span>{quantity}</span>
-      <button
+      <Button
+        icon={<PlusIcon />}
+        ariaLabel="Increment"
         onClick={(e) => {
           e.preventDefault();
           if (plusOnClick) plusOnClick(e);
           setQuantity(quantity + 1);
         }}
-      >
-        <PlusIcon />
-      </button>
+      />
     </div>
   );
 }
