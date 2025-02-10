@@ -7,6 +7,7 @@ import ProductsCard from "@/components/ProductsCard/ProductsCard";
 import { Product } from "@/lib/types";
 import SortBy from "../SortBy";
 import NoProductsFound from "../NoProductsFound/NoProductsFound";
+import Divider from "@/components/Divider/Divider";
 
 export default function MainSection({ products }: { products: Product[] }) {
   const [view, setView] = useState("grid");
@@ -16,7 +17,7 @@ export default function MainSection({ products }: { products: Product[] }) {
         <ViewToggle view={view} setView={setView} />
         <SortBy />
       </div>
-      <hr className={styles.divider} />
+      <Divider />
       <div
         className={view === "grid" ? styles.productsGrid : styles.productsList}
       >

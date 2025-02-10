@@ -6,6 +6,8 @@ import { Product } from "@/lib/types";
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react";
 import { shuffleCategories } from "@/utils/utils";
+import styles from "../styles.module.css";
+import Divider from "@/components/Divider/Divider";
 
 export default function LikedProducts() {
   const { likes } = useDBContext();
@@ -39,18 +41,19 @@ export default function LikedProducts() {
   }, [products, likes]);
 
   return (
-    <>
+    <div className={styles.main}>
       {products.length > 0 ? (
         <ProductsGrid products={products} />
       ) : (
         <div>No products liked yet</div>
       )}
-      <div>related</div>
+      <Divider />
+      <h2 className={styles.relatedProducts__title}>You may also like...</h2>
       {relatedProducts.length > 0 ? (
         <ProductsGrid products={relatedProducts} />
       ) : (
         <div>No related products</div>
       )}
-    </>
+    </div>
   );
 }
