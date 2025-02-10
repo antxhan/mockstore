@@ -1,8 +1,6 @@
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Layout from "@/components/Layout";
 import styles from "./styles.module.css";
-// import CartItems from "./components/CartItems";
-// import CartSummary from "./components/CartSummary/CartSummary";
 import Cart from "./components/Cart";
 
 export default function page() {

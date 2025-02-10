@@ -40,7 +40,7 @@ export default function Button({
         </div>
       )}
       {text && <span>{text}</span>}
-      {ariaLabel && <ToolTip text={ariaLabel} />}
+      {ariaLabel && !disabled && <ToolTip text={ariaLabel} />}
     </button>
   );
 }

@@ -1,5 +1,34 @@
-.quantityButtons {
-  display: flex;
-  gap: 0.5rem;
+.quantity {
+  --button-height: 3.5rem;
+  display: grid;
+  grid-template-columns: max-content 3rem max-content;
   align-items: center;
+}
+
+.quantity span {
+  text-align: center;
+}
+
+.quantity button {
+  background-color: var(--clr-neutral-200) !important;
+  width: calc(var(--button-height) * 0.67);
+  height: calc(var(--button-height) * 0.67);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+.quantity button svg {
+  /* width: 1.75rem; */
+  /* height: 1.75rem; */
+}
+
+.quantity button:hover {
+  background-color: var(--clr-neutral-100) !important;
+}
+
+.quantity button[disabled] {
+  background-color: var(--clr-neutral-100) !important;
+  opacity: 0.25;
 }

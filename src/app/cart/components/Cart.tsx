@@ -1,7 +1,7 @@
 "use client";
 
 import { useDBContext } from "@/contexts/db";
-import CartItems from "./CartItems";
+import CartItems from "./CartItems/CartItems";
 import CartSummary from "./CartSummary/CartSummary";
 import { useEffect, useState } from "react";
 import { api } from "@/utils/api";

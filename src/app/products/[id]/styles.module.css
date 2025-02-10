@@ -17,12 +17,7 @@
   border-radius: 1rem;
 }
 
-.product button img,
-.product button svg {
-  width: 1.75rem;
-  height: 1.75rem;
-}
-.product button:not(.main-button):active {
+.product button:not(.mainButton):active {
   transform: scale(0.97);
 }
 
@@ -140,33 +135,6 @@
 
 .product__quantity h3 {
   margin-bottom: 0.5rem;
-}
-
-.product__quantity span {
-  width: 2ch;
-  text-align: center;
-}
-.product__quantity button {
-  background-color: var(--clr-neutral-200);
-  width: calc(var(--button-height) * 0.67);
-  height: calc(var(--button-height) * 0.67);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product__quantity button img {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.product__quantity button:hover {
-  background-color: var(--clr-neutral-100);
-}
-
-.product__quantity button[disabled] {
-  background-color: var(--clr-neutral-100);
-  opacity: 0.25;
 }
 
 .product__actions {
