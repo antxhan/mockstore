@@ -3,3 +3,9 @@
   display: grid;
   gap: 0.5rem;
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
