@@ -5,6 +5,7 @@
   font-size: var(--fs-small);
   font-weight: bold;
   color: var(--clr-neutral-700);
+  overflow: hidden;
 }
 
 .breadcrumbs .skeleton {
