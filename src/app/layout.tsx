@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import DBContextProvider from "@/contexts/db";
 
 export const metadata: Metadata = {
   title: "Mockstore",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <DBContextProvider>{children}</DBContextProvider>
+      </body>
     </html>
   );
 }

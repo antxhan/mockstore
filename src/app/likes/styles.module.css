@@ -1,0 +1,5 @@
+.header {
+  padding-block: 1.5rem;
+  display: grid;
+  gap: 0.5rem;
+}
