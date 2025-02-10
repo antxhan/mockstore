@@ -1,7 +1,6 @@
 "use client";
 
 import Quantity from "@/components/Quantity/Quantity";
-import XIcon from "@/icons/XIcon";
 import { Product } from "@/lib/types";
 import { formatNumberWithSpaces } from "@/utils/utils";
 import Image from "next/image";
@@ -10,6 +9,7 @@ import { useState } from "react";
 import styles from "./CartItem.module.css";
 import { useDBContext } from "@/contexts/db";
 import { db } from "@/utils/db";
+import RemoveButton from "../RemoveButton/RemoveButton";
 
 export default function CartItem({ product }: { product: Product }) {
   const { cart, setCart } = useDBContext();
@@ -35,9 +35,7 @@ export default function CartItem({ product }: { product: Product }) {
       <div className={styles.cartItem__info}>
         <div className={styles.cartItem__topRow}>
           <h3>{product.title}</h3>
-          <button className={styles.cartItem__remove}>
-            <XIcon />
-          </button>
+          <RemoveButton productId={product.id} />
         </div>
         <span className={styles.cartItem__price}>
           ${formatNumberWithSpaces(product.price)}
