@@ -12,10 +12,9 @@ import styles from "./styles.module.css";
 import { categoryIcon } from "@/icons/categoryIcons/categoryIcon";
 import MinusIcon from "@/icons/MinusIcon";
 import PlusIcon from "@/icons/PlusIcon";
-import MainButton from "@/components/MainButton/MainButton";
-import CartIcon from "@/icons/CartIcon";
 import LikeButton from "@/components/LikeButton/LikeButton";
-import ProductsGrid from "@/components/ProductsGrid/ProductsGrid";
+import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
+import AddToCartButton from "./components/AddToCartButton/AddToCartButton";
 
 export default async function Page({
   params,
@@ -41,6 +40,7 @@ export default async function Page({
       title: product.title,
     },
   ];
+
   return (
     <Layout>
       <header className={styles.header}>
@@ -93,12 +93,7 @@ export default async function Page({
             </div>
           </div>
           <div className={styles.product__actions}>
-            <MainButton
-              icon={<CartIcon />}
-              title="Add to Cart"
-              className={styles.product__addToCartButton}
-            />
-
+            <AddToCartButton productId={product.id} quantity={1} />
             <LikeButton
               productId={product.id}
               className={styles.product__likeButton}
@@ -106,10 +101,7 @@ export default async function Page({
           </div>
         </div>
       </div>
-      <div className={styles.relatedProducts}>
-        <h2>Related Products</h2>
-        <ProductsGrid products={relatedProducts} />
-      </div>
+      <RelatedProducts relatedProducts={relatedProducts} />
     </Layout>
   );
 }
