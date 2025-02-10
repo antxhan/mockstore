@@ -18,12 +18,20 @@ export default function Quantity({
     <div className={styles.quantityButtons}>
       <button
         {...(quantity === 1 ? { disabled: true } : {})}
-        onClick={() => setQuantity(quantity - 1)}
+        onClick={(e) => {
+          e.preventDefault();
+          setQuantity(quantity - 1);
+        }}
       >
         <MinusIcon />
       </button>
       <span>{quantity}</span>
-      <button onClick={() => setQuantity(quantity + 1)}>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setQuantity(quantity + 1);
+        }}
+      >
         <PlusIcon />
       </button>
     </div>

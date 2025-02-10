@@ -45,3 +45,9 @@ export function shuffleCategories(array: string[]) {
   }
   return array;
 }
+
+// export function sumTotal(products) {
+//   return products
+//     .reduce((acc, product) => acc + product.price * product.quantity, 0)
+//     .toFixed(2);
+// }
