@@ -1,7 +1,8 @@
 import Layout from "@/components/Layout";
-import LikedProducts from "./LikedProducts";
+import LikedProducts from "./components/LikedProducts";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import styles from "./styles.module.css";
+import RelatedProducts from "./components/RelatedProducts";
 
 export default function page() {
   const breadcrumbs = [
@@ -16,10 +17,13 @@ export default function page() {
   ];
   return (
     <Layout>
-      <header className={styles.header}>
+      <div className={styles.header}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
-      </header>
+        <h1>Your Likes</h1>
+      </div>
       <LikedProducts />
+      <h2>You may also like...</h2>
+      <RelatedProducts />
     </Layout>
   );
 }
