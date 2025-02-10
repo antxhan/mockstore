@@ -3,9 +3,9 @@
 import HeartFilledIcon from "@/icons/HeartFilledIcon";
 import HeartOutlineIcon from "@/icons/HeartOutlineIcon";
 import Button from "../Button/Button";
-import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { db } from "@/utils/db";
+import { useDBContext } from "@/contexts/db";
 
 export default function LikeButton({
   productId,
@@ -14,16 +14,13 @@ export default function LikeButton({
   productId: number;
   className?: string;
 }) {
-  const [liked, setLiked] = useState(false);
-
-  useEffect(() => {
-    setLiked(db.likes.get().includes(productId));
-  }, [setLiked, productId]);
+  const { likes, setLikes } = useDBContext();
+  const liked = likes.includes(productId);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setLiked(!liked);
     db.likes.toggle(productId);
+    setLikes(db.likes.get());
   };
 
   return (

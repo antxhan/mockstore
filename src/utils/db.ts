@@ -1,20 +1,38 @@
+"use client";
+
 import { Product } from "@/lib/types";
 
 export const db = {
-  cart: {},
+  cart: {
+    get() {
+      if (typeof window !== "undefined") {
+        return JSON.parse(localStorage.getItem("cart") || "{}");
+      } else {
+        return [];
+      }
+    },
+  },
   likes: {
     get(): Product["id"][] {
-      return JSON.parse(localStorage.getItem("likes") || "[]");
+      if (typeof window !== "undefined") {
+        return JSON.parse(localStorage.getItem("likes") || "[]");
+      } else {
+        return [];
+      }
     },
     set(productIds: Product["id"][]) {
-      localStorage.setItem("likes", JSON.stringify(productIds));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("likes", JSON.stringify(productIds));
+      }
     },
     toggle(productId: Product["id"]) {
-      const likes = this.get();
-      if (likes.includes(productId)) {
-        this.set(likes.filter((id: Product["id"]) => id !== productId));
-      } else {
-        this.set([...likes, productId]);
+      if (typeof window !== "undefined") {
+        const likes = this.get();
+        if (likes.includes(productId)) {
+          this.set(likes.filter((id: Product["id"]) => id !== productId));
+        } else {
+          this.set([...likes, productId]);
+        }
       }
     },
   },
