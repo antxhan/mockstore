@@ -9,16 +9,18 @@ export default function Quantity({
   setQuantity,
   plusOnClick,
   minusOnClick,
+  disabled,
 }: {
   quantity: number;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
   plusOnClick?: React.MouseEventHandler<HTMLButtonElement>;
   minusOnClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
 }) {
   return (
     <div className={styles.quantityButtons}>
       <button
-        {...(quantity === 1 ? { disabled: true } : {})}
+        disabled={disabled}
         onClick={(e) => {
           e.preventDefault();
           if (minusOnClick) minusOnClick(e);
