@@ -27,7 +27,6 @@ export default async function Page({
   const relatedProducts = (
     await api.category({ category: product.category, limit: 4 })
   ).filter((item) => item.id !== product.id);
-  // .slice(0, 4);
   const breadcrumbs = [
     {
       path: "/",
