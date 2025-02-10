@@ -13,7 +13,11 @@ export default function ProductActions({ product }: { product: Product }) {
     <>
       <div className={styles.product__quantity}>
         <h3>Quantity</h3>
-        <Quantity quantity={quantity} setQuantity={setQuantity} />
+        <Quantity
+          quantity={quantity}
+          setQuantity={setQuantity}
+          disabled={quantity === 1}
+        />
       </div>
       <div className={styles.product__actions}>
         <AddToCartButton productId={product.id} quantity={quantity} />

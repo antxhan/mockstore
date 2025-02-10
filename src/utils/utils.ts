@@ -1,3 +1,5 @@
+import { CartItem } from "@/lib/types";
+
 export function formatNumberWithSpaces(num: number) {
   const [integerPart, decimalPart] = num.toString().split(".");
   const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -44,4 +46,12 @@ export function shuffleCategories(array: string[]) {
     [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
   }
   return array;
+}
+
+export function sumTotal(products: CartItem[]) {
+  return parseFloat(
+    products
+      .reduce((acc, product) => acc + product.price * product.quantity, 0)
+      .toFixed(2)
+  );
 }

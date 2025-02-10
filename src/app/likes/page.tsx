@@ -18,7 +18,7 @@ export default function page() {
     <Layout>
       <div className={styles.header}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
-        <h1>Your Likes</h1>
+        <h2>Your Likes</h2>
       </div>
       <LikedProducts />
     </Layout>

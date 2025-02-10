@@ -1,0 +1,19 @@
+.removeButton {
+  background-color: var(--clr-neutral-200);
+  width: calc(var(--button-height) * 0.5);
+  height: calc(var(--button-height) * 0.5);
+  min-width: calc(var(--button-height) * 0.5);
+  min-height: calc(var(--button-height) * 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.removeButton:hover {
+  background-color: var(--clr-neutral-100);
+}
