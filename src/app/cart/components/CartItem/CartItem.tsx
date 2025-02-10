@@ -1,7 +1,7 @@
 "use client";
 
 import Quantity from "@/components/Quantity/Quantity";
-import { Product } from "@/lib/types";
+import { CartItem as CartItemType } from "@/lib/types";
 import { formatNumberWithSpaces } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import { useDBContext } from "@/contexts/db";
 import { db } from "@/utils/db";
 import RemoveButton from "../RemoveButton/RemoveButton";
 
-export default function CartItem({ product }: { product: Product }) {
+export default function CartItem({ product }: { product: CartItemType }) {
   const { cart, setCart } = useDBContext();
   const [quantity, setQuantity] = useState(cart[product.id] || 1);
   const plusOnClick = () => {
