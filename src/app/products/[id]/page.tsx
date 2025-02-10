@@ -10,11 +10,8 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import { categoryIcon } from "@/icons/categoryIcons/categoryIcon";
-import MinusIcon from "@/icons/MinusIcon";
-import PlusIcon from "@/icons/PlusIcon";
-import LikeButton from "@/components/LikeButton/LikeButton";
 import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
-import AddToCartButton from "./components/AddToCartButton/AddToCartButton";
+import ProductActions from "./components/ProductActions/ProductActions";
 
 export default async function Page({
   params,
@@ -80,25 +77,7 @@ export default async function Page({
             ${formatNumberWithSpaces(product.price)}
           </span>
           <p className={styles.product__description}>{product.description}</p>
-          <div className={styles.product__quantity}>
-            <h3>Quantity</h3>
-            <div className={styles.product__quantityButtons}>
-              <button value="-" disabled>
-                <MinusIcon />
-              </button>
-              <span>1</span>
-              <button value="+">
-                <PlusIcon />
-              </button>
-            </div>
-          </div>
-          <div className={styles.product__actions}>
-            <AddToCartButton productId={product.id} quantity={1} />
-            <LikeButton
-              productId={product.id}
-              className={styles.product__likeButton}
-            />
-          </div>
+          <ProductActions product={product} />
         </div>
       </div>
       <RelatedProducts relatedProducts={relatedProducts} />

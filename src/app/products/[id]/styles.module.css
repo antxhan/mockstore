@@ -141,11 +141,7 @@
 .product__quantity h3 {
   margin-bottom: 0.5rem;
 }
-.product__quantity .product__quantityButtons {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
+
 .product__quantity span {
   width: 2ch;
   text-align: center;
