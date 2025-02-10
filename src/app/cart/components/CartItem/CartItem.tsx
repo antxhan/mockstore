@@ -9,10 +9,19 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./CartItem.module.css";
 import { useDBContext } from "@/contexts/db";
+import { db } from "@/utils/db";
 
 export default function CartItem({ product }: { product: Product }) {
-  const { cart } = useDBContext();
+  const { cart, setCart } = useDBContext();
   const [quantity, setQuantity] = useState(cart[product.id] || 1);
+  const plusOnClick = () => {
+    db.cart.add(product.id, 1);
+    setCart(db.cart.get());
+  };
+  const minusOnClick = () => {
+    db.cart.decrement(product.id);
+    setCart(db.cart.get());
+  };
   return (
     <Link href={`/products/${product.id}`} className={styles.cartItem}>
       <Image
@@ -33,7 +42,12 @@ export default function CartItem({ product }: { product: Product }) {
         <span className={styles.cartItem__price}>
           ${formatNumberWithSpaces(product.price)}
         </span>
-        <Quantity quantity={quantity} setQuantity={setQuantity} />
+        <Quantity
+          quantity={quantity}
+          setQuantity={setQuantity}
+          plusOnClick={plusOnClick}
+          minusOnClick={minusOnClick}
+        />
       </div>
     </Link>
   );
