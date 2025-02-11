@@ -1,5 +1,5 @@
 import { formatNumberWithSpaces, sumTotal } from "@/utils/utils";
-import styles from "../../styles.module.css";
+import styles from "./styles.module.css";
 import { CartItem } from "@/lib/types";
 import Link from "next/link";
 import mainButtonStyles from "@/components/MainButton/MainButton.module.css";
