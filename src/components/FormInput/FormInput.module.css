@@ -1,0 +1,24 @@
+.formInput {
+  --left-margin: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.formInput__label {
+  font-size: var(--fs-small);
+  left: var(--left-margin);
+  top: -0.75rem;
+  position: absolute;
+  z-index: 3;
+  background-color: var(--clr-neutral-000);
+  width: max-content;
+  padding: 0.25rem;
+}
+.formInput__input {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--clr-neutral-300);
+  font-size: var(--fs-normal);
+  padding-left: calc(var(--left-margin) + 0.25rem);
+  height: 3.5rem;
+}
