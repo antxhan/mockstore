@@ -179,6 +179,17 @@ input[type="checkbox"] {
   opacity: 0;
 }
 
+.notFound {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 2rem;
+  text-wrap: balance;
+  a {
+    font-weight: bold;
+  }
+}
+
 /* UTILITIES ----------------------------------------------------------- */
 
 .wrapper {
