@@ -65,14 +65,6 @@
   background-color: var(--clr-neutral-300);
 }
 
-.cartEmptyView {
-  padding-block: 1rem;
-}
-
-.cartEmptyView a {
-  font-weight: bold;
-}
-
 @media (max-width: 700px) {
   .cart {
     grid-template-columns: 1fr;
