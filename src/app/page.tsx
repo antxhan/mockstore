@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout";
+// import Layout from "@/components/Layout";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
@@ -10,7 +10,7 @@ import { Suspense } from "react";
 export default async function Home() {
   const products = await api.products({ limit: 4 });
   return (
-    <Layout>
+    <>
       <section className={styles.home__hero}>
         <div className={styles.home__heroImage}>
           <Image
@@ -58,6 +58,6 @@ export default async function Home() {
           </Suspense>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

@@ -1,4 +1,3 @@
-import Layout from "@/components/Layout";
 import { api } from "@/utils/api";
 import styles from "./styles.module.css";
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
@@ -24,7 +23,7 @@ export default async function Products({
     },
   ];
   return (
-    <Layout>
+    <>
       <header className={styles.productsHeader}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
         <h2>
@@ -39,6 +38,6 @@ export default async function Products({
         </Suspense>
         <MainSection products={products} />
       </main>
-    </Layout>
+    </>
   );
 }
