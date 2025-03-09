@@ -9,37 +9,29 @@
   gap: 1rem;
 }
 
-.checkout section[data-expanded="false"] {
-  gap: 0;
-}
-
-.checkout section[data-expanded="false"] > main .form {
-  display: none;
-}
-
-.checkout section[data-expanded="false"] h2,
-.checkout section[data-expanded="false"] header {
-  border-bottom: none;
-  padding-block-end: 0;
-  margin-block-end: 0;
-}
-
-.checkout .checkout__info {
+.formSection {
   grid-column: 1;
 }
 
-.checkout__delivery {
-  grid-column: 1;
-}
-
-.checkout__delivery header > div {
+.formSection > header > div {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.checkout__payment {
-  grid-column: 1;
+.formSection[data-expanded="false"] {
+  gap: 0;
+}
+
+.formSection[data-expanded="false"] main {
+  display: none;
+}
+
+.formSection[data-expanded="false"] h2,
+.formSection[data-expanded="false"] header {
+  border-bottom: none;
+  padding-block-end: 0;
+  margin-block-end: 0;
 }
 
 @media (max-width: 700px) {

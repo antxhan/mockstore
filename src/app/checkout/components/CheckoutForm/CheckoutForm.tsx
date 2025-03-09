@@ -1,30 +1,19 @@
+"use client";
+
 import FormInput from "@/components/FormInput/FormInput";
 import styles from "./styles.module.css";
 import mainButtonStyles from "@/components/MainButton/MainButton.module.css";
 import FormSection from "../FormSection/FormSection";
+import { useActionState, useState } from "react";
+import { submitOrder } from "../../actions/submitOrder";
 
 export default function CheckoutForm() {
+  const [data, action, isPending] = useActionState(submitOrder, undefined);
+
+  const [formData, setFormData] = useState<FormData>(new FormData());
+
   return (
-    <form className={styles.checkoutForm}>
-      {/* <section className={styles.checkout__info} data-expanded="true">
-        <main>
-          <h2>Info</h2>
-          <div className={styles.form}>
-            <FormInput title="First Name" placeholder="John" />
-            <FormInput title="Last Name" placeholder="Doe" />
-            <FormInput
-              title="Email"
-              type="email"
-              placeholder="john.doe@gmail.com"
-            />
-            <FormInput title="Phone" type="tel" placeholder="(555) 555-5555" />
-            <FormInput title="Address" placeholder="123 Main St" />
-            <FormInput title="City" placeholder="Anytown" />
-            <FormInput title="State" placeholder="CA" />
-            <FormInput title="Zip" placeholder="12345" />
-          </div>
-        </main>
-      </section> */}
+    <form className={styles.checkoutForm} action={action}>
       <FormSection title="Info">
         <FormInput title="First Name" placeholder="John" />
         <FormInput title="Last Name" placeholder="Doe" />
@@ -39,45 +28,38 @@ export default function CheckoutForm() {
         <FormInput title="State" placeholder="CA" />
         <FormInput title="Zip" placeholder="12345" />
       </FormSection>
-      <section className={styles.checkout__delivery} data-expanded="false">
-        <header>
-          <h2>Delivery</h2>
+      <FormSection
+        title={"Deliviery"}
+        // defaultExpanded={false}
+        headerChildren={
           <div>
             <input type="checkbox" id="same-address" checked />
             <label htmlFor="same-address">Same as billing address</label>
           </div>
-        </header>
-        <main>
-          <div className={styles.form}>
-            <FormInput title="First Name" placeholder="John" />
-            <FormInput title="Last Name" placeholder="Doe" />
-            <FormInput
-              title="Email"
-              type="email"
-              placeholder="john.doe@gmail.com"
-            />
-            <FormInput title="Phone" type="tel" placeholder="(555) 555-5555" />
-            <FormInput title="Address" placeholder="123 Main St" />
-            <FormInput title="City" placeholder="Anytown" />
-            <FormInput title="State" placeholder="CA" />
-            <FormInput title="Zip" placeholder="12345" />
-          </div>
-        </main>
-      </section>
-      <section className={styles.checkout__payment} data-expanded="true">
-        <main>
-          <h2>Payment</h2>
-          <div className={styles.form}>
-            <FormInput title="Card Number" placeholder="**** **** **** **" />
-            <FormInput title="Expiration" placeholder="MM/YY" />
-            <FormInput title="CVV" placeholder="***" />
-          </div>
-        </main>
-      </section>
+        }
+      >
+        <FormInput title="First Name" placeholder="John" />
+        <FormInput title="Last Name" placeholder="Doe" />
+        <FormInput
+          title="Email"
+          type="email"
+          placeholder="john.doe@gmail.com"
+        />
+        <FormInput title="Phone" type="tel" placeholder="(555) 555-5555" />
+        <FormInput title="Address" placeholder="123 Main St" />
+        <FormInput title="City" placeholder="Anytown" />
+        <FormInput title="State" placeholder="CA" />
+        <FormInput title="Zip" placeholder="12345" />
+      </FormSection>
+      <FormSection title="Payment">
+        <FormInput title="Card Number" placeholder="**** **** **** **" />
+        <FormInput title="Expiration" placeholder="MM/YY" />
+        <FormInput title="CVV" placeholder="***" />
+      </FormSection>
       <button
         className={`${styles.checkout__completeButton} ${mainButtonStyles.mainButton}`}
         type="submit"
-        disabled
+        disabled={true || isPending}
       >
         Complete Order
       </button>
