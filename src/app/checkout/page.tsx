@@ -11,6 +11,10 @@ export default function page() {
       title: "Home",
     },
     {
+      path: "/cart",
+      title: "Cart",
+    },
+    {
       path: "/checkout",
       title: "Checkout",
     },
