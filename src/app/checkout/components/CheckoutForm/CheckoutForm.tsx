@@ -29,7 +29,7 @@ export default function CheckoutForm() {
         <FormInput title="Zip" placeholder="12345" />
       </FormSection>
       <FormSection
-        title={"Deliviery"}
+        title={"Delivery"}
         isExpanded={isExpanded}
         headerChildren={
           <div>
