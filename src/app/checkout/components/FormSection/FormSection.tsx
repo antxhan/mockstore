@@ -1,22 +1,18 @@
-"use client";
-
-import { useState } from "react";
 import styles from "../CheckoutForm/styles.module.css";
 
 export default function FormSection({
   title,
-  defaultExpanded = true,
+  isExpanded = true,
   headerChildren,
   children,
 }: {
   title: string;
-  defaultExpanded?: boolean;
+  isExpanded?: boolean;
   headerChildren?: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const [expanded, setExpanded] = useState(defaultExpanded);
   return (
-    <section className={styles.formSection} data-expanded={expanded}>
+    <section className={styles.formSection} data-expanded={isExpanded}>
       <header>
         <h2>{title}</h2>
         {headerChildren}

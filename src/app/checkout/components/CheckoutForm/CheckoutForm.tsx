@@ -10,7 +10,7 @@ import { submitOrder } from "../../actions/submitOrder";
 export default function CheckoutForm() {
   const [data, action, isPending] = useActionState(submitOrder, undefined);
 
-  const [formData, setFormData] = useState<FormData>(new FormData());
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <form className={styles.checkoutForm} action={action}>
@@ -30,10 +30,15 @@ export default function CheckoutForm() {
       </FormSection>
       <FormSection
         title={"Deliviery"}
-        // defaultExpanded={false}
+        isExpanded={isExpanded}
         headerChildren={
           <div>
-            <input type="checkbox" id="same-address" checked />
+            <input
+              type="checkbox"
+              id="same-address"
+              defaultChecked={true}
+              onChange={() => setIsExpanded(!isExpanded)}
+            />
             <label htmlFor="same-address">Same as billing address</label>
           </div>
         }
