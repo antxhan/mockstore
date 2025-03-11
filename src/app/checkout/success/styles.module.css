@@ -1,0 +1,16 @@
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block-start: 2rem;
+}
+
+.success svg {
+  width: 100px;
+  height: 100px;
+}
+
+.success a {
+  font-weight: bold;
+}

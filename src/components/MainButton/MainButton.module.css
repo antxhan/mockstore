@@ -23,3 +23,12 @@
 .mainButton:active {
   transform: scale(0.995);
 }
+.mainButton[disabled] {
+  background-color: var(--clr-neutral-300);
+  color: var(--clr-neutral-500);
+  cursor: not-allowed;
+  border-color: var(--clr-neutral-300);
+}
+.mainButton[disabled]:hover {
+  background-color: var(--clr-neutral-300);
+}

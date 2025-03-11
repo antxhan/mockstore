@@ -1,5 +1,4 @@
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import Layout from "@/components/Layout";
 import { api } from "@/utils/api";
 import {
   formatNumberWithSpaces,
@@ -39,7 +38,7 @@ export default async function Page({
   ];
 
   return (
-    <Layout>
+    <>
       <header className={styles.header}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </header>
@@ -81,6 +80,6 @@ export default async function Page({
         </div>
       </div>
       <RelatedProducts relatedProducts={relatedProducts} />
-    </Layout>
+    </>
   );
 }

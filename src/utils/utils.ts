@@ -55,3 +55,7 @@ export function sumTotal(products: CartItem[]) {
       .toFixed(2)
   );
 }
+
+export function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
