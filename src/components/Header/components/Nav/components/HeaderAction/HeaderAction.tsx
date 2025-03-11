@@ -14,11 +14,12 @@ export default function HeaderAction({
   icon: React.ReactNode;
   title: string;
 }) {
-  const { isHidden, isMobile } = useNavContext();
+  const { isHidden, isMobile, setIsHidden } = useNavContext();
   return (
     <Link
       href={path}
       className={styles.headerAction}
+      onClick={() => setIsHidden(true)}
       {...(isHidden && isMobile && { tabIndex: -1 })}
     >
       <div>
