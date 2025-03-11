@@ -8,7 +8,6 @@ import { Product } from "@/lib/types";
 import { db } from "@/utils/db";
 import { sleep } from "@/utils/utils";
 import { useRef, useState } from "react";
-import HeartOutlineIcon from "@/icons/HeartOutlineIcon";
 import CircleCheckIcon from "@/icons/CircleCheckIcon";
 
 export default function AddToCartButton({
@@ -24,16 +23,8 @@ export default function AddToCartButton({
   const [buttonText, setButtonText] = useState("Add to Cart");
 
   const handleAddToCart = async () => {
-    // e.stopPropagation();
-    // e.preventDefault();
-    // const button = e.target as HTMLButtonElement;
     db.cart.add(productId, quantity);
     setCart(db.cart.get());
-
-    // setTimeout(() => {
-    //   e.currentTarget.classList.add(styles.add);
-    // }, 1000);
-
     if (buttonRef.current) {
       buttonRef.current.classList.add(styles.add);
       setButtonIcon(<CircleCheckIcon />);
