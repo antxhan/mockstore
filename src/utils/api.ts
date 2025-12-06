@@ -1,15 +1,35 @@
 import { Product } from "@/lib/types";
 
 export const api = {
-  async request(endpoint: string, params = {}) {
+  async request<T>(endpoint: string, params: Record<string, string | number> = {}): Promise<T | null> {
     const baseUrl = "https://fakestoreapi.com/";
     const url = new URL(`${baseUrl}${endpoint}`);
-    if (params) url.search = new URLSearchParams(params).toString();
+    if (params && Object.keys(params).length) {
+      url.search = new URLSearchParams(
+        Object.entries(params).map(([key, value]) => [key, String(value)])
+      ).toString();
+    }
     try {
       const response = await fetch(url);
-      return await response.json();
+
+      if (!response.ok) {
+        console.error(`Request to ${url.toString()} failed with ${response.status}`);
+        return null;
+      }
+
+      const contentType = response.headers.get("content-type") ?? "";
+      if (!contentType.includes("application/json")) {
+        const bodyPreview = (await response.text()).slice(0, 200);
+        console.error(
+          `Unexpected response format from ${url.toString()}. Content-Type: ${contentType}. Body: ${bodyPreview}`
+        );
+        return null;
+      }
+
+      return (await response.json()) as T;
     } catch (err) {
-      console.log(err);
+      console.error(`Error fetching ${url.toString()}`, err);
+      return null;
     }
   },
   async products({
@@ -26,7 +46,7 @@ export const api = {
   }): Promise<Product[]> {
     const endpoint = "products";
     const params = { limit };
-    let products = await this.request(endpoint, params);
+    let products = (await this.request<Product[]>(endpoint, params)) ?? [];
 
     if (filters) {
       products = filterProducts(products, filters);
@@ -38,8 +58,19 @@ export const api = {
   },
   async product(id: Product["id"]): Promise<Product> {
     const endpoint = `products/${id}`;
-    const product = await this.request(endpoint);
-    return product;
+    const product = await this.request<Product>(endpoint);
+    if (product) return product;
+
+    // Graceful fallback so prerendering doesn't crash if the API is unreachable.
+    return {
+      id,
+      title: "Unavailable product",
+      price: 0,
+      description: "We couldn't load this product right now. Please try again later.",
+      category: "unknown",
+      image: "/images/placeholder.png",
+      rating: { rate: 0, count: 0 },
+    };
   },
   async category({
     category,
@@ -49,7 +80,8 @@ export const api = {
     limit?: number;
   }): Promise<Product[]> {
     const endpoint = `products/category/${category}`;
-    const products = await this.request(endpoint);
+    const products = await this.request<Product[]>(endpoint);
+    if (!Array.isArray(products)) return [];
     return products.slice(0, limit);
   },
 };
