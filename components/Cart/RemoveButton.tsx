@@ -22,7 +22,7 @@ export default function RemoveButton({
       icon={<XIcon />}
       onClick={handleClick}
       ariaLabel="Remove"
-      className="!flex !h-7 !w-7 !min-h-7 !min-w-7 items-center justify-center !rounded-2xl !bg-[var(--clr-neutral-200)] hover:!bg-[var(--clr-neutral-100)] [&_svg]:h-5 [&_svg]:w-5"
+      className="!flex !h-7 !w-7 !min-h-7 !min-w-7 items-center justify-center !rounded-2xl !bg-neutral-200 hover:!bg-neutral-100 [&_svg]:h-5 [&_svg]:w-5"
     />
   );
 }

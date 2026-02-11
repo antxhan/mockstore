@@ -21,14 +21,14 @@ export default async function Home() {
             priority={true}
           />
         </div>
-        <h1 className="absolute top-[calc(50%-2.5rem)] left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-[clamp(0.5rem,1.5vw,2rem)] text-nowrap text-center text-[clamp(1.5rem,9vw,7.5rem)] text-[var(--clr-primary)] mix-blend-color-dodge max-[700px]:top-1/2 max-[700px]:gap-4 max-[700px]:text-[clamp(1.5rem,10vw,4.75rem)]">
+        <h1 className="absolute top-[calc(50%-2.5rem)] left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-[clamp(0.5rem,1.5vw,2rem)] text-nowrap text-center text-[clamp(1.5rem,9vw,7.5rem)] text-primary mix-blend-color-dodge max-[700px]:top-1/2 max-[700px]:gap-4 max-[700px]:text-[clamp(1.5rem,10vw,4.75rem)]">
           <span>Mock Trends.</span>
           <span>Mock Prices.</span>
           <span>Mock Everything.</span>
         </h1>
         <Link
           href="/products"
-          className="absolute bottom-[5%] left-1/2 flex h-[clamp(3rem,5vw,3.5rem)] w-max -translate-x-1/2 items-center justify-center gap-1 rounded-lg bg-[var(--clr-primary)] px-8 hover:bg-[var(--clr-primary-light)] hover:text-[var(--clr-neutral-900)]"
+          className="absolute bottom-[5%] left-1/2 flex h-[clamp(3rem,5vw,3.5rem)] w-max -translate-x-1/2 items-center justify-center gap-1 rounded-lg bg-primary px-8 hover:bg-primary-light hover:text-neutral-900"
         >
           <Image
             src="/icons/cart.svg"
@@ -55,7 +55,7 @@ export default async function Home() {
           <h2>New Arrivals</h2>
           <Link
             href="/products"
-            className="underline decoration-[var(--clr-primary)] decoration-2"
+            className="underline decoration-primary decoration-2"
           >
             View All
           </Link>

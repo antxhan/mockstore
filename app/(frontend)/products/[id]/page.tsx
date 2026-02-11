@@ -42,7 +42,7 @@ export default async function Page({
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </header>
       <div className="grid grid-cols-[50%_auto] gap-[clamp(2rem,4vw,4rem)] max-[700px]:grid-cols-1">
-        <div className="flex items-center justify-center rounded-2xl border border-[var(--clr-neutral-300)] p-4">
+        <div className="flex items-center justify-center rounded-2xl border border-neutral-300 p-4">
           <Image
             src={product.image}
             alt={product.title}
@@ -55,27 +55,27 @@ export default async function Page({
         <div className="flex flex-col gap-4">
           <Link
             href={`/products?category=${product.category}`}
-            className="flex w-max items-center gap-1 font-bold hover:text-[var(--clr-neutral-500)] [&_svg]:h-6 [&_svg]:w-6"
+            className="flex w-max items-center gap-1 font-bold hover:text-neutral-500 [&_svg]:h-6 [&_svg]:w-6"
           >
             {categoryIcon(toCamelCase(product.category))}
             {toCapitalize(product.category)}
           </Link>
           <h2 className="text-balance">{product.title}</h2>
-          <div className="grid grid-cols-[auto_1fr] items-center text-[1.2rem] text-[var(--clr-neutral-500)]">
-            <div className="relative text-[var(--clr-neutral-250)] tracking-[0.25rem]">
+          <div className="grid grid-cols-[auto_1fr] items-center text-[1.2rem] text-neutral-500">
+            <div className="relative text-neutral-250 tracking-[0.25rem]">
               ★★★★★
               <div
-                className="absolute top-0 left-0 overflow-hidden text-[var(--clr-primary)]"
+                className="absolute top-0 left-0 overflow-hidden text-primary"
                 style={{ width: `${(product.rating.rate / 5) * 100}%` }}
               >
                 ★★★★★
               </div>
             </div>
-            <div className="text-[var(--fs-small)]">
+            <div className="text-small">
               {product.rating.count} reviews
             </div>
           </div>
-          <span className="text-[var(--fs-large)] font-bold">
+          <span className="text-large font-bold">
             ${formatNumberWithSpaces(product.price)}
           </span>
           <p className="text-pretty">{product.description}</p>

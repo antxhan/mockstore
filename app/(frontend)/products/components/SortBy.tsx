@@ -13,11 +13,11 @@ export default function SortBy() {
   };
   return (
     <div className="relative flex h-full items-center">
-      <div className="pointer-events-none absolute left-3 z-[-1] flex items-center [&_svg]:mr-2 [&_svg]:h-5 [&_svg]:w-5 [&_svg]:text-[var(--clr-neutral-500)]">
+      <div className="pointer-events-none absolute left-3 z-[-1] flex items-center [&_svg]:mr-2 [&_svg]:h-5 [&_svg]:w-5 [&_svg]:text-neutral-500">
         <FilterIcon />
         <label
           htmlFor="sort"
-          className="text-nowrap text-[var(--clr-neutral-500)]"
+          className="text-nowrap text-neutral-500"
         >
           Sort by:
         </label>
@@ -26,7 +26,7 @@ export default function SortBy() {
         id="sort"
         onChange={onChange}
         defaultValue={searchParams.get("sort") || "relevance"}
-        className="h-full max-w-[25ch] cursor-pointer appearance-none rounded-lg border border-[var(--clr-neutral-300)] bg-transparent pr-4 pl-[6.25rem] text-[var(--fs-normal)] transition-all duration-200 ease-in-out"
+        className="h-full max-w-[25ch] cursor-pointer appearance-none rounded-lg border border-neutral-300 bg-transparent pr-4 pl-[6.25rem] text-normal transition-all duration-200 ease-in-out"
         style={{
           width: `calc(${
             searchParams.get("sort")?.length || 10

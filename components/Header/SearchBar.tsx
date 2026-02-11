@@ -43,7 +43,7 @@ export default function SearchBar() {
         name="q"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="w-full rounded-lg border-none bg-[var(--clr-neutral-200)] px-5 py-3 pl-11 text-[var(--fs-normal)] outline-[var(--clr-primary)]"
+        className="w-full rounded-lg border-none bg-neutral-200 px-5 py-3 pl-11 text-normal outline-primary"
       />
     </form>
   );

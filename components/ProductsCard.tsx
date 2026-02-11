@@ -21,14 +21,14 @@ export default function ProductsCard({
       className={
         view === "grid"
           ? "grid grid-rows-[auto_1fr_auto] gap-2 text-inherit no-underline hover:text-inherit"
-          : "flex rounded-2xl border border-[var(--clr-neutral-300)] hover:text-inherit"
+          : "flex rounded-2xl border border-neutral-300 hover:text-inherit"
       }
     >
       <div
         className={
           view === "grid"
-            ? "rounded-lg border border-[var(--clr-neutral-300)]"
-            : "my-4 ml-4 flex h-24 w-24 min-h-24 min-w-24 items-center justify-center border-r border-[var(--clr-neutral-300)] pr-4"
+            ? "rounded-lg border border-neutral-300"
+            : "my-4 ml-4 flex h-24 w-24 min-h-24 min-w-24 items-center justify-center border-r border-neutral-300 pr-4"
         }
       >
         <Image

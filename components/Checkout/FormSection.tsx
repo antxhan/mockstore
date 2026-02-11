@@ -11,11 +11,11 @@ export default function FormSection({
 }) {
   return (
     <section
-      className="flex max-h-max flex-col gap-4 rounded-2xl border border-[var(--clr-neutral-300)] p-4 data-[expanded=false]:gap-0"
+      className="flex max-h-max flex-col gap-4 rounded-2xl border border-neutral-300 p-4 data-[expanded=false]:gap-0"
       data-expanded={isExpanded}
     >
       <header
-        className={`flex flex-wrap items-center justify-between gap-4 ${isExpanded ? "border-b border-[var(--clr-neutral-300)] pb-4" : ""}`}
+        className={`flex flex-wrap items-center justify-between gap-4 ${isExpanded ? "border-b border-neutral-300 pb-4" : ""}`}
       >
         <h2>{title}</h2>
         {headerChildren}

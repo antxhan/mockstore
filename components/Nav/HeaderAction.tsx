@@ -19,13 +19,13 @@ export default function HeaderAction({
   return (
     <Link
       href={path}
-      className={`flex flex-col items-center hover:text-[var(--clr-neutral-500)] hover:[&_svg]:text-[var(--clr-neutral-500)] max-[700px]:flex-row max-[700px]:gap-2 max-[700px]:hover:text-inherit max-[700px]:hover:[&_svg]:text-inherit ${className}`}
+      className={`flex flex-col items-center hover:text-neutral-500 hover:[&_svg]:text-neutral-500 max-[700px]:flex-row max-[700px]:gap-2 max-[700px]:hover:text-inherit max-[700px]:hover:[&_svg]:text-inherit ${className}`}
       onClick={() => setIsHidden(true)}
       {...(isHidden && isMobile && { tabIndex: -1 })}
     >
       <div className="relative">
         <span
-          className="absolute -top-2 -right-2 flex h-[1.4rem] w-[1.4rem] items-center justify-center rounded-2xl bg-[var(--clr-primary)] text-[var(--fs-xsmall)] font-bold data-[visible=false]:hidden"
+          className="absolute -top-2 -right-2 flex h-[1.4rem] w-[1.4rem] items-center justify-center rounded-2xl bg-primary text-xsmall font-bold data-[visible=false]:hidden"
           data-visible={count > 0}
         >
           {count}
@@ -36,7 +36,7 @@ export default function HeaderAction({
           icon
         )}
       </div>
-      <span className="text-[var(--fs-small)] font-bold">{title}</span>
+      <span className="text-small font-bold">{title}</span>
     </Link>
   );
 }

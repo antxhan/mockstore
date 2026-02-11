@@ -27,10 +27,10 @@ export default function CheckoutSummary() {
   }, [cart]);
 
   return (
-    <section className="sticky top-4 row-span-5 col-start-2 max-h-full rounded-2xl border border-[var(--clr-neutral-300)] p-4 max-[700px]:static max-[700px]:row-start-1 max-[700px]:col-start-1">
+    <section className="sticky top-4 row-span-5 col-start-2 max-h-full rounded-2xl border border-neutral-300 p-4 max-[700px]:static max-[700px]:row-start-1 max-[700px]:col-start-1">
       <main className="flex flex-col">
         <h2>Total</h2>
-        <div className="flex flex-col gap-2 border-b border-[var(--clr-neutral-300)] pb-4">
+        <div className="flex flex-col gap-2 border-b border-neutral-300 pb-4">
           <div className="flex items-center justify-between">
             <h3>Cart</h3>
             <span>

@@ -24,7 +24,7 @@ export default function CartItem({ product }: { product: CartItemType }) {
   return (
     <Link
       href={`/products/${product.id}`}
-      className="flex gap-4 border-b border-[var(--clr-neutral-300)] py-4 last:border-b-0 hover:text-inherit"
+      className="flex gap-4 border-b border-neutral-300 py-4 last:border-b-0 hover:text-inherit"
     >
       <Image
         src={product.image}

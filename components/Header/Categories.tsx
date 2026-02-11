@@ -12,7 +12,7 @@ export default function Categories() {
     <ul className="col-span-3 flex list-none gap-10 max-[700px]:hidden">
       {categories.map((category) => (
         <li key={category.title}>
-          <Link href={category.path} className="text-[var(--fs-normal)] font-bold">
+          <Link href={category.path} className="text-normal font-bold">
             {category.title}
           </Link>
         </li>

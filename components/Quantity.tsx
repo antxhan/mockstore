@@ -23,7 +23,7 @@ export default function Quantity({
         icon={<MinusIcon />}
         ariaLabel="Decrement"
         disabled={disabled}
-        className="!flex !h-[2.345rem] !w-[2.345rem] items-center justify-center !rounded-2xl !bg-[var(--clr-neutral-200)] hover:!bg-[var(--clr-neutral-100)] disabled:!bg-[var(--clr-neutral-100)]"
+        className="!flex !h-[2.345rem] !w-[2.345rem] items-center justify-center !rounded-2xl !bg-neutral-200 hover:!bg-neutral-100 disabled:!bg-neutral-100"
         onClick={(e) => {
           e.preventDefault();
           if (minusOnClick) minusOnClick(e);
@@ -34,7 +34,7 @@ export default function Quantity({
       <Button
         icon={<PlusIcon />}
         ariaLabel="Increment"
-        className="!flex !h-[2.345rem] !w-[2.345rem] items-center justify-center !rounded-2xl !bg-[var(--clr-neutral-200)] hover:!bg-[var(--clr-neutral-100)] disabled:!bg-[var(--clr-neutral-100)]"
+        className="!flex !h-[2.345rem] !w-[2.345rem] items-center justify-center !rounded-2xl !bg-neutral-200 hover:!bg-neutral-100 disabled:!bg-neutral-100"
         onClick={(e) => {
           e.preventDefault();
           if (plusOnClick) plusOnClick(e);

@@ -22,7 +22,7 @@ export default function ProductActions({ product }: { product: Product }) {
         <AddToCartButton productId={product.id} quantity={quantity} />
         <LikeButton
           productId={product.id}
-          className="!flex h-14 w-14 items-center justify-center rounded-2xl !bg-[var(--clr-neutral-200)] hover:!bg-[var(--clr-neutral-100)]"
+          className="!flex h-14 w-14 items-center justify-center rounded-2xl !bg-neutral-200 hover:!bg-neutral-100"
         />
       </div>
     </>

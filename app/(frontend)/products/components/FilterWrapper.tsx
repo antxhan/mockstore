@@ -15,7 +15,7 @@ export default function FilterWrapper({
 }) {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <div className="flex flex-col gap-2 rounded-xl bg-[var(--clr-neutral-000)] px-3 py-2">
+    <div className="flex flex-col gap-2 rounded-xl bg-neutral-000 px-3 py-2">
       <header
         onClick={() => setIsOpen(!isOpen)}
         className="flex cursor-pointer items-center justify-between"
@@ -23,7 +23,7 @@ export default function FilterWrapper({
         <div className="flex items-center gap-2">
           <h3>{title}</h3>
           <span
-            className="flex h-5 items-center justify-center rounded-lg bg-[var(--clr-primary)] px-2 text-[var(--fs-xsmall)] font-bold data-[visible=false]:hidden"
+            className="flex h-5 items-center justify-center rounded-lg bg-primary px-2 text-xsmall font-bold data-[visible=false]:hidden"
             data-visible={indicator && !isOpen ? true : false}
           >
             {indicator}

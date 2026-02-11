@@ -39,7 +39,7 @@ export default function UserAvatar() {
           {...(isHidden && isMobile && { tabIndex: -1 })}
         >
           <UserIcon />
-          <span className="text-[var(--fs-small)] font-bold">Account</span>
+          <span className="text-small font-bold">Account</span>
         </button>
       </div>
       <AccountMenu

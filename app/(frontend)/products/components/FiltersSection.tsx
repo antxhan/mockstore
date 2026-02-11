@@ -11,12 +11,12 @@ export default function FiltersSection() {
   return (
     <aside className="relative">
       <div className="sticky top-4 flex flex-col gap-4">
-        <div className="noselect flex flex-col gap-1 rounded-2xl bg-[var(--clr-neutral-200)] p-1">
+        <div className="noselect flex flex-col gap-1 rounded-2xl bg-neutral-200 p-1">
           <div className="flex items-center justify-between px-2">
-            <div className="flex items-center gap-2 text-[var(--fs-small)]">
+            <div className="flex items-center gap-2 text-small">
               <h3>Filter</h3>
               <span
-                className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--clr-primary)] px-2 text-[var(--fs-xsmall)] font-bold data-[visible=false]:hidden"
+                className="flex h-5 w-5 items-center justify-center rounded-full bg-primary px-2 text-xsmall font-bold data-[visible=false]:hidden"
                 data-visible={filtersLength > 0 ? true : false}
               >
                 {filtersLength}

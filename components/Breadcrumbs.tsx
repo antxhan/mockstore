@@ -9,12 +9,12 @@ export default function Breadcrumbs({
   breadcrumbs: { path: string; title: string }[];
 }) {
   return (
-    <div className="flex items-center gap-2 overflow-hidden text-[var(--fs-small)] font-bold text-[var(--clr-neutral-700)] [&_.skeleton]:w-40 [&_svg]:h-4 [&_svg]:w-4">
+    <div className="flex items-center gap-2 overflow-hidden text-small font-bold text-neutral-700 [&_.skeleton]:w-40 [&_svg]:h-4 [&_svg]:w-4">
       {breadcrumbs.map((path, index) => (
         <React.Fragment key={index}>
           <Link
             href={path.path}
-            className="max-w-[20ch] overflow-hidden text-ellipsis whitespace-nowrap text-inherit no-underline hover:text-[var(--clr-neutral-900)]"
+            className="max-w-[20ch] overflow-hidden text-ellipsis whitespace-nowrap text-inherit no-underline hover:text-neutral-900"
           >
             {toCapitalize(path.title)}
           </Link>
