@@ -1,5 +1,4 @@
 import Image from "next/image";
-import styles from "./MenuButton.module.css";
 
 export default function NavButton({
   onClick,
@@ -7,8 +6,12 @@ export default function NavButton({
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }) {
   return (
-    <button className={styles.headerMenuButton} onClick={onClick}>
-      <Image src="../icons/menu-2.svg" alt="Menu icon" width={24} height={24} />
+    <button
+      className="hidden h-8 w-8 items-center justify-center border-none bg-transparent max-[700px]:flex"
+      onClick={onClick}
+      aria-label="Toggle menu"
+    >
+      <Image src="/icons/menu-2.svg" alt="Menu icon" width={24} height={24} />
     </button>
   );
 }

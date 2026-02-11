@@ -1,6 +1,5 @@
 import ProductsGrid from "@/components/ProductsGrid/ProductsGrid";
 import { Product } from "@/lib/types";
-import styles from "./styles.module.css";
 
 export default function RelatedProducts({
   relatedProducts,
@@ -8,7 +7,7 @@ export default function RelatedProducts({
   relatedProducts: Product[];
 }) {
   return (
-    <div className={styles.relatedProducts}>
+    <div className="col-span-2 mt-8 flex flex-col gap-8 max-[700px]:col-span-1">
       <h2>Related Products</h2>
       <ProductsGrid products={relatedProducts} />
     </div>

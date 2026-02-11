@@ -1,7 +1,6 @@
 "use client";
 
 import ToolTip from "../ToolTip/ToolTip";
-import styles from "./Button.module.css";
 
 export default function Button({
   icon,
@@ -24,7 +23,7 @@ export default function Button({
 }) {
   return (
     <button
-      className={`${className} ${styles.button}`}
+      className={`button group relative border-none bg-transparent ${className ?? ""}`}
       onClick={(e) => {
         e.currentTarget.blur();
         if (onClick) onClick(e);
@@ -34,9 +33,13 @@ export default function Button({
       {...(disabled && { disabled: disabled })}
     >
       {icon && (
-        <div className={styles.buttonIcon}>
+        <div className="relative flex items-center justify-center">
           {icon}
-          {hoverIcon && <span className={styles.hoverIcon}>{hoverIcon}</span>}
+          {hoverIcon && (
+            <span className="hoverIcon absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100">
+              {hoverIcon}
+            </span>
+          )}
         </div>
       )}
       {text && <span>{text}</span>}

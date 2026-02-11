@@ -1,5 +1,7 @@
-import styles from "../Button/Button.module.css";
-
 export default function ToolTip({ text }: { text: string }) {
-  return <span className={`${styles.toolTip} noselect`}>{text}</span>;
+  return (
+    <span className="toolTip noselect invisible text-center group-hover:visible group-focus:visible">
+      {text}
+    </span>
+  );
 }

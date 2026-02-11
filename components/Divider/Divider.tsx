@@ -1,5 +1,3 @@
-import styles from "./Divider.module.css";
-
 export default function Divider() {
-  return <hr className={styles.divider} />;
+  return <hr className="border-0 border-t border-solid border-t-[var(--clr-neutral-300)]" />;
 }

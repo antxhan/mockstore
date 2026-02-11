@@ -1,5 +1,4 @@
 import Link from "next/link";
-import styles from "./Categories.module.css";
 
 export default function Categories() {
   const categories = [
@@ -10,10 +9,12 @@ export default function Categories() {
     { path: "/products", title: "All" },
   ];
   return (
-    <ul className={styles.headerCategories}>
+    <ul className="col-span-3 flex list-none gap-10 max-[700px]:hidden">
       {categories.map((category) => (
         <li key={category.title}>
-          <Link href={category.path}>{category.title}</Link>
+          <Link href={category.path} className="text-[var(--fs-normal)] font-bold">
+            {category.title}
+          </Link>
         </li>
       ))}
     </ul>

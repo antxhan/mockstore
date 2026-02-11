@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import FilterWrapper from "../FilterWrapper/FilterWrapper";
-import styles from "./styles.module.css";
 import useFilter from "../../hooks/useFilter";
 import ToolTip from "@/components/ToolTip/ToolTip";
 
@@ -199,7 +198,7 @@ export default function PriceFilter() {
           : `$${urlMin} - $${urlMax}`
       }
     >
-      <div className={styles.sliderRange}>
+      <div className="price-slider-range">
         <input
           ref={minSliderRef}
           type="range"
@@ -229,7 +228,7 @@ export default function PriceFilter() {
         />
         <ToolTip text="Max price" />
       </div>
-      <div className={styles.sliderNumInputs}>
+      <div className="price-slider-num-inputs">
         <div>
           <span>$</span>
           <input

@@ -2,7 +2,6 @@
 import { toCamelCase } from "@/utils/utils";
 import FilterWrapper from "../FilterWrapper/FilterWrapper";
 import { categoryIcon } from "@/icons/categoryIcons/categoryIcon";
-import styles from "./styles.module.css";
 import useFilter from "../../hooks/useFilter";
 import { useEffect, useState } from "react";
 
@@ -64,12 +63,12 @@ export default function CategoriesFilter() {
       title="Categories"
       indicator={categories.length > 0 ? categories.length.toString() : null}
     >
-      <ul className={styles.categoryFilter}>
+      <ul>
         {categoryOptions.map((category) => {
           return (
-            <li key={category.title}>
+            <li key={category.title} className="flex items-center gap-2 py-2">
               <label
-                className={styles.categoryFilterLiTitle}
+                className="flex cursor-pointer items-center gap-2"
                 htmlFor={`filter-category-checkbox__${toCamelCase(
                   category.title
                 )}`}
@@ -78,7 +77,7 @@ export default function CategoriesFilter() {
                 {category.title}
               </label>
               <input
-                className={styles.categoryFilterLiCheckbox}
+                className="ml-auto cursor-pointer"
                 name="category"
                 id={`filter-category-checkbox__${toCamelCase(category.title)}`}
                 type="checkbox"

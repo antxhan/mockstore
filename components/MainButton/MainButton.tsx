@@ -1,7 +1,5 @@
 "use client";
 
-import styles from "./MainButton.module.css";
-
 export default function MainButton({
   icon,
   title,
@@ -17,7 +15,7 @@ export default function MainButton({
 }) {
   return (
     <button
-      className={`${className} ${styles.mainButton}`}
+      className={`main-button ${className}`}
       onClick={onClick}
       {...(ref && { ref })}
     >

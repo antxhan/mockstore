@@ -1,23 +1,19 @@
 import { formatNumberWithSpaces, sumTotal } from "@/utils/utils";
-import styles from "./styles.module.css";
 import { CartItem } from "@/lib/types";
 import Link from "next/link";
-import mainButtonStyles from "@/components/MainButton/MainButton.module.css";
 import CheckoutIcon from "@/icons/CheckoutIcon";
 
 export default function CartSummary({ products }: { products: CartItem[] }) {
   return (
-    <aside className={styles.cartSummary}>
-      <h2>Total</h2>
-      <div className={styles.cartSubtotal}>
+    <aside className="sticky top-4 flex h-max flex-col gap-4 rounded-2xl border border-[var(--clr-neutral-300)] p-4">
+      <h2 className="border-b border-[var(--clr-neutral-300)] pb-4">Total</h2>
+      <div className="flex items-center justify-between">
         <h3>Subtotal</h3>
         <span>${formatNumberWithSpaces(sumTotal(products))}</span>
       </div>
       <Link
         href="/checkout"
-        className={`${styles.checkoutButton} ${mainButtonStyles.mainButton} ${
-          products.length < 1 && styles.disabled
-        }`}
+        className={`main-button border-none ${products.length < 1 ? "pointer-events-none bg-[var(--clr-neutral-300)] text-[var(--clr-neutral-500)] hover:bg-[var(--clr-neutral-300)]" : ""}`}
       >
         <CheckoutIcon />
         <span>Checkout</span>

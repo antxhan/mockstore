@@ -1,8 +1,6 @@
 "use client";
 
 import FormInput from "@/components/FormInput/FormInput";
-import styles from "./styles.module.css";
-import mainButtonStyles from "@/components/MainButton/MainButton.module.css";
 import FormSection from "../FormSection/FormSection";
 import { useState } from "react";
 import { useDBContext } from "@/contexts/db";
@@ -22,7 +20,7 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form className={styles.checkoutForm} action={submitOrder}>
+    <form className="grid gap-4" action={submitOrder}>
       <FormSection title="Info">
         <FormInput title="First Name" placeholder="John" />
         <FormInput title="Last Name" placeholder="Doe" />
@@ -41,7 +39,7 @@ export default function CheckoutForm() {
         title={"Delivery"}
         isExpanded={isExpanded}
         headerChildren={
-          <div>
+          <div className="flex items-center gap-2">
             <input
               type="checkbox"
               id="same-address"
@@ -75,9 +73,8 @@ export default function CheckoutForm() {
         <FormInput title="CVV" placeholder="***" />
       </FormSection>
       <button
-        className={`${styles.checkout__completeButton} ${mainButtonStyles.mainButton}`}
+        className="main-button"
         type="submit"
-        // disabled={true}
       >
         Complete Order
       </button>

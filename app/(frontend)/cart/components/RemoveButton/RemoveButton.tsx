@@ -1,7 +1,6 @@
 "use client";
 
 import XIcon from "@/icons/XIcon";
-import styles from "./styles.module.css";
 import { Product } from "@/lib/types";
 import Button from "@/components/Button/Button";
 import { db } from "@/utils/db";
@@ -23,7 +22,7 @@ export default function RemoveButton({
       icon={<XIcon />}
       onClick={handleClick}
       ariaLabel="Remove"
-      className={styles.removeButton}
+      className="!flex !h-7 !w-7 !min-h-7 !min-w-7 items-center justify-center !rounded-2xl !bg-[var(--clr-neutral-200)] hover:!bg-[var(--clr-neutral-100)] [&_svg]:h-5 [&_svg]:w-5"
     />
   );
 }

@@ -6,7 +6,6 @@ import { formatNumberWithSpaces } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import styles from "./CartItem.module.css";
 import { useDBContext } from "@/contexts/db";
 import { db } from "@/utils/db";
 import RemoveButton from "../RemoveButton/RemoveButton";
@@ -23,29 +22,34 @@ export default function CartItem({ product }: { product: CartItemType }) {
     setCart(db.cart.get());
   };
   return (
-    <Link href={`/products/${product.id}`} className={styles.cartItem}>
+    <Link
+      href={`/products/${product.id}`}
+      className="flex gap-4 border-b border-[var(--clr-neutral-300)] py-4 last:border-b-0 hover:text-inherit"
+    >
       <Image
         src={product.image}
         alt={product.title}
-        className={styles.cartItem__image}
+        className="aspect-square max-w-28 rounded-lg p-2 object-contain"
         width={125}
         height={125}
         priority={true}
       />
-      <div className={styles.cartItem__info}>
-        <div className={styles.cartItem__topRow}>
-          <h3>{product.title}</h3>
+      <div className="flex w-full flex-col gap-1">
+        <div className="flex justify-between gap-4">
+          <h3 className="self-center">{product.title}</h3>
           <RemoveButton productId={product.id} />
         </div>
-        <span className={styles.cartItem__price}>
+        <span>
           ${formatNumberWithSpaces(product.price)}
         </span>
-        <Quantity
-          quantity={quantity}
-          setQuantity={setQuantity}
-          plusOnClick={plusOnClick}
-          minusOnClick={minusOnClick}
-        />
+        <div className="mt-auto">
+          <Quantity
+            quantity={quantity}
+            setQuantity={setQuantity}
+            plusOnClick={plusOnClick}
+            minusOnClick={minusOnClick}
+          />
+        </div>
       </div>
     </Link>
   );

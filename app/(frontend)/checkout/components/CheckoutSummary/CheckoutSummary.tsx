@@ -1,7 +1,6 @@
 "use client";
 
 import { formatNumberWithSpaces, sumTotal } from "@/utils/utils";
-import styles from "./styles.module.css";
 import { CartItem } from "@/lib/types";
 import CheckoutItem from "../CheckoutItem/CheckoutItem";
 import { useDBContext } from "@/contexts/db";
@@ -28,11 +27,11 @@ export default function CheckoutSummary() {
   }, [cart]);
 
   return (
-    <section className={styles.checkout__total} data-expanded="true">
-      <main>
+    <section className="sticky top-4 row-span-5 col-start-2 max-h-full rounded-2xl border border-[var(--clr-neutral-300)] p-4 max-[700px]:static max-[700px]:row-start-1 max-[700px]:col-start-1">
+      <main className="flex flex-col">
         <h2>Total</h2>
-        <div className={styles.checkout__totalItems}>
-          <div className={styles.checkout__totalItemsHeader}>
+        <div className="flex flex-col gap-2 border-b border-[var(--clr-neutral-300)] pb-4">
+          <div className="flex items-center justify-between">
             <h3>Cart</h3>
             <span>
               {formatNumberWithSpaces(
@@ -41,13 +40,13 @@ export default function CheckoutSummary() {
               items
             </span>
           </div>
-          <div className={styles.checkout__totalItemsList}>
+          <div className="flex max-h-[50vh] flex-col gap-2 overflow-scroll">
             {items.map((item) => (
               <CheckoutItem key={item.id} item={item} />
             ))}
           </div>
         </div>
-        <div className={styles.checkout__totalPrice}>
+        <div className="mt-4 flex items-center justify-between gap-2">
           <h3>Subtotal</h3>
           <span>${formatNumberWithSpaces(sumTotal(items))}</span>
         </div>

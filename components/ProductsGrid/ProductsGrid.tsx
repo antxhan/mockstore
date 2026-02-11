@@ -1,10 +1,9 @@
 import ProductsCard from "../ProductsCard/ProductsCard";
 import { Product } from "@/lib/types";
-import styles from "./styles.module.css";
 
 export default function ProductsGrid({ products }: { products: Product[] }) {
   return (
-    <div className={styles.productsGrid}>
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(min(240px,100%),1fr))] gap-6">
       {products.map((product, index) => (
         <ProductsCard
           key={product.id}

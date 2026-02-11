@@ -1,7 +1,6 @@
 "use client";
 
 // import FormInput from "@/components/FormInput/FormInput";
-import styles from "./styles.module.css";
 
 export default function FormSection({
   isExpanded = true,
@@ -18,7 +17,7 @@ export default function FormSection({
     <section className={className} data-expanded={isExpanded}>
       <main>
         <h2>{title}</h2>
-        <div className={styles.form}>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 max-[700px]:grid-cols-1">
           {/* <FormInput title="First Name" placeholder="John" />
           <FormInput title="Last Name" placeholder="Doe" />
           <FormInput

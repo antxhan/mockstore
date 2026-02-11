@@ -7,7 +7,6 @@ import {
 } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "./styles.module.css";
 import { categoryIcon } from "@/icons/categoryIcons/categoryIcon";
 import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
 import ProductActions from "./components/ProductActions/ProductActions";
@@ -39,43 +38,49 @@ export default async function Page({
 
   return (
     <>
-      <header className={styles.header}>
+      <header className="grid gap-2 py-6">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </header>
-      <div className={styles.product}>
-        <div className={styles.product__image}>
+      <div className="grid grid-cols-[50%_auto] gap-[clamp(2rem,4vw,4rem)] max-[700px]:grid-cols-1">
+        <div className="flex items-center justify-center rounded-2xl border border-[var(--clr-neutral-300)] p-4">
           <Image
             src={product.image}
             alt={product.title}
             width={600}
             height={600}
+            className="aspect-square w-full object-contain"
             priority={true}
           />
         </div>
-        <div className={styles.product__info}>
+        <div className="flex flex-col gap-4">
           <Link
             href={`/products?category=${product.category}`}
-            className={styles.product__category}
+            className="flex w-max items-center gap-1 font-bold hover:text-[var(--clr-neutral-500)] [&_svg]:h-6 [&_svg]:w-6"
           >
             {categoryIcon(toCamelCase(product.category))}
             {toCapitalize(product.category)}
           </Link>
-          <h2>{product.title}</h2>
-          <div className={styles.product__rating}>
+          <h2 className="text-balance">{product.title}</h2>
+          <div className="grid grid-cols-[auto_1fr] items-center text-[1.2rem] text-[var(--clr-neutral-500)]">
             <div
-              className={styles.product__ratingStars}
-              style={{ width: `${(product.rating.rate / 5) * 100}%` }}
+              className="relative text-[var(--clr-neutral-250)] tracking-[0.25rem]"
             >
               ★★★★★
+              <div
+                className="absolute top-0 left-0 overflow-hidden text-[var(--clr-primary)]"
+                style={{ width: `${(product.rating.rate / 5) * 100}%` }}
+              >
+                ★★★★★
+              </div>
             </div>
-            <div className={styles.product__ratingCount}>
+            <div className="text-[var(--fs-small)]">
               {product.rating.count} reviews
             </div>
           </div>
-          <span className={styles.product__price}>
+          <span className="text-[var(--fs-large)] font-bold">
             ${formatNumberWithSpaces(product.price)}
           </span>
-          <p className={styles.product__description}>{product.description}</p>
+          <p className="text-pretty">{product.description}</p>
           <ProductActions product={product} />
         </div>
       </div>

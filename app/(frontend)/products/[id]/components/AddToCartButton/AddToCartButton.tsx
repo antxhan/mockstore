@@ -2,12 +2,11 @@
 
 import MainButton from "@/components/MainButton/MainButton";
 import CartIcon from "@/icons/CartIcon";
-import styles from "./styles.module.css";
 import { useDBContext } from "@/contexts/db";
 import { Product } from "@/lib/types";
 import { db } from "@/utils/db";
 import { sleep } from "@/utils/utils";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import CircleCheckIcon from "@/icons/CircleCheckIcon";
 
 export default function AddToCartButton({
@@ -18,30 +17,27 @@ export default function AddToCartButton({
   quantity: number;
 }) {
   const { setCart } = useDBContext();
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [added, setAdded] = useState(false);
   const [buttonIcon, setButtonIcon] = useState<React.ReactNode>(<CartIcon />);
   const [buttonText, setButtonText] = useState("Add to Cart");
 
   const handleAddToCart = async () => {
     db.cart.add(productId, quantity);
     setCart(db.cart.get());
-    if (buttonRef.current) {
-      buttonRef.current.classList.add(styles.add);
-      setButtonIcon(<CircleCheckIcon />);
-      setButtonText("Added to Cart");
-      await sleep(1000);
-      buttonRef.current.classList.remove(styles.add);
-      setButtonIcon(<CartIcon />);
-      setButtonText("Add to Cart");
-    }
+    setAdded(true);
+    setButtonIcon(<CircleCheckIcon />);
+    setButtonText("Added to Cart");
+    await sleep(1000);
+    setAdded(false);
+    setButtonIcon(<CartIcon />);
+    setButtonText("Add to Cart");
   };
   return (
     <MainButton
       icon={buttonIcon}
       title={buttonText}
-      className={styles.addToCartButton}
+      className={added ? "bg-[rgb(20,109,20)] border-[rgb(20,109,20)] hover:bg-[rgb(20,109,20)]" : ""}
       onClick={handleAddToCart}
-      ref={buttonRef}
     />
   );
 }

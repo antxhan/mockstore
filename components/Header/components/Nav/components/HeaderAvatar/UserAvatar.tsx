@@ -1,6 +1,4 @@
 import AccountMenu from "../AccountMenu/UserMenu";
-import styles from "./HeaderAvatar.module.css";
-import headerActionStyles from "../HeaderAction/HeaderAction.module.css";
 import { useEffect, useRef, useState } from "react";
 import UserIcon from "@/icons/UserIcon";
 import { useNavContext } from "../../context";
@@ -32,17 +30,16 @@ export default function UserAvatar() {
   }, [userIsOpen, setUserIsOpen]);
 
   return (
-    <div className={styles.headerAvatar}>
-      <div
-        className={`${headerActionStyles.headerAction} ${styles.buttonWrapper}`}
-      >
+    <div className="relative h-full max-[700px]:grid max-[700px]:items-center max-[700px]:gap-2">
+      <div className="flex h-full flex-col items-center max-[700px]:items-start">
         <button
           onClick={handleClick}
           ref={userButtonRef}
+          className="flex h-full flex-col items-center justify-between max-[700px]:pointer-events-none max-[700px]:flex-row max-[700px]:gap-2 max-[700px]:justify-start"
           {...(isHidden && isMobile && { tabIndex: -1 })}
         >
           <UserIcon />
-          <span className={headerActionStyles.headerActionsLabel}>Account</span>
+          <span className="text-[var(--fs-small)] font-bold">Account</span>
         </button>
       </div>
       <AccountMenu

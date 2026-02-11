@@ -6,7 +6,6 @@ import { Product } from "@/lib/types";
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react";
 import { shuffleCategories } from "@/utils/utils";
-import styles from "../styles.module.css";
 import Divider from "@/components/Divider/Divider";
 
 export default function LikedProducts() {
@@ -41,7 +40,7 @@ export default function LikedProducts() {
   }, [products, likes]);
 
   return (
-    <div className={styles.main}>
+    <div className="flex flex-col gap-4">
       {products.length > 0 ? (
         <ProductsGrid products={products} />
       ) : (
@@ -50,9 +49,7 @@ export default function LikedProducts() {
       {products.length > 0 && (
         <>
           <Divider />
-          <h2 className={styles.relatedProducts__title}>
-            You may also like...
-          </h2>
+          <h2>You may also like...</h2>
           {relatedProducts.length > 0 ? (
             <ProductsGrid products={relatedProducts} />
           ) : (

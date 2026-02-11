@@ -1,19 +1,20 @@
 "use client";
 
-import styles from "./CartItems.module.css";
 import CartItem from "../CartItem/CartItem";
 import Link from "next/link";
 import { CartItem as CartItemType } from "@/lib/types";
 
 export default function CartItems({ products }: { products: CartItemType[] }) {
   return (
-    <section className={styles.cartItems}>
-      <h2 className={styles.cartItems__title}>Your Cart</h2>
-      <div className={styles.cartItems__items}>
+    <section className="flex flex-col gap-4">
+      <h2 className="rounded-2xl border border-[var(--clr-neutral-300)] p-4">Your Cart</h2>
+      <div className="flex flex-col rounded-2xl border border-[var(--clr-neutral-300)] px-4">
         {products.length < 1 ? (
-          <p className={styles.cartEmptyView}>
+          <p className="py-4">
             No items in cart, go check out our{" "}
-            <Link href="/products">Products</Link>
+            <Link href="/products" className="font-bold">
+              Products
+            </Link>
           </p>
         ) : (
           products.map((product) => (

@@ -3,7 +3,6 @@
 import HeartFilledIcon from "@/icons/HeartFilledIcon";
 import HeartOutlineIcon from "@/icons/HeartOutlineIcon";
 import Button from "../Button/Button";
-import styles from "./styles.module.css";
 import { db } from "@/utils/db";
 import { useDBContext } from "@/contexts/db";
 
@@ -29,9 +28,7 @@ export default function LikeButton({
       hoverIcon={<HeartFilledIcon />}
       ariaLabel={liked ? "Unlike" : "Like"}
       onClick={handleClick}
-      className={`${styles.likeButton} ${
-        liked ? styles.liked : ""
-      } ${className}`}
+      className={`relative ${className ?? ""}`}
     />
   );
 }

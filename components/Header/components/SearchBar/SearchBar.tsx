@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 import useFilter from "@/app/(frontend)/products/hooks/useFilter";
 
@@ -11,7 +10,6 @@ export default function SearchBar() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    console.log("running");
     const q = searchParams.get("q") || "";
     setSearch(q);
   }, [searchParams]);
@@ -27,21 +25,25 @@ export default function SearchBar() {
   };
 
   return (
-    <form className={styles.searchBar} onSubmit={handleSearch}>
+    <form
+      className="relative flex w-[min(100%,20rem)] justify-self-center max-[700px]:w-full"
+      onSubmit={handleSearch}
+    >
       <Image
-        src={"../icons/search.svg"}
+        src={"/icons/search.svg"}
         alt="Search icon"
         width={24}
         height={24}
         draggable={false}
+        className="pointer-events-none absolute top-1/2 left-3 h-6 w-6 -translate-y-1/2 opacity-50"
       />
       <input
         type="text"
         placeholder="Search"
         name="q"
-        // defaultValue={searchParams?.get("q") || ""}
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        className="w-full rounded-lg border-none bg-[var(--clr-neutral-200)] px-5 py-3 pl-11 text-[var(--fs-normal)] outline-[var(--clr-primary)]"
       />
     </form>
   );
