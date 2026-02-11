@@ -241,7 +241,7 @@ export default function PriceFilter() {
             value={selectedPriceRange[0]}
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
-            onInput={handleInput}
+            onInput={() => {}} // onInput={handleInput}
             aria-label="Min price"
           />
           <ToolTip text="Min price" />
@@ -257,7 +257,7 @@ export default function PriceFilter() {
             value={selectedPriceRange[1]}
             onBlur={handleBlur}
             onKeyDown={handleKeydown}
-            onInput={handleInput}
+            onInput={() => {}} // onInput={handleInput}
             aria-label="Max price"
           />
           <ToolTip text="Max price" />

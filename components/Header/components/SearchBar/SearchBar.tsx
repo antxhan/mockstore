@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import styles from "./styles.module.css";
-import useFilter from "@/app/products/hooks/useFilter";
 import { useEffect, useState } from "react";
-// import searchIcon from "../../../../icons/search.svg";
+import useFilter from "@/app/(frontend)/products/hooks/useFilter";
 
 export default function SearchBar() {
   const { searchParams, router } = useFilter();

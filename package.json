@@ -1,17 +1,27 @@
 {
-  "name": "mockstore_next",
-  "version": "0.1.0",
+  "name": "mockstore",
+  "version": "2.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:types": "bunx payload generate:types",
+    "generate:importmap": "bunx payload generate:importmap"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "^3.76.1",
+    "@payloadcms/next": "^3.76.1",
+    "@payloadcms/richtext-lexical": "^3.76.1",
+    "@payloadcms/ui": "^3.76.1",
+    "graphql": "^16.12.0",
     "next": "^16.0.7",
+    "payload": "^3.76.1",
     "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "react-dom": "^19.2.1",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

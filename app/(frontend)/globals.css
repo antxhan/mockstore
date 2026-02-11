@@ -26,15 +26,15 @@
   --fs-xsmall: 0.75rem;
 }
 
-*,
-*::before,
-*::after {
+.frontend *,
+.frontend *::before,
+.frontend *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
+.frontend {
   font-family: var(--ff-sans);
   display: flex;
   flex-direction: column;
@@ -54,11 +54,11 @@ body {
   }
 }
 
-main {
+.frontend main {
   flex-grow: 1;
 }
 
-footer {
+.frontend footer {
   background-color: var(--clr-neutral-200);
   margin-block-start: 4rem;
   .logo {
@@ -91,23 +91,23 @@ footer {
   }
 }
 
-h3 {
+.frontend h3 {
   font-size: var(--fs-small);
 }
 
-img {
+.frontend img {
   max-width: 100%;
   display: block;
   object-fit: cover;
 }
 
-button {
+.frontend button {
   cursor: pointer;
   background: none;
   border: none;
 }
 
-a {
+.frontend a {
   text-decoration: none;
   color: inherit;
   &:hover {
@@ -115,17 +115,17 @@ a {
   }
 }
 
-input[type="checkbox"] {
+.frontend input[type="checkbox"] {
   accent-color: var(--clr-primary);
   width: 1rem;
   height: 1rem;
 }
 
-*:focus {
+.frontend *:focus {
   outline-color: var(--clr-primary);
 }
 
-.main-button {
+.frontend .main-button {
   background-color: var(--clr-neutral-950);
   border: 1px solid var(--clr-neutral-950);
   border-radius: 1rem;
@@ -156,17 +156,17 @@ input[type="checkbox"] {
   }
 }
 
-.button {
+.frontend .button {
   position: relative;
 }
 
-.button:hover .toolTip {
+.frontend .button:hover .toolTip {
   opacity: 1;
   transition: all 0.2s ease-in-out;
   transition-delay: 0.4s;
 }
 
-.toolTip {
+.frontend .toolTip {
   background-color: var(--clr-neutral-700);
   position: absolute;
   top: -0.5rem;
@@ -179,7 +179,7 @@ input[type="checkbox"] {
   opacity: 0;
 }
 
-.notFound {
+.frontend .notFound {
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -192,17 +192,17 @@ input[type="checkbox"] {
 
 /* UTILITIES ----------------------------------------------------------- */
 
-.wrapper {
+.frontend .wrapper {
   width: min(100%, 1200px);
 }
 
-.skeleton {
+.frontend .skeleton {
   animation: skeleton-loading 1s linear infinite;
   border-radius: 0.5rem;
   height: var(--fs-normal);
 }
 
-.noselect {
+.frontend .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -214,7 +214,7 @@ input[type="checkbox"] {
 /* MEDIA QUERIES ------------------------------------------------------ */
 
 @media (max-width: 700px) {
-  body {
+  .frontend {
     & > header,
     & > main,
     & > footer {
@@ -224,7 +224,7 @@ input[type="checkbox"] {
       }
     }
   }
-  body > main {
+  .frontend > main {
     padding-block-start: 4.75rem;
   }
 }
