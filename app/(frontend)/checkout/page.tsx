@@ -1,7 +1,6 @@
-import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-// import Layout from "@/components/Layout";
-import CheckoutSummary from "./components/CheckoutSummary/CheckoutSummary";
-import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import CheckoutForm from "@/components/Checkout/CheckoutForm";
+import CheckoutSummary from "@/components/Checkout/CheckoutSummary";
 
 export default function page() {
   const breadcrumbs = [

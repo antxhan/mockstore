@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { api } from "@/utils/api";
 import {
   formatNumberWithSpaces,
@@ -8,8 +8,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { categoryIcon } from "@/icons/categoryIcons/categoryIcon";
-import RelatedProducts from "./components/RelatedProducts/RelatedProducts";
-import ProductActions from "./components/ProductActions/ProductActions";
+import RelatedProducts from "./components/RelatedProducts";
+import ProductActions from "./components/ProductActions";
 
 export default async function Page({
   params,
@@ -62,9 +62,7 @@ export default async function Page({
           </Link>
           <h2 className="text-balance">{product.title}</h2>
           <div className="grid grid-cols-[auto_1fr] items-center text-[1.2rem] text-[var(--clr-neutral-500)]">
-            <div
-              className="relative text-[var(--clr-neutral-250)] tracking-[0.25rem]"
-            >
+            <div className="relative text-[var(--clr-neutral-250)] tracking-[0.25rem]">
               ★★★★★
               <div
                 className="absolute top-0 left-0 overflow-hidden text-[var(--clr-primary)]"

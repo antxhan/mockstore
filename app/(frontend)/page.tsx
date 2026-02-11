@@ -1,8 +1,8 @@
 // import Layout from "@/components/Layout";
 import Image from "next/image";
 import Link from "next/link";
-import CategoryCard from "@/components/CategoryCard/CategoryCard";
-import ProductsGrid from "@/components/ProductsGrid/ProductsGrid";
+import CategoryCard from "@/components/CategoryCard";
+import ProductsGrid from "@/components/ProductsGrid";
 import { api } from "@/utils/api";
 import { Suspense } from "react";
 
@@ -53,7 +53,10 @@ export default async function Home() {
       <section className="mt-12 max-[700px]:mt-8">
         <header className="mb-4 flex items-center justify-between">
           <h2>New Arrivals</h2>
-          <Link href="/products" className="underline decoration-[var(--clr-primary)] decoration-2">
+          <Link
+            href="/products"
+            className="underline decoration-[var(--clr-primary)] decoration-2"
+          >
             View All
           </Link>
         </header>

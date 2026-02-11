@@ -1,7 +1,7 @@
 import { api } from "@/utils/api";
-import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import MainSection from "./components/MainSection";
-import FiltersSection from "./components/FiltersSection/FiltersSection";
+import FiltersSection from "./components/FiltersSection";
 import { Suspense } from "react";
 
 export default async function Products({

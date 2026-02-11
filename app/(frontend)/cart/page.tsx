@@ -1,5 +1,5 @@
-import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
-import Cart from "./components/Cart";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Cart from "@/components/Cart";
 
 export default function page() {
   const breadcrumbs = [

@@ -1,5 +1,5 @@
-import LikedProducts from "./components/LikedProducts";
-import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
+import LikedProducts from "./LikedProducts";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export default function page() {
   const breadcrumbs = [
